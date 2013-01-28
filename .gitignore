@@ -1,0 +1,7 @@
+*~
+vendor/*
+.htaccess
+.*~
+config.php
+repository
+mouf/no_commit
