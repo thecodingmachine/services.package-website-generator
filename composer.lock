@@ -1,0 +1,1509 @@
+{
+    "hash": "6bfcc4fc640590da63cf5187ec3a7ab1",
+    "packages": [
+        {
+            "name": "knplabs/github-api",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KnpLabs/php-github-api.git",
+                "reference": "f3db6b5814942b5fc070c4d3e8a949f2239c5724"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/KnpLabs/php-github-api/archive/f3db6b5814942b5fc070c4d3e8a949f2239c5724.zip",
+                "reference": "f3db6b5814942b5fc070c4d3e8a949f2239c5724",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2",
+                "ext-curl": "*",
+                "kriswallsmith/buzz": ">=0.7"
+            },
+            "time": "2013-01-14 12:39:18",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Github\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thibault Duplessis",
+                    "email": "thibault.duplessis@gmail.com",
+                    "homepage": "http://ornicar.github.com"
+                },
+                {
+                    "name": "KnpLabs Team",
+                    "homepage": "http://knplabs.com"
+                }
+            ],
+            "description": "GitHub API v3 client",
+            "homepage": "https://github.com/KnpLabs/php-github-api",
+            "keywords": [
+                "api",
+                "github",
+                "gist",
+                "gh"
+            ]
+        },
+        {
+            "name": "kriswallsmith/buzz",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/kriswallsmith/Buzz.git",
+                "reference": "8ff1d1910b9e04ac571bcf6d639559e065093136"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/kriswallsmith/Buzz/archive/8ff1d1910b9e04ac571bcf6d639559e065093136.zip",
+                "reference": "8ff1d1910b9e04ac571bcf6d639559e065093136",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "suggest": {
+                "ext-curl": "*"
+            },
+            "time": "2013-01-14 16:07:06",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Buzz": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kris Wallsmith",
+                    "email": "kris.wallsmith@gmail.com",
+                    "homepage": "http://kriswallsmith.net/"
+                }
+            ],
+            "description": "Lightweight HTTP client",
+            "homepage": "https://github.com/kriswallsmith/Buzz",
+            "keywords": [
+                "curl",
+                "http client"
+            ]
+        },
+        {
+            "name": "michelf/php-markdown",
+            "version": "dev-lib",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/michelf/php-markdown.git",
+                "reference": "2993fbc030396cb4bd96bbee6bdbca65d9b0a9f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/michelf/php-markdown/archive/2993fbc030396cb4bd96bbee6bdbca65d9b0a9f8.zip",
+                "reference": "2993fbc030396cb4bd96bbee6bdbca65d9b0a9f8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2013-01-24 19:06:42",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-lib": "1.3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Michelf": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Michel Fortin",
+                    "email": "michel.fortin@michelf.ca",
+                    "homepage": "http://michelf.ca/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "John Gruber",
+                    "homepage": "http://daringfireball.net/"
+                }
+            ],
+            "description": "PHP Markdown",
+            "homepage": "http://michelf.ca/projects/php-markdown/",
+            "keywords": [
+                "markdown"
+            ]
+        },
+        {
+            "name": "mouf/database.dao-interface",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/database.dao-interface.git",
+                "reference": "809f07150f7e2735c945b0f89764b4867fedcff4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/database.dao-interface/archive/809f07150f7e2735c945b0f89764b4867fedcff4.zip",
+                "reference": "809f07150f7e2735c945b0f89764b4867fedcff4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2012-11-24 11:50:52",
+            "type": "mouf-library",
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Nguyen",
+                    "email": "k.nguyen@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package only contains a basic interface for implementing common DAO methods. Those DAOs will be used by BCE forms among other things.",
+            "homepage": "http://www.mouf-php.com/",
+            "keywords": [
+                "database",
+                "interface",
+                "dao"
+            ]
+        },
+        {
+            "name": "mouf/database.dbconnection",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/database.dbconnection.git",
+                "reference": "634e119904b625b92fabdbc4397dc30163833af3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/database.dbconnection/archive/634e119904b625b92fabdbc4397dc30163833af3.zip",
+                "reference": "634e119904b625b92fabdbc4397dc30163833af3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*"
+            },
+            "time": "2012-12-31 09:54:57",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "url",
+                            "url": "dbconnectioninstall/"
+                        }
+                    ],
+                    "require-admin": [
+                        "src/DbConnectionAdmin.php"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains object to perform database connections. Connections are performed using the PDO library. Therefore, the PDO extension must be enabled to use this package. This package will allow you to connect to MySql and PostgreSql databases. The DB Connection class has special features to help you get informations about the database schema, and especially about the constraints between tables.",
+            "homepage": "https://github.com/thecodingmachine/database.dbconnection",
+            "keywords": [
+                "database",
+                "mouf",
+                "dbconnection"
+            ]
+        },
+        {
+            "name": "mouf/database.tdbm",
+            "version": "3.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/database.tdbm.git",
+                "reference": "8638e18fbcf091f94e0030e1f983282b00a10ab9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/database.tdbm/archive/8638e18fbcf091f94e0030e1f983282b00a10ab9.zip",
+                "reference": "8638e18fbcf091f94e0030e1f983282b00a10ab9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/database.dbconnection": ">=2.0-dev,<3.0",
+                "mouf/utils.cache.cache-interface": ">=2.0-dev,<3.0",
+                "mouf/utils.cache.no-cache": ">=2.0-dev,<3.0",
+                "mouf/utils.common.conditioninterface": ">=2.0-dev,<3.0",
+                "mouf/utils.log.errorlog_logger": ">=2.0-dev,<3.0",
+                "mouf/database.dao-interface": ">=2.0-dev,<3.0"
+            },
+            "time": "2013-01-16 17:56:19",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "url",
+                            "url": "tdbminstall/",
+                            "description": "The install process of TDBM proposes to set up the DAOs and beans for your default DB connection."
+                        }
+                    ],
+                    "require-admin": [
+                        "src/TdbmAdmin.php"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "The Database Machine is a PHP ORM that requires no configuration. The object model is deduced at runtime from the database model.",
+            "homepage": "https://github.com/thecodingmachine/database.tdbm",
+            "keywords": [
+                "orm",
+                "bean",
+                "model",
+                "dao",
+                "mouf",
+                "persistance"
+            ]
+        },
+        {
+            "name": "mouf/html.htmlelement",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/html.html_element.git",
+                "reference": "e9d2c74c8155e1cecb71fa5da7458e81919126d2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/html.html_element/archive/e9d2c74c8155e1cecb71fa5da7458e81919126d2.zip",
+                "reference": "e9d2c74c8155e1cecb71fa5da7458e81919126d2",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2013-01-21 16:52:17",
+            "type": "mouf-library",
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains the HtmlElementInterface interface that can be used to output HTML on a page. It also features base classes implementing this interface.",
+            "homepage": "https://github.com/thecodingmachine/html.html_element",
+            "keywords": [
+                "html",
+                "interface",
+                "tohtml"
+            ]
+        },
+        {
+            "name": "mouf/html.template.bootstrap",
+            "version": "2.1.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/html.template.bootstrap.git",
+                "reference": "74db9bb3aa140f72cc775e064238e350f8cbec5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/html.template.bootstrap/archive/74db9bb3aa140f72cc775e064238e350f8cbec5f.zip",
+                "reference": "74db9bb3aa140f72cc775e064238e350f8cbec5f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/html.utils.weblibrarymanager": ">=2.0-dev,<3.0",
+                "mouf/html.template.templateinterface": ">=2.0-dev,<3.0",
+                "mouf/html.utils.bootstrap": "2.1.*",
+                "mouf/html.widgets.menu": "2.*"
+            },
+            "time": "2013-01-26 10:58:50",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "src/install.php"
+                        }
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains a Mouf template based on the Twitter Bootstrap HTML/CSS/JS library, along a Mouf installer file to add the template easily in your Mouf project.",
+            "homepage": "http://twitter.github.com/bootstrap/",
+            "keywords": [
+                "javascript",
+                "bootstrap",
+                "template",
+                "mouf"
+            ]
+        },
+        {
+            "name": "mouf/html.template.templateinterface",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/html.template.templateinterface.git",
+                "reference": "d72b784ebef76aff75bf83f3015376f0fc2a442d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/html.template.templateinterface/archive/d72b784ebef76aff75bf83f3015376f0fc2a442d.zip",
+                "reference": "d72b784ebef76aff75bf83f3015376f0fc2a442d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/html.utils.weblibrarymanager": ">=2.0-dev,<3.0"
+            },
+            "time": "2013-01-23 16:58:26",
+            "type": "mouf-library",
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains the definition of an HTML template (the TemplateInterface interface) and an helper class to build HTML templates easily (the BaseTemplate class).",
+            "homepage": "https://github.com/thecodingmachine/html.template.templateinterface",
+            "keywords": [
+                "template",
+                "interface",
+                "templateinterface"
+            ]
+        },
+        {
+            "name": "mouf/html.utils.bootstrap",
+            "version": "2.1.1.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/html.utils.bootstrap.git",
+                "reference": "09a8e412784d30677d0877e2485307fe50ed2488"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/html.utils.bootstrap/archive/09a8e412784d30677d0877e2485307fe50ed2488.zip",
+                "reference": "09a8e412784d30677d0877e2485307fe50ed2488",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/javascript.jquery.jquery": ">=1.7,<2.0"
+            },
+            "time": "2013-01-28 11:25:15",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "install.php"
+                        }
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache License V2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Otto"
+                },
+                {
+                    "name": "Billy Gates"
+                }
+            ],
+            "description": "This package contains the Bootstrap HTML/CSS/JS library, along a Mouf installer file to add Bootstrap easily in your Mouf project.",
+            "homepage": "http://twitter.github.com/bootstrap/",
+            "keywords": [
+                "javascript",
+                "bootstrap",
+                "mouf"
+            ]
+        },
+        {
+            "name": "mouf/html.utils.weblibrarymanager",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/html.utils.weblibrarymanager.git",
+                "reference": "d92280ed4c3610d588a47797c8ab641c938313d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/html.utils.weblibrarymanager/archive/d92280ed4c3610d588a47797c8ab641c938313d5.zip",
+                "reference": "d92280ed4c3610d588a47797c8ab641c938313d5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/mouf-installer": ">=2.0,<3.0",
+                "mouf/html.htmlelement": ">=2.0,<3.0"
+            },
+            "time": "2013-01-21 16:55:25",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "install.php"
+                        }
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "The Javascript/CSS library manager is a PHP class in charge of keeping track of the JS and CSS files that have been included so far in a web page. Basically, you tell the Javascript/CSS library manager to import a JS/CSS file and it will make sure it is included, only once, and that all dependencies are included as well.",
+            "homepage": "https://github.com/thecodingmachine/html.utils.weblibrarymanager",
+            "keywords": [
+                "dependency",
+                "javascript",
+                "css",
+                "html",
+                "mouf",
+                "dependencies"
+            ]
+        },
+        {
+            "name": "mouf/html.widgets.menu",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/html.widgets.menu.git",
+                "reference": "7c933bd67cecacf142cb0793425b7833f01c571c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/html.widgets.menu/archive/7c933bd67cecacf142cb0793425b7833f01c571c.zip",
+                "reference": "7c933bd67cecacf142cb0793425b7833f01c571c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/utils.i18n.fine": "3.*"
+            },
+            "time": "2013-01-28 09:43:26",
+            "type": "mouf-library",
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains objects describing a menu of an application. The menu is described, but this package does not render the menu in any way. You will have to use another package to render the menu in HTML. Usually, templates will provide their own menu renderers.",
+            "homepage": "https://github.com/thecodingmachine/html.widgets.menu",
+            "keywords": [
+                "menu",
+                "template",
+                "mouf"
+            ]
+        },
+        {
+            "name": "mouf/javascript.jquery.jquery",
+            "version": "1.7.2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/javascript.jquery.jquery.git",
+                "reference": "4f07be5afa598f52c97b48cb963aa04e92a94b90"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/javascript.jquery.jquery/archive/4f07be5afa598f52c97b48cb963aa04e92a94b90.zip",
+                "reference": "4f07be5afa598f52c97b48cb963aa04e92a94b90",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/html.utils.weblibrarymanager": ">=2.0-dev,<3.0"
+            },
+            "time": "2012-12-06 09:35:44",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "install.php"
+                        }
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains the JQuery library, along a Mouf installer file to add JQuery easily in your Mouf project.",
+            "homepage": "https://github.com/thecodingmachine/javascript.jquery.jquery",
+            "keywords": [
+                "jquery",
+                "javascript",
+                "mouf"
+            ]
+        },
+        {
+            "name": "mouf/mouf",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/mouf.git",
+                "reference": "cd8bb990d3bf5f261a4bf89eb0e3e04819d2a263"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/mouf/archive/cd8bb990d3bf5f261a4bf89eb0e3e04819d2a263.zip",
+                "reference": "cd8bb990d3bf5f261a4bf89eb0e3e04819d2a263",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/mouf-installer": ">=2.0.0-dev"
+            },
+            "time": "2013-01-28 11:19:04",
+            "type": "mouf-framework",
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "The Mouf PHP framework: an open-source PHP framework providing an easy way to download, install, use and reuse components, with a graphical user interface.",
+            "homepage": "http://mouf-php.com",
+            "keywords": [
+                "dependency injection",
+                "framework",
+                "di",
+                "inversion of control",
+                "ioc",
+                "mouf"
+            ]
+        },
+        {
+            "name": "mouf/mouf-installer",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/mouf-installer.git",
+                "reference": "bb7c6cd1acb98a6a557028d6cc5ee716ee635767"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/mouf-installer/archive/bb7c6cd1acb98a6a557028d6cc5ee716ee635767.zip",
+                "reference": "bb7c6cd1acb98a6a557028d6cc5ee716ee635767",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2013-01-15 16:01:06",
+            "type": "composer-installer",
+            "extra": {
+                "class": [
+                    "Mouf\\Installer\\MoufLibraryInstaller",
+                    "Mouf\\Installer\\MoufFrameworkInstaller"
+                ]
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "The Mouf-installer package is a composer in charge of installing any package with the 'mouf-library' type.",
+            "homepage": "http://mouf-php.com",
+            "keywords": [
+                "install",
+                "mouf"
+            ]
+        },
+        {
+            "name": "mouf/mvc.splash",
+            "version": "4.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/mvc.splash.git",
+                "reference": "9881dc0b99301b9076d19cc6c27313bf946d611e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/mvc.splash/archive/9881dc0b99301b9076d19cc6c27313bf946d611e.zip",
+                "reference": "9881dc0b99301b9076d19cc6c27313bf946d611e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/mvc.splash-common": "4.0.*",
+                "mouf/html.template.bootstrap": "2.1.*",
+                "mouf/utils.cache.apc-cache": "2.0.*",
+                "mouf/utils.cache.file-cache": "2.0.*",
+                "mouf/utils.cache.no-cache": "2.0.*"
+            },
+            "time": "2013-01-28 09:44:06",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "url",
+                            "url": "splashinstall/",
+                            "scope": "global",
+                            "description": "Create RootController and root view."
+                        },
+                        {
+                            "type": "url",
+                            "url": "splashinstall/writeHtAccess",
+                            "scope": "local",
+                            "description": "Write .htaccess file."
+                        }
+                    ],
+                    "require-admin": [
+                        "src/SplashAdmin.php",
+                        "src/Mouf/Mvc/Splash/SplashGenerateService.php",
+                        "src/Mouf/Mvc/Splash/Controllers/Admin/SplashPurgeCacheController.php",
+                        "src/Mouf/Mvc/Splash/Controllers/Admin/SplashAdminApacheConfigureController.php",
+                        "src/Mouf/Mvc/Splash/Controllers/Admin/SplashInstallController.php"
+                    ],
+                    "doc": [
+                        {
+                            "title": "Installing Splash",
+                            "url": "doc/install.md"
+                        },
+                        {
+                            "title": "Writing controllers",
+                            "url": "doc/writing_controllers.md"
+                        },
+                        {
+                            "title": "Managing URL parameters",
+                            "url": "doc/url_parameters.md"
+                        },
+                        {
+                            "title": "Writing your own filters",
+                            "url": "doc/filters.md"
+                        },
+                        {
+                            "title": "Settings and error handling",
+                            "url": "doc/settings_and_error_handling.md"
+                        }
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "An MVC framework deeply integrated with Mouf.",
+            "homepage": "https://github.com/thecodingmachine/mvc.splash",
+            "keywords": [
+                "framework",
+                "mvc",
+                "mouf",
+                "splash"
+            ]
+        },
+        {
+            "name": "mouf/mvc.splash-common",
+            "version": "4.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thecodingmachine/mvc.splash-common",
+                "reference": "0790978c138e02a2611a3dc69ca6c4c2e2eb8084"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/mvc.splash-common/archive/0790978c138e02a2611a3dc69ca6c4c2e2eb8084.zip",
+                "reference": "0790978c138e02a2611a3dc69ca6c4c2e2eb8084",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/html.htmlelement": "2.*",
+                "mouf/utils.i18n.fine": "3.*"
+            },
+            "time": "2013-01-28 09:27:48",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "src/splashCommonInstall.php"
+                        }
+                    ],
+                    "require-admin": [
+                        "src/SplashCommonAdmin.php"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "The Core part of Splash (an MVC framework). It is used by Splash itself, but also by Drusplash (the Splash wrapper for Drupal)",
+            "homepage": "https://github.com/thecodingmachine/mvc.splash-common",
+            "keywords": [
+                "framework",
+                "mvc",
+                "mouf",
+                "splash",
+                "splash-common"
+            ]
+        },
+        {
+            "name": "mouf/security.userservice",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/security.userservice.git",
+                "reference": "258d29984ea0631ddd21700818aeb968725cc5b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/security.userservice/archive/258d29984ea0631ddd21700818aeb968725cc5b9.zip",
+                "reference": "258d29984ea0631ddd21700818aeb968725cc5b9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/utils.common.conditioninterface": "2.*",
+                "mouf/utils.log.log_interface": "2.*"
+            },
+            "time": "2012-11-28 12:13:42",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "src/install.php"
+                        }
+                    ],
+                    "require-admin": [
+                        "src/MoufUserServiceValidators.php"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "A set of PHP class to manage log-in and log-out of web applications and that integrates with Mouf.",
+            "homepage": "https://github.com/thecodingmachine/security.userservice",
+            "keywords": [
+                "User management",
+                "security",
+                "user"
+            ]
+        },
+        {
+            "name": "mouf/security.userservice-splash",
+            "version": "4.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/security.userservice-splash.git",
+                "reference": "14b46164d20572b371a94889c156c505238b1b41"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/security.userservice-splash/archive/14b46164d20572b371a94889c156c505238b1b41.zip",
+                "reference": "14b46164d20572b371a94889c156c505238b1b41",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/security.userservice": "2.*",
+                "mouf/mvc.splash": "4.*"
+            },
+            "time": "2012-12-03 13:51:04",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains a set of class to bind the Splash MVC framework (>=v4.0) with the UserService component. It features: a @Logged annotation to restrict access to logged users only.",
+            "homepage": "https://github.com/thecodingmachine/security.userservice-splash",
+            "keywords": [
+                "security",
+                "user",
+                "mouf",
+                "splash"
+            ]
+        },
+        {
+            "name": "mouf/utils.cache.apc-cache",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/utils.cache.apc-cache.git",
+                "reference": "81d28ddd4eaf7578aae378da5eed24a09a4cc1ee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/utils.cache.apc-cache/archive/81d28ddd4eaf7578aae378da5eed24a09a4cc1ee.zip",
+                "reference": "81d28ddd4eaf7578aae378da5eed24a09a4cc1ee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/utils.cache.cache-interface": "2.*",
+                "mouf/utils.log.errorlog_logger": "2.*",
+                "mouf/utils.cache.file-cache": "2.*"
+            },
+            "time": "2013-01-21 18:30:20",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "src/install.php"
+                        }
+                    ],
+                    "require-admin": [
+                        "src/declareApcValidator.php"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains a cache mechanism that relies on the APC caching system. For this cache to work, the APC Pecl package must be enabled.",
+            "homepage": "https://github.com/thecodingmachine/utils.cache.apc-cache",
+            "keywords": [
+                "cache",
+                "apc",
+                "mouf"
+            ]
+        },
+        {
+            "name": "mouf/utils.cache.cache-interface",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/utils.cache.cache-interface.git",
+                "reference": "530923d1756242dfb551f040ee7c77410ec015ed"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/utils.cache.cache-interface/archive/530923d1756242dfb551f040ee7c77410ec015ed.zip",
+                "reference": "530923d1756242dfb551f040ee7c77410ec015ed",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2012-11-24 11:47:29",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "require-admin": [
+                        "CacheAdmin.php"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package only contains the interface that must be implemented by caching classes. Unless you want to implement your own caching method, you should import a cache package that will use this interface. For instance, common.utils.session-cache, or common.utils.file-cache.",
+            "homepage": "https://github.com/thecodingmachine/utils.cache.cache-interface",
+            "keywords": [
+                "cache",
+                "interface",
+                "mouf"
+            ]
+        },
+        {
+            "name": "mouf/utils.cache.file-cache",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/utils.cache.file-cache.git",
+                "reference": "7aeeb77c898d21e9e5153c56a01e7a442b391e0a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/utils.cache.file-cache/archive/7aeeb77c898d21e9e5153c56a01e7a442b391e0a.zip",
+                "reference": "7aeeb77c898d21e9e5153c56a01e7a442b391e0a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/utils.cache.cache-interface": "2.*",
+                "mouf/utils.log.log_interface": "2.*"
+            },
+            "time": "2013-01-21 15:26:09",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "src/install.php"
+                        }
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains a cache mechanism that relies on temporary files.",
+            "homepage": "https://github.com/thecodingmachine/utils.cache.file-cache",
+            "keywords": [
+                "file",
+                "cache",
+                "mouf"
+            ]
+        },
+        {
+            "name": "mouf/utils.cache.no-cache",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/utils.cache.no-cache.git",
+                "reference": "e431eebfad39516d3c352b6798aab4dc87b67c70"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/utils.cache.no-cache/archive/e431eebfad39516d3c352b6798aab4dc87b67c70.zip",
+                "reference": "e431eebfad39516d3c352b6798aab4dc87b67c70",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/utils.cache.cache-interface": "2.*",
+                "mouf/utils.log.log_interface": "2.*"
+            },
+            "time": "2012-11-24 11:46:45",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "src/install.php"
+                        }
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains a cache mechanism that... does not cache anything. This is useful if another component requires a cache mechanism and if you don't want to provide any (for development purpose...).",
+            "homepage": "https://github.com/thecodingmachine/utils.cache.no-cache",
+            "keywords": [
+                "cache",
+                "mouf",
+                "nocache"
+            ]
+        },
+        {
+            "name": "mouf/utils.common.conditioninterface",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/utils.common.conditioninterface.git",
+                "reference": "77cea9572876de02af2bdfa66b6e90451e8ea485"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/utils.common.conditioninterface/archive/77cea9572876de02af2bdfa66b6e90451e8ea485.zip",
+                "reference": "77cea9572876de02af2bdfa66b6e90451e8ea485",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2012-11-24 11:47:37",
+            "type": "mouf-library",
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains one interface for condition, and a few classes that implement it. For instance, AndCondition that requires all conditions to be met, and OrCondition that requires at least one condition to be met. A condition is a class that possesses an 'isOk' method. The condition returns true if the condition is met, and false otherwise.",
+            "homepage": "https://github.com/thecodingmachine/utils.common.conditioninterface",
+            "keywords": [
+                "interface",
+                "condition"
+            ]
+        },
+        {
+            "name": "mouf/utils.i18n.fine",
+            "version": "3.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/utils.i18n.fine.git",
+                "reference": "7b000607886ab8c2fb030fe1fe9e86742ed0dbc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/utils.i18n.fine/archive/7b000607886ab8c2fb030fe1fe9e86742ed0dbc4.zip",
+                "reference": "7b000607886ab8c2fb030fe1fe9e86742ed0dbc4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "phpexcel/phpexcel": ">=1.7.6, <2.0.0",
+                "mouf/mouf-installer": ">=2.0,<3.0"
+            },
+            "time": "2013-01-02 17:36:23",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "src/install.php"
+                        }
+                    ],
+                    "doc": [
+                        {
+                            "title": "Using FINE",
+                            "url": "doc/using_fine.html"
+                        },
+                        {
+                            "title": "Date functions",
+                            "url": "doc/date_functions.html"
+                        },
+                        {
+                            "title": "Currency functions",
+                            "url": "doc/currency_functions.html"
+                        }
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                },
+                "files": [
+                    "src/msgFunctions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                },
+                {
+                    "name": "Marc Teyssier",
+                    "email": "m.teyssier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "Fine is a PHP internationalisation package. It will help you provide applications that support several languages. FINE means: Fine is not english :). Translation is performed using PHP mapping files, but you will have a nice graphical interface in the Mouf framework to write your own translated messages.",
+            "homepage": "https://github.com/thecodingmachine/utils.i18n.fine",
+            "keywords": [
+                "i18n",
+                "internationalisation",
+                "mouf",
+                "fine"
+            ]
+        },
+        {
+            "name": "mouf/utils.log.errorlog_logger",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/utils.log.errorlog_logger.git",
+                "reference": "d80094ddc85ca3cc8fa4ac32a4055caf7ebe387a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/utils.log.errorlog_logger/archive/d80094ddc85ca3cc8fa4ac32a4055caf7ebe387a.zip",
+                "reference": "d80094ddc85ca3cc8fa4ac32a4055caf7ebe387a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/utils.log.log_interface": ">=2.0-dev,<3.0",
+                "mouf/mouf-installer": ">=2.0,<3.0"
+            },
+            "provide": {
+                "mouf/utils.log.logger": "1.0"
+            },
+            "time": "2012-11-28 15:16:09",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "src/install.php"
+                        }
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains a logger that logs messages directly to the PHP error log (using the error_log PHP function)",
+            "homepage": "https://github.com/thecodingmachine/utils.log.errorlog_logger",
+            "keywords": [
+                "log",
+                "logger",
+                "error_log"
+            ]
+        },
+        {
+            "name": "mouf/utils.log.log_interface",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:thecodingmachine/utils.log.log_interface.git",
+                "reference": "97085d196987feeddf9ac6feba31068d10a54c3b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/thecodingmachine/utils.log.log_interface/archive/97085d196987feeddf9ac6feba31068d10a54c3b.zip",
+                "reference": "97085d196987feeddf9ac6feba31068d10a54c3b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/utils.log.logger": "1.*"
+            },
+            "time": "2012-11-24 11:47:50",
+            "type": "mouf-library",
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains an interface used by many components to log messages. Please download a logger package that implements this interface (like the utils.log.errorlog_logger package)",
+            "homepage": "https://github.com/thecodingmachine/utils.log.log_interface",
+            "keywords": [
+                "log",
+                "logger",
+                "interface"
+            ]
+        },
+        {
+            "name": "phpexcel/phpexcel",
+            "version": "v1.7.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ddeboer/phpexcel",
+                "reference": "v1.7.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/ddeboer/phpexcel/zipball/v1.7.7",
+                "reference": "v1.7.7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">5.2.0"
+            },
+            "time": "2012-09-04 11:29:37",
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPExcel": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GNU"
+            ],
+            "description": "PHPExcel - OpenXML - Create Excel2007 documents in PHP - Spreadsheet engine",
+            "homepage": "http://phpexcel.codeplex.com",
+            "keywords": [
+                "excel",
+                "xls"
+            ]
+        }
+    ],
+    "packages-dev": null,
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": [
+
+    ]
+}
