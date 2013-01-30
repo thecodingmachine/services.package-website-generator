@@ -10,8 +10,7 @@ class Package {
 	
 	private $packageDir;
 	
-	private $branchesVersions;
-	private $tagsVersions;
+	private $versions;
 	
 	public function __construct($packageDir) {
 		$this->packageDir = $packageDir;
@@ -28,32 +27,16 @@ class Package {
 	/**
 	 * Returns the list of all branch versions for the package in directory $dir
 	 */
-	public function getBranchVersions() {
-		if ($this->branchesVersions) {
-			return $this->branchesVersions;
+	public function getVersions() {
+		if ($this->versions) {
+			return $this->versions;
 		}
-		$versionsDir = glob($this->packageDir.DIRECTORY_SEPARATOR.'branches/*');
+		$versionsDir = glob($this->packageDir.DIRECTORY_SEPARATOR.'*');
 		$versions = array();
 		foreach ($versionsDir as $versionDir) {
 			$versions[] = basename($versionDir);
 		}
-		$this->branchesVersions = $versions;
-		return $versions;
-	}
-	
-	/**
-	 * Returns the list of all tags versions for the package in directory $dir
-	 */
-	public function getTagVersions() {
-		if ($this->tagsVersions) {
-			return $this->tagsVersions;
-		}
-		$versionsDir = glob($this->packageDir.DIRECTORY_SEPARATOR.'tags/*');
-		$versions = array();
-		foreach ($versionsDir as $versionDir) {
-			$versions[] = basename($versionDir);
-		}
-		$this->tagsVersions = $versions;
+		$this->versions = $versions;
 		return $versions;
 	}
 	
@@ -63,16 +46,7 @@ class Package {
 	 * @return NULL|string
 	 */
 	public function getLatest() {
-		return $this->getLatestFromArray($this->getBranchVersions());
-	}
-	
-	/**
-	 * Returns the latest tag version for this package (based on PHP's version_compare function).
-	 * 
-	 * @return NULL|string
-	 */
-	public function getLatestStable() {
-		return $this->getLatestFromArray($this->getTagVersions());
+		return $this->getLatestFromArray($this->getVersions());
 	}
 	
 	private function getLatestFromArray($versions) {
@@ -96,40 +70,30 @@ class Package {
 	 * Returns an object representing the requested version.
 	 * 
 	 * @param string $version
-	 * @param bool $isStable
 	 * @return \Mouf\Services\PackageVersion
 	 */
-	public function getPackageVersion($version, $isStable) {
-		return new PackageVersion($this, $version, $isStable);
+	public function getPackageVersion($version) {
+		return new PackageVersion($this, $version);
 	}
 	
 	/**
 	 * Returns an array of all versions, from the most recent to the oldest
 	 * The key is the version number and the value the relative path to the version from package dir. 
 	 */
-	public function getAllVersions() {
+	public function getVersionsMap() {
 		
 		$versions = array();
 		
-		$tags = $this->getTagVersions();
-		foreach ($tags as $tag) {
-			$versions[$tag] = "tags/".$tag."/";
-		}
-		
-		$branches = $this->getBranchVersions();
-		foreach ($branches as $branch) {
-			$versions[$branch.'.9999999'] = "branches/".$branch."/";
+		$tmpVersions = $this->getVersions();
+		foreach ($tmpVersions as $ver) {
+			$versions[$ver] = "version/".$ver."/";
 		}
 		
 		uksort($versions, "version_compare");
 		
 		$versions = array_reverse($versions, true);
 		
-		$finalVersions = array();
-		foreach ($versions as $version=>$value) {
-			$finalVersions[str_replace('.9999999', '-dev', $version)] = $value;
-		}
-		return $finalVersions;
+		return $versions;
 	}
 }
 

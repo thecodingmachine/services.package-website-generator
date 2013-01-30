@@ -145,37 +145,10 @@ $moufManager->addComponentInstances(array (
         'value' => 
         array (
           0 => 'versionsMenuItem',
+          1 => 'packagesMenuItem',
         ),
         'parametertype' => 'object',
         'type' => 'string',
-        'metadata' => 
-        array (
-        ),
-      ),
-    ),
-  ),
-  '__anonymous_1359374004708' => 
-  array (
-    'class' => 'Mouf\\Html\\Widgets\\Menu\\MenuItem',
-    'external' => false,
-    'weak' => true,
-    'anonymous' => true,
-    'constructor' => 
-    array (
-      0 => 
-      array (
-        'type' => 'string',
-        'value' => 'Latest',
-        'parametertype' => 'primitive',
-        'metadata' => 
-        array (
-        ),
-      ),
-      1 => 
-      array (
-        'type' => 'string',
-        'value' => '.',
-        'parametertype' => 'primitive',
         'metadata' => 
         array (
         ),
@@ -587,6 +560,44 @@ $moufManager->addComponentInstances(array (
       ),
     ),
   ),
+  'packagesMenuItem' => 
+  array (
+    'class' => 'Mouf\\Html\\Widgets\\Menu\\MenuItem',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'type' => 'string',
+        'value' => 'Other packages',
+        'parametertype' => 'primitive',
+        'metadata' => 
+        array (
+        ),
+      ),
+      1 => 
+      array (
+        'value' => NULL,
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      2 => 
+      array (
+        'value' => 
+        array (
+        ),
+        'parametertype' => 'object',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
   'rootController' => 
   array (
     'class' => 'Mouf\\Controllers\\RootController',
@@ -599,6 +610,18 @@ $moufManager->addComponentInstances(array (
       'documentationMenu' => 'documentationMenu',
       'navBar' => 'navBar',
       'versionsMenuItem' => 'versionsMenuItem',
+      'packagesMenuItem' => 'packagesMenuItem',
+    ),
+    'fieldProperties' => 
+    array (
+      'repositoryPath' => 
+      array (
+        'type' => 'config',
+        'value' => 'REPOSITORY_PATH',
+        'metadata' => 
+        array (
+        ),
+      ),
     ),
   ),
   'splash' => 
@@ -727,7 +750,6 @@ $moufManager->addComponentInstances(array (
       array (
         'value' => 
         array (
-          0 => '__anonymous_1359374004708',
         ),
         'parametertype' => 'object',
         'type' => 'string',
@@ -767,13 +789,6 @@ unset($moufManager);
 	 */
 	 public static function get__anonymous_1359315236912() {
 	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1359315236912');
-	 }
-
-	/**
-	 * @return Mouf\Html\Widgets\Menu\MenuItem
-	 */
-	 public static function get__anonymous_1359374004708() {
-	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1359374004708');
 	 }
 
 	/**
@@ -935,6 +950,13 @@ unset($moufManager);
 	 */
 	 public static function getPackagesInstaller() {
 	 	return MoufManager::getMoufManager()->getInstance('packagesInstaller');
+	 }
+
+	/**
+	 * @return Mouf\Html\Widgets\Menu\MenuItem
+	 */
+	 public static function getPackagesMenuItem() {
+	 	return MoufManager::getMoufManager()->getInstance('packagesMenuItem');
 	 }
 
 	/**

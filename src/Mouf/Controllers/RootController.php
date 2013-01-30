@@ -1,6 +1,8 @@
 <?php
 namespace Mouf\Controllers;
 				
+use Mouf\Services\PackageExplorer;
+
 use Mouf\Html\Utils\WebLibraryManager\InlineWebLibrary;
 
 use Michelf\MarkdownExtra;
@@ -70,6 +72,20 @@ class RootController extends Controller {
 	 */
 	public $versionsMenuItem;
 	
+	/**
+	 * The other packages menu item.
+	 *
+	 * @var MenuItem
+	 */
+	public $packagesMenuItem;
+	
+	/**
+	 * The path to the repository
+	 * 
+	 * @var string
+	 */
+	public $repositoryPath;
+	
 	private $forbiddenExtension=array("php", "PHP");
 	
 	private $readMeFiles=array('README.md', 'readme.md', 'README.html', 'README.txt', 'README', 'index.html', 'index.htm');
@@ -78,30 +94,39 @@ class RootController extends Controller {
 	 * There is only one action and it captures all URLs.
 	 * The URLs are analyzed by the controller and matched to documents.
 	 * 
-	 * @URL /*
+	 * @URL /{owner}/{projectname}/*
 	 */
-	public function index() {
-		// FIXME: get this from URL
-		$packageDir = $this->getPackageDir();
+	public function index($owner, $projectname) {
+		$parsedUrl = parse_url($_SERVER['REQUEST_URI']);
+		$fullPath = $parsedUrl['path'];
+		// If the URL is at the root of the project, but without a trailing slash, let's add one.
+		if (ROOT_URL.$owner.'/'.$projectname == $fullPath) {
+			header('Location: '.ROOT_URL.$owner.'/'.$projectname.'/');
+			return;
+		}
+		
+		$packageDir = $this->getPackageDir($owner, $projectname);
 		
 		$package = new Package($packageDir);
 		$latestVersion = $package->getLatest();
 		
+		$rootUrl = ROOT_URL.$owner.'/'.$projectname.'/';
+		
 		$packageVersion = $package->getPackageVersion($latestVersion, false);
 		
-		$this->printPage($packageVersion, ROOT_URL);
+		$this->printPage($packageVersion, $rootUrl, $owner, $projectname);
 	}
 	
 	/**
 	 * Action for branches whose version is known.
 	 * The URLs are analyzed by the controller and matched to documents.
 	 *
-	 * @URL /branches/{version}/*
+	 * @URL /{owner}/{projectname}/version/{version}/*
 	 */
-	public function indexBranches($version) {
-		$packageDir = $this->getPackageDir();
+	public function indexVersion($owner, $projectname, $version) {
+		$packageDir = $this->getPackageDir($owner, $projectname);
 		
-		if (empty($version) || !file_exists($packageDir.'/branches/'.$version)) {
+		if (empty($version) || !file_exists($packageDir.'/'.$version)) {
 			$this->http404Handler->pageNotFound("Invalid version");
 			return;
 		}
@@ -110,55 +135,31 @@ class RootController extends Controller {
 		$packageVersion = $package->getPackageVersion($version, false);
 		
 
-		$rootUrl = ROOT_URL.'branches/'.$version.'/';
+		$rootUrl = ROOT_URL.$owner.'/'.$projectname.'/version/'.$version.'/';
 		$path = $this->getPath($rootUrl);
 
 		$inlineWebLibrary = new InlineWebLibrary();
 		$inlineWebLibrary->setAdditionalElementFromText('<link rel="canonical" href="http://'.$_SERVER['HTTP_HOST'].ROOT_URL.$path.'"/>');
 		$this->template->getWebLibraryManager()->addLibrary($inlineWebLibrary);
 		
-		$this->printPage($packageVersion, $rootUrl);
-	}
-	
-	/**
-	 * Action for branches whose version is known.
-	 * The URLs are analyzed by the controller and matched to documents.
-	 *
-	 * @URL /tags/{version}/*
-	 */
-	public function indexTags($version) {
-		$packageDir = $this->getPackageDir();
-		
-		if (empty($version) || !file_exists($packageDir.'/tags/'.$version)) {
-			$this->http404Handler->pageNotFound("Invalid version");
-			return;
-		}
-		
-		$package = new Package($packageDir);
-		$packageVersion = $package->getPackageVersion($version, true);
-
-		$rootUrl = ROOT_URL.'tags/'.$version.'/';
-		$path = $this->getPath($rootUrl);
-		
-		$path = $this->getPath($rootUrl);
-		
-		$inlineWebLibrary = new InlineWebLibrary();
-		$inlineWebLibrary->setAdditionalElementFromText('<link rel="canonical" href="http://'.$_SERVER['HTTP_HOST'].ROOT_URL.$path.'"/>');
-		$this->template->getWebLibraryManager()->addLibrary($inlineWebLibrary);
-		
-		$this->printPage($packageVersion, $rootUrl);
+		$this->printPage($packageVersion, $rootUrl, $owner, $projectname);
 	}
 	
 	/**
 	 * Prints the page.
 	 * 
 	 * @param PackageVersion $packageVersion
-	 * @param string $rootUrl The ROOT_URL (including the branch/tag)
+	 * @param string $rootUrl The ROOT_URL (including the version/{version}/ part)
 	 * @return void
 	 */
-	private function printPage(PackageVersion $packageVersion, $rootUrl) {
+	private function printPage(PackageVersion $packageVersion, $rootUrl, $owner, $projectname) {
 		
 		$targetDir = $packageVersion->getDirectory();
+		
+		if (!file_exists($targetDir)) {
+			$this->http404Handler->pageNotFound("The project $owner/$projectname does not exist.");
+			return;
+		}
 		
 		$path = $this->getPath($rootUrl);
 		
@@ -167,6 +168,33 @@ class RootController extends Controller {
 			$this->http404Handler->pageNotFound("");
 			return;
 		}
+		
+		$versions = $packageVersion->getPackage()->getVersions();
+		uksort($versions, "version_compare");
+		$versions = array_reverse($versions, true);
+		
+		$menuItem = new MenuItem();
+		$menuItem->setLabel('Latest');
+		$menuItem->setUrl(ROOT_URL.$owner.'/'.$projectname.'/');
+		$this->versionsMenuItem->addMenuItem($menuItem);
+		
+		// Let's fill the menu with the versions.
+		foreach ($versions as $version) {
+			$menuItem = new MenuItem();
+			$menuItem->setLabel($version);
+			$menuItem->setUrl(ROOT_URL.$owner.'/'.$projectname.'/version/'.$version.'/');
+			$this->versionsMenuItem->addMenuItem($menuItem);
+		}
+		
+		$this->addPackagesMenu();
+		
+		$composerFile = $targetDir.'/composer.json';
+		$parsedComposerJson = json_decode(file_get_contents($composerFile), true);
+		
+		$packageName = $parsedComposerJson['name'];
+		$this->template->setTitle($packageName);
+		$this->navBar->title = $packageName.' ('.$packageVersion->getVersionDisplayName().')';
+		
 		if (is_dir($fileName)) {
 			// This is not a file but a directory.
 			// Let's look for a README in it.
@@ -181,17 +209,11 @@ class RootController extends Controller {
 				}
 			}
 			// If no readme found, let's go on a 404.
-			$this->http404Handler->pageNotFound("");
+			$this->http404Handler->pageNotFound("Sorry, this project does not seem to have documentation");
 			return;
 		}
 		
-		// Let's fill the menu with the versions.
-		foreach ($packageVersion->getPackage()->getAllVersions() as $version=>$path) {
-			$menuItem = new MenuItem();
-			$menuItem->setLabel($version);
-			$menuItem->setUrl($path);
-			$this->versionsMenuItem->addMenuItem($menuItem);
-		}
+		
 		
 		$pathinfo = pathinfo($fileName);
 		$extension = isset($pathinfo['extension'])?$pathinfo['extension']:null;
@@ -199,13 +221,6 @@ class RootController extends Controller {
 			$this->http404Handler->pageNotFound("Cannot view files with this extension.");
 			return;
 		}
-		
-		$composerFile = $targetDir.'/composer.json';
-		$parsedComposerJson = json_decode(file_get_contents($composerFile), true);
-		
-		$packageName = $parsedComposerJson['name'];
-		$this->template->setTitle($packageName);
-		$this->navBar->title = $packageName.' ('.$packageVersion->getVersionDisplayName().')';
 		
 		if ($extension == "html" || $extension == "md") {
 			$this->addMenu($parsedComposerJson, $targetDir, $rootUrl);
@@ -360,10 +375,56 @@ class RootController extends Controller {
 	/**
 	 * Returns the directory for the main package.
 	 */
-	private function getPackageDir() {
-		// We will assert the package directory from the namespace.
+	private function getPackageDir($owner, $projectName) {
+		return $this->repositoryPath.'/'.$owner.'/'.$projectName;
+	}
+	
+	/**
+	 * Adds the packages menu to the menu.
+	 */
+	private function addPackagesMenu() {
+		$packageExplorer = new PackageExplorer($this->repositoryPath);
+		$packages = $packageExplorer->getPackages();
 		
-		return '/home/david/projects/mouf/tmp';
+		$tree = array();
+		
+		// Let's fill the menu with the versions.
+		foreach ($packages as $owner=>$packageList) {
+			// Let's ignore the owner (because it's always the same)
+			foreach ($packageList as $package) {
+				$items = explode('.', $package);
+				$node =& $tree;
+				foreach ($items as $str) {
+					if (!isset($node[$str])) {
+						$node[$str] = array();
+					}
+					$node =& $node[$str];
+				}
+				
+				/*
+				$menuItem = new MenuItem();
+				$menuItem->setLabel($owner.'/'.$package);
+				$menuItem->setUrl(ROOT_URL.$owner.'/'.$package.'/');
+				$this->packagesMenuItem->addMenuItem($menuItem);*/
+			}
+		}
+		
+		$this->walkMenuTree($tree, $owner.'/', $this->packagesMenuItem);
+	}
+	
+	private function walkMenuTree($node, $path, MenuItem $parentMenuItem) {
+		if (!empty($node)) {
+			foreach ($node as $key=>$array) {
+				$menuItem = new MenuItem();
+				$menuItem->setLabel($key);
+				$parentMenuItem->addMenuItem($menuItem);
+				$pathTmp = $path.'.'.$key;
+				$pathTmp = str_replace('/.', '/', $pathTmp);
+				$this->walkMenuTree($array, $pathTmp, $menuItem);
+			}
+		} else {
+			$parentMenuItem->setUrl(ROOT_URL.$path);
+		}
 	}
 	
 }
