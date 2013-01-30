@@ -60,7 +60,8 @@ class PackagesInstaller {
 	 * @return array
 	 */
 	public function findPackagesListByOwner($owner) {
-		$minimalPackages = $this->composer->getRepositoryManager()->getRepositories()[0]->getMinimalPackages();
+		$repos = $this->composer->getRepositoryManager()->getRepositories();
+		$minimalPackages = $repos[0]->getMinimalPackages();
 		$result = array();
 		foreach ($minimalPackages as $minimalPackage) {
 			if (strpos($minimalPackage['name'], $owner.'/') === 0) {
