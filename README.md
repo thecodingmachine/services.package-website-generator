@@ -32,5 +32,22 @@ Documentation files must be declared in _composer.json_ according to the Mouf's 
 	        }
 	    }
 	}
+
+
+Installation
+============
+
+Installation is done like any Mouf project:
+- clone the repository in your web directory
+- run "php composer.phar install" to install the environment
+- from your browser, browse to: http://[yourserver]/[apppath]/vendor/mouf/mouf
+- follow the Mouf install procedure
+- log into Mouf, and edit the configuration (note: the database configuration is useless right now, the application does not need a database to run)
+
+Note: in the configuration file, you specify your packagist's username. All your packages will be available in the application.
+
+Finally, install a cron task that will periodically check packagist to see if there are new modules to install.
+The command to run is:
+	php [path_to_app]/scripts/getPackagistProjects.php
 	
-Installation is done like any Mouf project.
+Of course, you will need to run this script at least once before your packages' documentation is available.
