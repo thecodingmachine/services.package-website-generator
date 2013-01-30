@@ -100,10 +100,15 @@ class PackagesInstaller {
 				mkdir($this->packagesBaseDirectory.'/'.$name, 0777, true);
 			}
 			
-			$createProjectCommand = new CreateProjectCommand();
-			$createProjectCommand->installProject($this->io, $name, $packageDir, $version, 
-					'dev', false, false, false,
-					null, false, false, true);
+			try {
+				$createProjectCommand = new CreateProjectCommand();
+				$createProjectCommand->installProject($this->io, $name, $packageDir, $version, 
+						'dev', false, false, false,
+						null, false, false, true);
+			} catch (\Exception $e) {
+				echo "EXCEPTION RAISED! ".$e->getMessage()."\n";
+				echo $e->getTraceAsString()."\n";
+			}
 		}
 		
 	}

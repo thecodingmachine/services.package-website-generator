@@ -361,6 +361,8 @@ class RootController extends Controller {
 	 * Returns the directory for the main package.
 	 */
 	private function getPackageDir() {
+		// We will assert the package directory from the namespace.
+		
 		return '/home/david/projects/mouf/tmp';
 	}
 	

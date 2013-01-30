@@ -49,6 +49,18 @@ $moufManager->getConfigManager()->setConstantsDefinitionArray(array (
     'type' => 'string',
     'comment' => 'The full path to the repository containing all packages that will be downloaded. This should not end if a slash.',
   ),
+  'PACKAGIST_USERNAME' => 
+  array (
+    'defaultValue' => 'mouf',
+    'type' => 'string',
+    'comment' => 'The name of the Packagist user will fetch the packages of.',
+  ),
+  'ROOT_DOMAIN' => 
+  array (
+    'defaultValue' => 'doc.mouf-php',
+    'type' => 'string',
+    'comment' => 'The parent domain.',
+  ),
 ));
 
 $moufManager->setAllVariables(array (
