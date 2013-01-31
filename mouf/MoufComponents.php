@@ -394,6 +394,14 @@ $moufManager->addComponentInstances(array (
         array (
         ),
       ),
+      'prefix' => 
+      array (
+        'value' => 'ROOT_URL',
+        'type' => 'config',
+        'metadata' => 
+        array (
+        ),
+      ),
     ),
     'fieldBinds' => 
     array (
@@ -693,6 +701,14 @@ $moufManager->addComponentInstances(array (
       array (
         'value' => 'splashCache/',
         'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      'prefix' => 
+      array (
+        'type' => 'config',
+        'value' => 'ROOT_URL',
         'metadata' => 
         array (
         ),

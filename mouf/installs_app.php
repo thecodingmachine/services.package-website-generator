@@ -43,71 +43,71 @@ return array (
   5 => 
   array (
     'status' => 'done',
-    'type' => 'url',
-    'url' => 'tdbminstall/',
-    'package' => 'mouf/database.tdbm',
-  ),
-  6 => 
-  array (
-    'status' => 'done',
-    'type' => 'file',
-    'file' => 'src/install.php',
-    'package' => 'mouf/utils.cache.file-cache',
-  ),
-  7 => 
-  array (
-    'status' => 'done',
-    'type' => 'file',
-    'file' => 'src/install.php',
-    'package' => 'mouf/utils.cache.apc-cache',
-  ),
-  8 => 
-  array (
-    'status' => 'done',
     'type' => 'file',
     'file' => 'src/install.php',
     'package' => 'mouf/security.userservice',
   ),
-  9 => 
+  6 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'src/splashCommonInstall.php',
     'package' => 'mouf/mvc.splash-common',
   ),
-  10 => 
+  7 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'install.php',
     'package' => 'mouf/javascript.jquery.jquery',
   ),
-  11 => 
+  8 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'install.php',
     'package' => 'mouf/html.utils.bootstrap',
   ),
-  12 => 
+  9 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'src/install.php',
     'package' => 'mouf/html.template.bootstrap',
   ),
-  13 => 
+  10 => 
+  array (
+    'status' => 'done',
+    'type' => 'file',
+    'file' => 'src/install.php',
+    'package' => 'mouf/utils.cache.file-cache',
+  ),
+  11 => 
+  array (
+    'status' => 'done',
+    'type' => 'file',
+    'file' => 'src/install.php',
+    'package' => 'mouf/utils.cache.apc-cache',
+  ),
+  12 => 
   array (
     'status' => 'done',
     'type' => 'url',
     'url' => 'splashinstall/',
     'package' => 'mouf/mvc.splash',
   ),
-  14 => 
+  13 => 
   array (
     'status' => 'done',
     'type' => 'url',
     'url' => 'splashinstall/writeHtAccess',
     'package' => 'mouf/mvc.splash',
+  ),
+  14 => 
+  array (
+    'status' => 'done',
+    'type' => 'url',
+    'url' => 'tdbminstall/',
+    'package' => 'mouf/database.tdbm',
   ),
 );
