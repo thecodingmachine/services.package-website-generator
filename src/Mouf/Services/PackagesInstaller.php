@@ -91,10 +91,10 @@ class PackagesInstaller {
 		if (file_exists($packageDir)) {
 			// Ok, if this is not a tag, but a branch, there is a .git file that we can update.
 			if (file_exists($packageDir.'/.git')) {
-				echo "Running git pull on ".$name.' - '.$prettyVersion."\n";
+				error_log("Running git pull on ".$name.' - '.$prettyVersion);
 				exec('cd '.escapeshellarg($packageDir).';pwd;git pull');
 			} else {
-				echo "Not updating tag ".$name.' - '.$prettyVersion."\n";
+				error_log("Not updating tag ".$name.' - '.$prettyVersion);
 			}
 		} else {
 			if (!file_exists($this->packagesBaseDirectory.'/'.$name)) {
@@ -109,6 +109,8 @@ class PackagesInstaller {
 			} catch (\Exception $e) {
 				echo "EXCEPTION RAISED! ".$e->getMessage()."\n";
 				echo $e->getTraceAsString()."\n";
+				error_log("EXCEPTION RAISED! ".$e->getMessage()."\n");
+				error_log($e->getTraceAsString()."\n");
 			}
 		}
 		

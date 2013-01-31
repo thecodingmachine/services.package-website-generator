@@ -6,4 +6,4 @@ require_once __DIR__.'/../mouf/Mouf.php';
 $packagesInstaller = Mouf::getPackagesInstaller();
 $packagesInstaller->run(PACKAGIST_USERNAME);
 
-echo "\nDone.\n";
+error_log("Packagist packages download done.");
