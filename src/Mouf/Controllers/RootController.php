@@ -80,6 +80,12 @@ class RootController extends Controller {
 	public $packagesMenuItem;
 	
 	/**
+	 * 
+	 * @var PackageExplorer
+	 */
+	public $packageExporer;
+	
+	/**
 	 * The path to the repository
 	 * 
 	 * @var string
@@ -88,7 +94,7 @@ class RootController extends Controller {
 	
 	private $forbiddenExtension=array("php", "PHP");
 	
-	private $readMeFiles=array('README.md', 'readme.md', 'README.html', 'README.txt', 'README', 'index.html', 'index.htm');
+	private $readMeFiles=array('index.md', 'README.md', 'readme.md', 'README.html', 'README.txt', 'README', 'index.html', 'index.htm');
 	
 	/**
 	 * There is only one action and it captures all URLs.
@@ -188,8 +194,9 @@ class RootController extends Controller {
 		
 		$this->addPackagesMenu();
 		
-		$composerFile = $targetDir.'/composer.json';
-		$parsedComposerJson = json_decode(file_get_contents($composerFile), true);
+		
+		
+		$parsedComposerJson = $packageVersion->getComposerJson();
 		
 		$packageName = $parsedComposerJson['name'];
 		$this->template->setTitle($packageName);
@@ -209,8 +216,15 @@ class RootController extends Controller {
 				}
 			}
 			// If no readme found, let's go on a 404.
-			$this->http404Handler->pageNotFound("Sorry, this project does not seem to have documentation");
-			return;
+			$this->addMenu($parsedComposerJson, $targetDir, $rootUrl, $packageVersion);
+			if ($path) {
+				$this->http404Handler->pageNotFound("Sorry, this project does not seem to have documentation");
+				return;
+			} else {
+				$this->content->addText('<div class="alert">Sorry, this project does not seem to have any documentation. Please bang the head of the developers until a proper README is added to this package!</div>');
+				$this->template->toHtml();
+				return;
+			}
 		}
 		
 		
@@ -223,7 +237,7 @@ class RootController extends Controller {
 		}
 		
 		if ($extension == "html" || $extension == "md") {
-			$this->addMenu($parsedComposerJson, $targetDir, $rootUrl);
+			$this->addMenu($parsedComposerJson, $targetDir, $rootUrl, $packageVersion);
 		
 			$fileStr = file_get_contents($fileName);
 		
@@ -288,14 +302,64 @@ class RootController extends Controller {
 	/**
 	 * Creates the menu element on the left that contains all the documentation items.
 	 */
-	protected function addMenu($composerJson, $targetDir, $rootUrl) {
+	protected function addMenu($composerJson, $targetDir, $rootUrl, $packageVersion) {
 		
 		$docPages = $this->getDocPages($composerJson, $targetDir);
 
-		/*$documentationMenuMainItem = new MenuItem("Documentation");
-		$this->fillMenu($documentationMenuMainItem, $docPages);
-		$this->documentationMenu->addChild($documentationMenuMainItem);*/
+		$documentationMenuMainItem = new MenuItem("Documentation");
+		$documentationMenuMainItem->setCssClass('nav-header');
+		$this->documentationMenu->addChild($documentationMenuMainItem);
+		
 		$this->fillMenu($this->documentationMenu, $docPages, $rootUrl);
+		
+		$aboutMenuItem = new MenuItem("About");
+		$aboutMenuItem->setCssClass('nav-header');
+		$this->documentationMenu->addChild($aboutMenuItem);
+		
+		if (isset($composerJson['homepage'])) {
+			$homePageMenuItem = new MenuItem("Home page");
+			$homePageMenuItem->setUrl($composerJson['homepage']);
+			$this->documentationMenu->addChild($homePageMenuItem);
+		}
+		
+		if (isset($composerJson['support']['issues'])) {
+			$menuItem = new MenuItem("Issues");
+			$menuItem->setUrl($composerJson['support']['issues']);
+			$this->documentationMenu->addChild($menuItem);
+		}
+		
+		if (isset($composerJson['support']['forum'])) {
+			$menuItem = new MenuItem("Forum");
+			$menuItem->setUrl($composerJson['support']['forum']);
+			$this->documentationMenu->addChild($menuItem);
+		}
+		
+		if (isset($composerJson['support']['wiki'])) {
+			$menuItem = new MenuItem("Wiki");
+			$menuItem->setUrl($composerJson['support']['wiki']);
+			$this->documentationMenu->addChild($menuItem);
+		}
+		
+		if (isset($composerJson['support']['source'])) {
+			$menuItem = new MenuItem("Sources");
+			$menuItem->setUrl($composerJson['support']['source']);
+			$this->documentationMenu->addChild($menuItem);
+		}
+		
+		$requires = $this->packageExporer->getRequires($packageVersion);
+		
+		if (!empty($requires)) {
+			$menuItem = new MenuItem("Depends on");
+			$menuItem->setCssClass('nav-header');
+			$this->documentationMenu->addChild($menuItem);
+			
+			foreach ($requires as $fullName=>$require) {
+				$menuItem = new MenuItem($fullName);
+				$menuItem->setUrl(ROOT_URL.$fullName.'/');
+				$this->documentationMenu->addChild($menuItem);
+			}
+		}
+		
 	}
 	
 	/**
@@ -349,6 +413,14 @@ class RootController extends Controller {
 		return $docArray;
 	}
 	
+	/**
+	 * Fills the menu with the documentation.
+	 * This function can be called recursively.
+	 * 
+	 * @param Menu|MenuItem $menu
+	 * @param array $docPages
+	 * @param unknown $rootUrl
+	 */
 	private function fillMenu($menu, array $docPages, $rootUrl) {
 		$children = array();
 		foreach ($docPages as $docPage) {
@@ -363,13 +435,13 @@ class RootController extends Controller {
 			if (isset($docPage['url'])) {
 				$menuItem->setUrl($rootUrl.$docPage['url']);
 			}
-			$children[] = $menuItem;
+			
 				
 			if (isset($docPage['children'])) {
 				$this->fillMenu($menuItem, $docPage['children'], $rootUrl);
 			}
+			$menu->addChild($menuItem);
 		}
-		$menu->setChildren($children);
 	}
 	
 	/**

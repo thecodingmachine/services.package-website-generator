@@ -11,6 +11,7 @@ class PackageVersion {
 	private $package;
 	private $directory;
 	private $version;
+	private $composerJson;
 	
 	/**
 	 * 
@@ -35,6 +36,17 @@ class PackageVersion {
 	
 	public function getPackage() {
 		return $this->package;
+	}
+	
+	/**
+	 * Returns the composer.json file for this version of the package, as an array.
+	 * @return array.
+	 */
+	public function getComposerJson() {
+		if (!$this->composerJson) {
+			$this->composerJson = json_decode(file_get_contents($this->getDirectory().'/composer.json'), true);
+		}
+		return $this->composerJson;
 	}
 }
 

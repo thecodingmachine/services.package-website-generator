@@ -558,6 +558,24 @@ $moufManager->addComponentInstances(array (
       'log' => 'errorLogLogger',
     ),
   ),
+  'packageExplorer' => 
+  array (
+    'class' => 'Mouf\\Services\\PackageExplorer',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'REPOSITORY_PATH',
+        'parametertype' => 'primitive',
+        'type' => 'config',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
   'packagesInstaller' => 
   array (
     'class' => 'Mouf\\Services\\PackagesInstaller',
@@ -627,6 +645,7 @@ $moufManager->addComponentInstances(array (
       'navBar' => 'navBar',
       'versionsMenuItem' => 'versionsMenuItem',
       'packagesMenuItem' => 'packagesMenuItem',
+      'packageExporer' => 'packageExplorer',
     ),
     'fieldProperties' => 
     array (
@@ -978,6 +997,13 @@ unset($moufManager);
 	 */
 	 public static function getNoCacheService() {
 	 	return MoufManager::getMoufManager()->getInstance('noCacheService');
+	 }
+
+	/**
+	 * @return Mouf\Services\PackageExplorer
+	 */
+	 public static function getPackageExplorer() {
+	 	return MoufManager::getMoufManager()->getInstance('packageExplorer');
 	 }
 
 	/**

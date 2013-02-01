@@ -7,12 +7,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/php-github-api.git",
-                "reference": "f3db6b5814942b5fc070c4d3e8a949f2239c5724"
+                "reference": "35c32b3c02e856c8d642e862ded1c7b21c8952a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/KnpLabs/php-github-api/archive/f3db6b5814942b5fc070c4d3e8a949f2239c5724.zip",
-                "reference": "f3db6b5814942b5fc070c4d3e8a949f2239c5724",
+                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/35c32b3c02e856c8d642e862ded1c7b21c8952a7",
+                "reference": "35c32b3c02e856c8d642e862ded1c7b21c8952a7",
                 "shasum": ""
             },
             "require": {
@@ -20,7 +20,7 @@
                 "ext-curl": "*",
                 "kriswallsmith/buzz": ">=0.7"
             },
-            "time": "2013-01-14 12:39:18",
+            "time": "2013-02-01 07:46:43",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -260,12 +260,12 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:thecodingmachine/database.tdbm.git",
-                "reference": "4c580f0d0ce32c20ecc828da7e9e1613cb059c11"
+                "reference": "f580ebee378cce4dd0cd068d097033552ca359a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/database.tdbm/zipball/4c580f0d0ce32c20ecc828da7e9e1613cb059c11",
-                "reference": "4c580f0d0ce32c20ecc828da7e9e1613cb059c11",
+                "url": "https://api.github.com/repos/thecodingmachine/database.tdbm/zipball/f580ebee378cce4dd0cd068d097033552ca359a8",
+                "reference": "f580ebee378cce4dd0cd068d097033552ca359a8",
                 "shasum": ""
             },
             "require": {
@@ -277,7 +277,7 @@
                 "mouf/utils.log.errorlog_logger": ">=2.0-dev,<3.0",
                 "mouf/database.dao-interface": ">=2.0-dev,<3.0"
             },
-            "time": "2013-01-31 14:33:57",
+            "time": "2013-01-31 17:56:38",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -290,6 +290,20 @@
                     ],
                     "require-admin": [
                         "src/TdbmAdmin.php"
+                    ],
+                    "doc": [
+                        {
+                            "title": "Getting started",
+                            "url": "doc/quickstart.md"
+                        },
+                        {
+                            "title": "About DAOs",
+                            "url": "doc/generating_daos.md"
+                        },
+                        {
+                            "title": "Advanced filtering",
+                            "url": "doc/advanced.md"
+                        }
                     ]
                 }
             },
@@ -672,19 +686,19 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:thecodingmachine/mouf.git",
-                "reference": "dc0fd44d2787e69a7c5542475482b39f3e08da98"
+                "reference": "851425181d6c7479c74b896540d689d9d07a7361"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/mouf/zipball/dc0fd44d2787e69a7c5542475482b39f3e08da98",
-                "reference": "dc0fd44d2787e69a7c5542475482b39f3e08da98",
+                "url": "https://api.github.com/repos/thecodingmachine/mouf/zipball/851425181d6c7479c74b896540d689d9d07a7361",
+                "reference": "851425181d6c7479c74b896540d689d9d07a7361",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "mouf/mouf-installer": ">=2.0.0-dev"
             },
-            "time": "2013-01-31 16:01:54",
+            "time": "2013-01-31 18:48:01",
             "type": "mouf-framework",
             "autoload": {
                 "psr-0": {
