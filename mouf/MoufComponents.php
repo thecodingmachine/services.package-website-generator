@@ -575,7 +575,7 @@ $moufManager->addComponentInstances(array (
       array (
         'value' => 
         array (
-          0 => 'javascript/highlight.js/styles/github.css',
+          0 => 'javascript/highlight.js/styles/googlecode.css',
         ),
         'parametertype' => 'primitive',
         'type' => 'string',
