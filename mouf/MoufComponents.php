@@ -72,6 +72,14 @@ $moufManager->setAllVariables(array (
   'splashDefaultSourceDirectory' => 'src/',
   'splashDefaultControllersNamespace' => 'Mouf\\Controllers\\',
   'splashDefaultViewsDirectory' => 'views/',
+  'splashexludeextentions' => 
+  array (
+    0 => '',
+  ),
+  'splashexludefolders' => 
+  array (
+    0 => 'vendor',
+  ),
 ));
 
 $moufManager->addComponentInstances(array (

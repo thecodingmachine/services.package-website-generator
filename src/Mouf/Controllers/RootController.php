@@ -1,6 +1,8 @@
 <?php
 namespace Mouf\Controllers;
 				
+use Mouf\Html\Utils\WebLibraryManager\WebLibrary;
+
 use Mouf\Services\PackageExplorer;
 
 use Mouf\Html\Utils\WebLibraryManager\InlineWebLibrary;
@@ -103,6 +105,7 @@ class RootController extends Controller {
 	 * @URL /{owner}/{projectname}/*
 	 */
 	public function index($owner, $projectname) {
+		
 		$parsedUrl = parse_url($_SERVER['REQUEST_URI']);
 		$fullPath = $parsedUrl['path'];
 		// If the URL is at the root of the project, but without a trailing slash, let's add one.
@@ -460,11 +463,18 @@ class RootController extends Controller {
 		
 		$tree = array();
 		
-		// Let's fill the menu with the versions.
+		// Let's fill the menu with the packages.
 		foreach ($packages as $owner=>$packageList) {
+			
 			// Let's ignore the owner (because it's always the same)
 			foreach ($packageList as $package) {
 				$items = explode('.', $package);
+				
+				// If the package does not contain a ".", let's store it in the "others" category
+				if (count($items) == 1) {
+					$items = array("Misc", $items[0]);
+				}
+								
 				$node =& $tree;
 				foreach ($items as $str) {
 					if (!isset($node[$str])) {
@@ -472,12 +482,6 @@ class RootController extends Controller {
 					}
 					$node =& $node[$str];
 				}
-				
-				/*
-				$menuItem = new MenuItem();
-				$menuItem->setLabel($owner.'/'.$package);
-				$menuItem->setUrl(ROOT_URL.$owner.'/'.$package.'/');
-				$this->packagesMenuItem->addMenuItem($menuItem);*/
 			}
 		}
 		
@@ -491,7 +495,7 @@ class RootController extends Controller {
 				$menuItem->setLabel($key);
 				$parentMenuItem->addMenuItem($menuItem);
 				$pathTmp = $path.'.'.$key;
-				$pathTmp = str_replace('/.', '/', $pathTmp);
+				$pathTmp = str_replace(array('/.', '/Misc'), '/', $pathTmp);
 				$this->walkMenuTree($array, $pathTmp, $menuItem);
 			}
 		} else {
