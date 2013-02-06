@@ -277,7 +277,7 @@ class RootController extends Controller {
 			
 					$this->content->addText('<div class="staticwebsite">'.$body.'</div>');
 					$this->template->toHtml();
-			}
+				}
 			}
 		} else {
 			readfile($fileName);

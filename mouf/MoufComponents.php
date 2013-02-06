@@ -163,6 +163,24 @@ $moufManager->addComponentInstances(array (
       ),
     ),
   ),
+  '__anonymous_1360168489288' => 
+  array (
+    'class' => 'Mouf\\Html\\Utils\\WebLibraryManager\\InlineWebLibrary',
+    'external' => false,
+    'weak' => true,
+    'anonymous' => true,
+    'setterProperties' => 
+    array (
+      'setJSFromText' => 
+      array (
+        'type' => 'string',
+        'value' => '<script type="text/javascript">hljs.initHighlightingOnLoad();</script>',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
   'apcCacheService' => 
   array (
     'class' => 'Mouf\\Utils\\Cache\\ApcCache',
@@ -356,6 +374,8 @@ $moufManager->addComponentInstances(array (
       array (
         0 => 'jQueryLibrary',
         1 => 'javascript.bootstrap',
+        2 => 'javascript.highlight.js',
+        3 => '__anonymous_1360168489288',
       ),
     ),
   ),
@@ -530,6 +550,39 @@ $moufManager->addComponentInstances(array (
     'setterBinds' => 
     array (
       'setRenderer' => 'defaultWebLibraryRenderer',
+    ),
+  ),
+  'javascript.highlight.js' => 
+  array (
+    'class' => 'Mouf\\Html\\Utils\\WebLibraryManager\\WebLibrary',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 
+        array (
+          0 => 'javascript/highlight.js/highlight.pack.js',
+        ),
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      1 => 
+      array (
+        'value' => 
+        array (
+          0 => 'javascript/highlight.js/styles/github.css',
+        ),
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
     ),
   ),
   'navBar' => 
@@ -854,6 +907,13 @@ unset($moufManager);
 	 }
 
 	/**
+	 * @return Mouf\Html\Utils\WebLibraryManager\InlineWebLibrary
+	 */
+	 public static function get__anonymous_1360168489288() {
+	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1360168489288');
+	 }
+
+	/**
 	 * @return Mouf\Utils\Cache\ApcCache
 	 */
 	 public static function getApcCacheService() {
@@ -991,6 +1051,13 @@ unset($moufManager);
 	 */
 	 public static function getJavascript_bootstrap() {
 	 	return MoufManager::getMoufManager()->getInstance('javascript.bootstrap');
+	 }
+
+	/**
+	 * @return Mouf\Html\Utils\WebLibraryManager\WebLibrary
+	 */
+	 public static function getJavascript_highlight_js() {
+	 	return MoufManager::getMoufManager()->getInstance('javascript.highlight.js');
 	 }
 
 	/**
