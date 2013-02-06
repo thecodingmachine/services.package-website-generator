@@ -204,6 +204,7 @@ class RootController extends Controller {
 		$packageName = $parsedComposerJson['name'];
 		$this->template->setTitle($packageName);
 		$this->navBar->title = $packageName.' ('.$packageVersion->getVersionDisplayName().')';
+		$this->navBar->titleLink = $packageName; 
 		
 		if (is_dir($fileName)) {
 			// This is not a file but a directory.
@@ -389,25 +390,15 @@ class RootController extends Controller {
 	
 		// Let's find if there is a README file.
 		$packagePath = $targetDir."/";
-		if (file_exists($packagePath."README.md")) {
-			$docArray[] = array("title"=> "Read me",
-					"url"=>"README.md"
-			);
-		}
-		if (file_exists($packagePath."README")) {
-			$docArray[] = array("title"=> "Read me",
-					"url"=>"README"
-			);
-		}
-		if (file_exists($packagePath."README.html")) {
-			$docArray[] = array("title"=> "Read me",
-					"url"=>"README.html"
-			);
-		}
-		if (file_exists($packagePath."README.txt")) {
-			$docArray[] = array("title"=> "Read me",
-					"url"=>"README.txt"
-			);
+		
+		
+		foreach ($this->readMeFiles as $readme) {
+			if (file_exists($packagePath.$readme)) {
+				$docArray[] = array("title"=> "Read me",
+					"url"=>$readme
+				);
+				break;
+			}
 		}
 		
 		if (isset($composerJson['extra']['mouf']['doc']) && is_array($composerJson['extra']['mouf']['doc'])) {
