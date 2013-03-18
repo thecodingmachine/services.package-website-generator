@@ -1,6 +1,8 @@
 <?php
 namespace Mouf\Controllers;
 				
+use Mouf\Utils\Common\ConditionInterface\FalseCondition;
+
 use Mouf\Html\Utils\WebLibraryManager\WebLibrary;
 
 use Mouf\Services\PackageExplorer;
@@ -165,18 +167,15 @@ class RootController extends Controller {
 		
 		$targetDir = $packageVersion->getDirectory();
 		
+		$this->addPackagesMenu();
+		
 		if (!file_exists($targetDir)) {
+			$this->versionsMenuItem->setDisplayCondition(new FalseCondition());
 			$this->http404Handler->pageNotFound("The project $owner/$projectname does not exist.");
 			return;
 		}
 		
 		$path = $this->getPath($rootUrl);
-		
-		$fileName = $targetDir.DIRECTORY_SEPARATOR.$path;
-		if (!file_exists($fileName)) {
-			$this->http404Handler->pageNotFound("");
-			return;
-		}
 		
 		$versions = $packageVersion->getPackage()->getVersions();
 		uksort($versions, "version_compare");
@@ -195,9 +194,6 @@ class RootController extends Controller {
 			$this->versionsMenuItem->addMenuItem($menuItem);
 		}
 		
-		$this->addPackagesMenu();
-		
-		
 		
 		$parsedComposerJson = $packageVersion->getComposerJson();
 		
@@ -205,6 +201,13 @@ class RootController extends Controller {
 		$this->template->setTitle($packageName);
 		$this->navBar->title = $packageName.' ('.$packageVersion->getVersionDisplayName().')';
 		$this->navBar->titleLink = $packageName; 
+		
+		$fileName = $targetDir.DIRECTORY_SEPARATOR.$path;
+		if (!file_exists($fileName)) {
+			$this->addMenu($parsedComposerJson, $targetDir, $rootUrl, $packageVersion);
+			$this->http404Handler->pageNotFound("");
+			return;
+		}
 		
 		if (is_dir($fileName)) {
 			// This is not a file but a directory.
@@ -324,6 +327,10 @@ class RootController extends Controller {
 			$homePageMenuItem = new MenuItem("Home page");
 			$homePageMenuItem->setUrl($composerJson['homepage']);
 			$this->documentationMenu->addChild($homePageMenuItem);
+			
+			//if (strpos($composerJson['homepage'], "github.com/") !== false) {
+			//	\Mouf::getBlock_header()->addText('<a href="https://github.com/you"><img style="position: absolute; top: 42px; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>');
+			//}
 		}
 		
 		if (isset($composerJson['support']['issues'])) {

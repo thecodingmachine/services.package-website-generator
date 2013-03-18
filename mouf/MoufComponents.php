@@ -181,6 +181,27 @@ $moufManager->addComponentInstances(array (
       ),
     ),
   ),
+  '__anonymous_1363619493475' => 
+  array (
+    'class' => 'Mouf\\Html\\Utils\\WebLibraryManager\\WebLibrary',
+    'external' => false,
+    'weak' => true,
+    'anonymous' => true,
+    'setterProperties' => 
+    array (
+      'setCssFiles' => 
+      array (
+        'value' => 
+        array (
+          0 => 'src/views/styles.css',
+        ),
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
   'apcCacheService' => 
   array (
     'class' => 'Mouf\\Utils\\Cache\\ApcCache',
@@ -376,6 +397,7 @@ $moufManager->addComponentInstances(array (
         1 => 'javascript.bootstrap',
         2 => 'javascript.highlight.js',
         3 => '__anonymous_1360168489288',
+        4 => '__anonymous_1363619493475',
       ),
     ),
   ),
@@ -490,7 +512,7 @@ $moufManager->addComponentInstances(array (
       array (
         'value' => 
         array (
-          0 => 'vendor/mouf/javascript.jquery.jquery/jquery-1.7.2.min.js',
+          0 => 'vendor/mouf/javascript.jquery.jquery/jquery-1.9.1.min.js',
         ),
         'parametertype' => 'primitive',
         'type' => 'string',
@@ -911,6 +933,13 @@ unset($moufManager);
 	 */
 	 public static function get__anonymous_1360168489288() {
 	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1360168489288');
+	 }
+
+	/**
+	 * @return Mouf\Html\Utils\WebLibraryManager\WebLibrary
+	 */
+	 public static function get__anonymous_1363619493475() {
+	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1363619493475');
 	 }
 
 	/**
