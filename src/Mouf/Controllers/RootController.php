@@ -228,6 +228,10 @@ class RootController extends Controller {
 				$this->http404Handler->pageNotFound("Sorry, this project does not seem to have documentation");
 				return;
 			} else {
+				$this->content->addText("<h4>".$parsedComposerJson['name']."</h4>");
+				if (isset($parsedComposerJson['description'])) {
+					$this->content->addText("<p>".htmlentities($parsedComposerJson['description'], ENT_QUOTES, 'UTF-8')."</p>");
+				}
 				$this->content->addText('<div class="alert">Sorry, this project does not seem to have any documentation. Please bang the head of the developers until a proper README is added to this package!</div>');
 				$this->template->toHtml();
 				return;
