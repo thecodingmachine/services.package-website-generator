@@ -28,7 +28,7 @@ use Mouf\Services\Package;
 use Mouf\Services\PackageVersion;				
 
 /**
- * This is the controller in charge of managing the first page of the application.
+ * This is the controller in charge of managing most pages of the application.
  * 
  * @Component
  */
@@ -455,7 +455,7 @@ class RootController extends Controller {
 	/**
 	 * Adds the packages menu to the menu.
 	 */
-	private function addPackagesMenu() {
+	public function addPackagesMenu() {
 		$packageExplorer = new PackageExplorer($this->repositoryPath);
 		$packages = $packageExplorer->getPackages();
 		

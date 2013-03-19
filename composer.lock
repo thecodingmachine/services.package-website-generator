@@ -1263,19 +1263,19 @@
             "version": "2.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "git@github.com:thecodingmachine/utils.common.conditioninterface.git",
-                "reference": "77cea9572876de02af2bdfa66b6e90451e8ea485"
+                "url": "https://github.com/thecodingmachine/utils.common.conditioninterface.git",
+                "reference": "b9c045045d929e735ae0f3ef43fb0483a9d15e18"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/thecodingmachine/utils.common.conditioninterface/archive/77cea9572876de02af2bdfa66b6e90451e8ea485.zip",
-                "reference": "77cea9572876de02af2bdfa66b6e90451e8ea485",
+                "url": "https://api.github.com/repos/thecodingmachine/utils.common.conditioninterface/zipball/b9c045045d929e735ae0f3ef43fb0483a9d15e18",
+                "reference": "b9c045045d929e735ae0f3ef43fb0483a9d15e18",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-11-24 11:47:37",
+            "time": "2013-03-18 14:44:21",
             "type": "mouf-library",
             "autoload": {
                 "psr-0": {

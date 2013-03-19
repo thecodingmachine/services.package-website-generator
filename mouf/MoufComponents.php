@@ -479,6 +479,33 @@ $moufManager->addComponentInstances(array (
       ),
     ),
   ),
+  'homePageController' => 
+  array (
+    'class' => 'Mouf\\Controllers\\HomePageController',
+    'external' => false,
+    'weak' => false,
+    'fieldBinds' => 
+    array (
+      'template' => 'bootstrapTemplate',
+      'content' => 'block.content',
+      'documentationMenu' => 'documentationMenu',
+      'navBar' => 'navBar',
+      'versionsMenuItem' => 'versionsMenuItem',
+      'packagesMenuItem' => 'packagesMenuItem',
+      'packageExporer' => 'packageExplorer',
+    ),
+    'fieldProperties' => 
+    array (
+      'repositoryPath' => 
+      array (
+        'type' => 'config',
+        'value' => 'REPOSITORY_PATH',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
   'httpErrorsController' => 
   array (
     'class' => 'Mouf\\Mvc\\Splash\\Controllers\\HttpErrorsController',
@@ -1059,6 +1086,13 @@ unset($moufManager);
 	 */
 	 public static function getFineCommonTranslationService() {
 	 	return MoufManager::getMoufManager()->getInstance('fineCommonTranslationService');
+	 }
+
+	/**
+	 * @return Mouf\Controllers\HomePageController
+	 */
+	 public static function getHomePageController() {
+	 	return MoufManager::getMoufManager()->getInstance('homePageController');
 	 }
 
 	/**

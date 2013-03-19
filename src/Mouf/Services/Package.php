@@ -23,6 +23,9 @@ class Package {
 		return $this->packageDir;
 	}
 	
+	public function getName() {
+		return basename($this->packageDir);
+	}
 
 	/**
 	 * Returns the list of all branch versions for the package in directory $dir
