@@ -16,6 +16,7 @@ Documentation files must be declared in _composer.json_ according to the Mouf's 
 	    ...
 	    "extra": {
 	        "mouf": {
+	        	"logo": "logo64x64.png",
 	            "doc": [
 	                {
 	                    "title": "Using FINE",

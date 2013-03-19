@@ -61,6 +61,18 @@ $moufManager->getConfigManager()->setConstantsDefinitionArray(array (
     'type' => 'string',
     'comment' => 'The parent domain.',
   ),
+  'DEBUG_MODE' => 
+  array (
+    'defaultValue' => '0',
+    'type' => 'string',
+    'comment' => '',
+  ),
+  'STARRED_PACKAGES' => 
+  array (
+    'defaultValue' => '',
+    'type' => 'string',
+    'comment' => 'A list of packages that should be "starred" on the homepage. The package name should not contain the owner (for instance, your write "mypackage" instead of "me/mypackage", and if there are several packages, they should be separated with ;',
+  ),
 ));
 
 $moufManager->setAllVariables(array (

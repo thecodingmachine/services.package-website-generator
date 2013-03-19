@@ -89,6 +89,7 @@ class HomePageController extends Controller {
 	 */
 	public $repositoryPath;
 	
+	protected $starredPackages = array();
 	protected $packages = array();
 	protected $userName;
 	
@@ -102,16 +103,25 @@ class HomePageController extends Controller {
 		$packageExplorer = new PackageExplorer($this->repositoryPath);
 		$packages = $packageExplorer->getPackages();
 		
+		$starredPackagesList = explode(";", STARRED_PACKAGES);
+		
 		// Let's fill the menu with the packages.
 		foreach ($packages as $owner=>$packageList) {
 					
 			$this->userName = $owner;
 			
 			foreach ($packageList as $packageName) {
-				$this->packages[] = $this->packageExporer->getPackage($owner.'/'.$packageName);
+				$package = $this->packageExporer->getPackage($owner.'/'.$packageName);
+				$pos = array_search($packageName, $starredPackagesList);
+				if ($pos !== false) {
+					$this->starredPackages[$pos] = $package;
+				} else {
+					$this->packages[] = $package;
+				}
 			}
-			
 		}
+		
+		ksort($this->starredPackages);
 		
 		$this->versionsMenuItem->setDisplayCondition(new FalseCondition());
 		$this->packagesMenuItem->setLabel('Packages');
@@ -127,4 +137,34 @@ class HomePageController extends Controller {
 		$this->template->toHtml();
 	}
 	
+	
+	protected function displayPackage(Package $package) {
+		$packageName = $package->getName();
+		$packageVersion = $package->getPackageVersion($package->getLatest());
+		$composerJson = $packageVersion->getComposerJson();
+		if (isset($composerJson['extra']['mouf']['logo'])) {
+			$imgUrl = ROOT_URL."vendor/".$this->userName.'/'.$packageName."/".$composerJson['extra']['mouf']['logo'];
+		} else {
+			$imgUrl = ROOT_URL.'src/views/images/package.png';
+		}
+		?>
+		<div class="media">
+	    	<a class="pull-left" href="#">
+	    		<img class="media-object" src="<?php echo $imgUrl ?>">
+	    	</a>
+	    	<div class="media-body">
+	    		<h4 class="media-heading">
+	    			<?php echo "<a href='".ROOT_URL.$this->userName.'/'.$packageName."/' style='margin-right:5px; margin-bottom:5px'>".$packageName." (".$packageVersion->getVersionDisplayName().")</a>"; ?>		
+	    		</h4>
+	    		<?php
+	    		
+	    		if (isset($composerJson['description'])) {
+	    			echo htmlentities($composerJson['description'], ENT_QUOTES, 'UTF-8'); 
+				} ?>
+	     
+	    
+	    	</div>
+	    </div>
+	<?php 
+	}
 }
