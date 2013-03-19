@@ -143,7 +143,7 @@ class HomePageController extends Controller {
 		$packageVersion = $package->getPackageVersion($package->getLatest());
 		$composerJson = $packageVersion->getComposerJson();
 		if (isset($composerJson['extra']['mouf']['logo'])) {
-			$imgUrl = ROOT_URL."vendor/".$this->userName.'/'.$packageName."/".$composerJson['extra']['mouf']['logo'];
+			$imgUrl = ROOT_URL.$this->userName.'/'.$packageName."/".$composerJson['extra']['mouf']['logo'];
 		} else {
 			$imgUrl = ROOT_URL.'src/views/images/package.png';
 		}
