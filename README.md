@@ -54,7 +54,9 @@ Installation is done like any Mouf project:
 - log into Mouf, and edit the configuration (note: the database configuration is useless right now, the application does not need a database to run)
 - at the root of your project, edit the .htaccess file and comment this line:
 
-	\#RewriteCond %{REQUEST_FILENAME} !-d
+```
+#RewriteCond %{REQUEST_FILENAME} !-d
+```
 
 A few things you might like to note:
 - in the configuration file, you specify your packagist's username. All your packages will be available in the application.
