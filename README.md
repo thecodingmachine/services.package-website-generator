@@ -1,7 +1,10 @@
 Composer packages documentation generator
 =========================================
 
-This project is used to generate a simple website for your composer packages.
+This project is used to **generate a simple documentation website for your composer packages**.
+
+Demo
+----
 
 Want to see a sample? We use it at TheCodingMachine to generate the documentation of the [Mouf framework](http://mouf-php.com/packages/).
 You can download and use this webapp for your own project too.
@@ -14,7 +17,7 @@ It will check on [packagist.org](http://packagist.org) to see if there are new p
 or new versions of some packages available. If so, it will download the package and generate a mini website
 containing the README, plus any other documentation files from your package if they have been declared in _composer.json_.
 
-Documentation files must be declared in _composer.json_ according to the Mouf's documentation syntax:
+Documentation files must be declared in _composer.json_ according to the **Mouf's documentation syntax**:
 
 	{
 	    ...
@@ -47,11 +50,11 @@ Installation
 ------------
 
 Installation is done like any Mouf project:
-- clone the repository in your web directory
-- run "php composer.phar install" to install the environment
-- from your browser, browse to: http://[yourserver]/[apppath]/vendor/mouf/mouf
-- follow the Mouf install procedure
-- log into Mouf, and edit the configuration (note: the database configuration is useless right now, the application does not need a database to run)
+- **clone the repository** in your web directory
+- run **php composer.phar install** to install the environment
+- from your browser, **browse to**: http://[yourserver]/[apppath]/vendor/mouf/mouf
+- follow the **Mouf install procedure**
+- log into Mouf, and **edit the configuration**
 - at the root of your project, edit the .htaccess file and comment this line:
 
 ```
@@ -63,11 +66,11 @@ A few things you might like to note:
 - in the configuration file, you can provide a list of "starred" projects. On the homepage of your site, the starred projects will be highlighted.
 - you don't need a database (at least in the current version!) The website directly runs from the files.
 
-Finally, install a cron task that will periodically check packagist to see if there are new modules to install.
+Finally, **install a cron task** that will periodically check packagist to see if there are new modules to install.
 The command to run is:
 	php [path_to_app]/scripts/getPackagistProjects.php
 	
-Of course, you will need to run this script at least once before your packages' documentation is available.
+Of course, you will need to **run this script at least once** before your packages' documentation is available.
 
 Work in progress
 ----------------
