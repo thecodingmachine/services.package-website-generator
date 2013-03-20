@@ -131,7 +131,7 @@ class HomePageController extends Controller {
 		$title = $this->userName.'\'s packages';
 		$this->template->setTitle($title);
 		$this->navBar->title = $title;
-		$this->navBar->titleLink = ROOT_URL;
+		$this->navBar->titleLink = "";
 		
 		$this->content->addFile(__DIR__."/../../views/homepage.php", $this);
 		$this->template->toHtml();

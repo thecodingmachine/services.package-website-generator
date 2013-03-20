@@ -13,36 +13,6 @@ $moufManager->getConfigManager()->setConstantsDefinitionArray(array (
     'type' => 'string',
     'comment' => 'The ROOT_URL of the Mouf web application. This is the URL, starting and ending with a slash, that you use to access the Mouf administration interface.',
   ),
-  'DB_HOST' => 
-  array (
-    'defaultValue' => 'localhost',
-    'type' => 'string',
-    'comment' => 'The database host (the IP address or URL of the database server).',
-  ),
-  'DB_PORT' => 
-  array (
-    'defaultValue' => '',
-    'type' => 'int',
-    'comment' => 'The database port (the port of the database server, keep empty to use default port).',
-  ),
-  'DB_NAME' => 
-  array (
-    'defaultValue' => '',
-    'type' => 'string',
-    'comment' => 'The name of your database.',
-  ),
-  'DB_USERNAME' => 
-  array (
-    'defaultValue' => '',
-    'type' => 'string',
-    'comment' => 'The username to access the database.',
-  ),
-  'DB_PASSWORD' => 
-  array (
-    'defaultValue' => '',
-    'type' => 'string',
-    'comment' => 'The password to access the database.',
-  ),
   'REPOSITORY_PATH' => 
   array (
     'defaultValue' => '/var/mouf/repositories',
@@ -1141,6 +1111,13 @@ unset($moufManager);
 	 }
 
 	/**
+	 * @return Mouf\Modules\GoogleAnalytics\GoogleAnalyticsWebLibrary
+	 */
+	 public static function getGoogleAnalyticsWebLibrary() {
+	 	return MoufManager::getMoufManager()->getInstance('googleAnalyticsWebLibrary');
+	 }
+
+	/**
 	 * @return Mouf\Controllers\HomePageController
 	 */
 	 public static function getHomePageController() {
@@ -1271,13 +1248,6 @@ unset($moufManager);
 	 */
 	 public static function getVersionsMenuItem() {
 	 	return MoufManager::getMoufManager()->getInstance('versionsMenuItem');
-	 }
-
-	/**
-	 * @return Mouf\Modules\GoogleAnalytics\GoogleAnalyticsWebLibrary
-	 */
-	 public static function getGoogleAnalyticsWebLibrary() {
-	 	return MoufManager::getMoufManager()->getInstance('googleAnalyticsWebLibrary');
 	 }
 
 }
