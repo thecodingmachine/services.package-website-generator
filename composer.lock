@@ -7,12 +7,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/php-github-api.git",
-                "reference": "e9a3e2d0bde5f311f20b1b031ce90a76d60a58fb"
+                "reference": "340ad2f27effb8e1db1271b9935e51c579d86cde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/e9a3e2d0bde5f311f20b1b031ce90a76d60a58fb",
-                "reference": "e9a3e2d0bde5f311f20b1b031ce90a76d60a58fb",
+                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/340ad2f27effb8e1db1271b9935e51c579d86cde",
+                "reference": "340ad2f27effb8e1db1271b9935e51c579d86cde",
                 "shasum": ""
             },
             "require": {
@@ -20,7 +20,7 @@
                 "ext-curl": "*",
                 "kriswallsmith/buzz": ">=0.7"
             },
-            "time": "2013-03-17 08:10:06",
+            "time": "2013-03-20 13:24:42",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -704,12 +704,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/modules.google-analytics.git",
-                "reference": "74d40a1b9c678183ccd840e27f675ce9b84e86cc"
+                "reference": "edea069f1dd0a5597e95019d58f869a525f91285"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/modules.google-analytics/zipball/74d40a1b9c678183ccd840e27f675ce9b84e86cc",
-                "reference": "74d40a1b9c678183ccd840e27f675ce9b84e86cc",
+                "url": "https://api.github.com/repos/thecodingmachine/modules.google-analytics/zipball/edea069f1dd0a5597e95019d58f869a525f91285",
+                "reference": "edea069f1dd0a5597e95019d58f869a525f91285",
                 "shasum": ""
             },
             "require": {
@@ -717,7 +717,7 @@
                 "mouf/html.htmlelement": ">=2.0,<3.0",
                 "mouf/mouf-installer": ">=2.0.0-dev"
             },
-            "time": "2013-03-20 10:09:45",
+            "time": "2013-03-20 14:59:22",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
