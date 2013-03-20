@@ -73,6 +73,18 @@ $moufManager->getConfigManager()->setConstantsDefinitionArray(array (
     'type' => 'string',
     'comment' => 'A list of packages that should be "starred" on the homepage. The package name should not contain the owner (for instance, your write "mypackage" instead of "me/mypackage", and if there are several packages, they should be separated with ;',
   ),
+  'GOOGLE_ANALYTICS_KEY' => 
+  array (
+    'defaultValue' => '',
+    'type' => 'string',
+    'comment' => 'Your Google Analytics key. Leave empty if you want to disable Google Analytics tracking. Don\'t have a key for your website? Get one here: http://www.google.com/analytics/',
+  ),
+  'GOOGLE_ANALYTICS_DOMAIN_NAME' => 
+  array (
+    'defaultValue' => '',
+    'type' => 'string',
+    'comment' => 'The base domain name to track (if you are tracking sub-domains). In the form: \'.example.com\'. Keep this empty if you don\'t track subdomains.',
+  ),
 ));
 
 $moufManager->setAllVariables(array (
@@ -410,6 +422,7 @@ $moufManager->addComponentInstances(array (
         2 => 'javascript.highlight.js',
         3 => '__anonymous_1360168489288',
         4 => '__anonymous_1363619493475',
+        5 => 'googleAnalyticsWebLibrary',
       ),
     ),
   ),
@@ -485,6 +498,33 @@ $moufManager->addComponentInstances(array (
       array (
         'value' => 'vendor/mouf/utils.i18n.fine/resources/',
         'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
+  'googleAnalyticsWebLibrary' => 
+  array (
+    'class' => 'Mouf\\Modules\\GoogleAnalytics\\GoogleAnalyticsWebLibrary',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'GOOGLE_ANALYTICS_KEY',
+        'parametertype' => 'primitive',
+        'type' => 'config',
+        'metadata' => 
+        array (
+        ),
+      ),
+      1 => 
+      array (
+        'value' => 'GOOGLE_ANALYTICS_DOMAIN_NAME',
+        'parametertype' => 'primitive',
+        'type' => 'config',
         'metadata' => 
         array (
         ),
@@ -1231,6 +1271,13 @@ unset($moufManager);
 	 */
 	 public static function getVersionsMenuItem() {
 	 	return MoufManager::getMoufManager()->getInstance('versionsMenuItem');
+	 }
+
+	/**
+	 * @return Mouf\Modules\GoogleAnalytics\GoogleAnalyticsWebLibrary
+	 */
+	 public static function getGoogleAnalyticsWebLibrary() {
+	 	return MoufManager::getMoufManager()->getInstance('googleAnalyticsWebLibrary');
 	 }
 
 }

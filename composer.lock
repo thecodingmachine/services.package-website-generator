@@ -1,5 +1,5 @@
 {
-    "hash": "092abfe6228fda12ef33dd38c0fe2729",
+    "hash": "41832dc9d839c6d9c53f500812116fbc",
     "packages": [
         {
             "name": "knplabs/github-api",
@@ -160,20 +160,25 @@
             "version": "2.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "git@github.com:thecodingmachine/database.dao-interface.git",
-                "reference": "809f07150f7e2735c945b0f89764b4867fedcff4"
+                "url": "https://github.com/thecodingmachine/database.dao-interface.git",
+                "reference": "1ee604cba1c4ecb0e251e6cc13981e9a53b6e214"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/thecodingmachine/database.dao-interface/archive/809f07150f7e2735c945b0f89764b4867fedcff4.zip",
-                "reference": "809f07150f7e2735c945b0f89764b4867fedcff4",
+                "url": "https://api.github.com/repos/thecodingmachine/database.dao-interface/zipball/1ee604cba1c4ecb0e251e6cc13981e9a53b6e214",
+                "reference": "1ee604cba1c4ecb0e251e6cc13981e9a53b6e214",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-11-24 11:50:52",
+            "time": "2013-03-19 21:57:57",
             "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "logo": "icons/database.png"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Mouf": "src/"
@@ -203,13 +208,13 @@
             "version": "2.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "git@github.com:thecodingmachine/database.dbconnection.git",
-                "reference": "634e119904b625b92fabdbc4397dc30163833af3"
+                "url": "https://github.com/thecodingmachine/database.dbconnection.git",
+                "reference": "a22af697cd0f1d108701b2800edb89669fdc8e85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/thecodingmachine/database.dbconnection/archive/634e119904b625b92fabdbc4397dc30163833af3.zip",
-                "reference": "634e119904b625b92fabdbc4397dc30163833af3",
+                "url": "https://api.github.com/repos/thecodingmachine/database.dbconnection/zipball/a22af697cd0f1d108701b2800edb89669fdc8e85",
+                "reference": "a22af697cd0f1d108701b2800edb89669fdc8e85",
                 "shasum": ""
             },
             "require": {
@@ -218,7 +223,7 @@
             "require-dev": {
                 "phpunit/phpunit": "3.7.*"
             },
-            "time": "2012-12-31 09:54:57",
+            "time": "2013-03-19 21:54:14",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -230,7 +235,8 @@
                     ],
                     "require-admin": [
                         "src/DbConnectionAdmin.php"
-                    ]
+                    ],
+                    "logo": "icons/database.png"
                 }
             },
             "autoload": {
@@ -263,12 +269,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/database.tdbm.git",
-                "reference": "a1445263b821a1ed09df090ed64100b690a7a238"
+                "reference": "e0b235f572d8909cf450652739005598e7824826"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/database.tdbm/zipball/a1445263b821a1ed09df090ed64100b690a7a238",
-                "reference": "a1445263b821a1ed09df090ed64100b690a7a238",
+                "url": "https://api.github.com/repos/thecodingmachine/database.tdbm/zipball/e0b235f572d8909cf450652739005598e7824826",
+                "reference": "e0b235f572d8909cf450652739005598e7824826",
                 "shasum": ""
             },
             "require": {
@@ -280,7 +286,7 @@
                 "mouf/utils.log.errorlog_logger": ">=2.0-dev,<3.0",
                 "mouf/database.dao-interface": ">=2.0-dev,<3.0"
             },
-            "time": "2013-02-08 10:33:01",
+            "time": "2013-03-19 18:27:48",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -294,6 +300,7 @@
                     "require-admin": [
                         "src/TdbmAdmin.php"
                     ],
+                    "logo": "icon.png",
                     "doc": [
                         {
                             "title": "Getting started",
@@ -342,20 +349,25 @@
             "version": "2.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "git@github.com:thecodingmachine/html.html_element.git",
-                "reference": "e9d2c74c8155e1cecb71fa5da7458e81919126d2"
+                "url": "https://github.com/thecodingmachine/html.html_element.git",
+                "reference": "9f167364e82028fc9df150d47e43eb40620feeeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/thecodingmachine/html.html_element/archive/e9d2c74c8155e1cecb71fa5da7458e81919126d2.zip",
-                "reference": "e9d2c74c8155e1cecb71fa5da7458e81919126d2",
+                "url": "https://api.github.com/repos/thecodingmachine/html.html_element/zipball/9f167364e82028fc9df150d47e43eb40620feeeb",
+                "reference": "9f167364e82028fc9df150d47e43eb40620feeeb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2013-01-21 16:52:17",
+            "time": "2013-03-19 22:35:26",
             "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "logo": "logo.png"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Mouf": "src/"
@@ -386,12 +398,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/html.template.bootstrap.git",
-                "reference": "2e3d06a6d217028472718679ec714e98808d6be0"
+                "reference": "fe5554bb3b87cec84c83ecb06be29c1f3eebb413"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/html.template.bootstrap/zipball/2e3d06a6d217028472718679ec714e98808d6be0",
-                "reference": "2e3d06a6d217028472718679ec714e98808d6be0",
+                "url": "https://api.github.com/repos/thecodingmachine/html.template.bootstrap/zipball/fe5554bb3b87cec84c83ecb06be29c1f3eebb413",
+                "reference": "fe5554bb3b87cec84c83ecb06be29c1f3eebb413",
                 "shasum": ""
             },
             "require": {
@@ -401,7 +413,7 @@
                 "mouf/html.utils.bootstrap": "2.3.*",
                 "mouf/html.widgets.menu": "2.*"
             },
-            "time": "2013-03-19 17:10:09",
+            "time": "2013-03-19 22:41:15",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -410,7 +422,8 @@
                             "type": "file",
                             "file": "src/install.php"
                         }
-                    ]
+                    ],
+                    "logo": "icons/logo.png"
                 }
             },
             "autoload": {
@@ -488,19 +501,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/html.utils.bootstrap.git",
-                "reference": "89f1853a32235dbfca262fc1549e0ce428780a00"
+                "reference": "a4e1baf73a77dd5f051b027863f55f329f86008c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/html.utils.bootstrap/zipball/89f1853a32235dbfca262fc1549e0ce428780a00",
-                "reference": "89f1853a32235dbfca262fc1549e0ce428780a00",
+                "url": "https://api.github.com/repos/thecodingmachine/html.utils.bootstrap/zipball/a4e1baf73a77dd5f051b027863f55f329f86008c",
+                "reference": "a4e1baf73a77dd5f051b027863f55f329f86008c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "mouf/javascript.jquery.jquery": ">=1.7,<2.0"
             },
-            "time": "2013-03-19 17:06:52",
+            "time": "2013-03-19 22:41:54",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -509,7 +522,8 @@
                             "type": "file",
                             "file": "install.php"
                         }
-                    ]
+                    ],
+                    "logo": "icons/logo.png"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -685,6 +699,61 @@
             ]
         },
         {
+            "name": "mouf/modules.google-analytics",
+            "version": "3.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thecodingmachine/modules.google-analytics.git",
+                "reference": "74d40a1b9c678183ccd840e27f675ce9b84e86cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thecodingmachine/modules.google-analytics/zipball/74d40a1b9c678183ccd840e27f675ce9b84e86cc",
+                "reference": "74d40a1b9c678183ccd840e27f675ce9b84e86cc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/html.htmlelement": ">=2.0,<3.0",
+                "mouf/mouf-installer": ">=2.0.0-dev"
+            },
+            "time": "2013-03-20 10:09:45",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "install.php"
+                        }
+                    ],
+                    "logo": "icons/logo.png"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This module is used to add Google Analytics integration javascript into your web site.",
+            "homepage": "https://github.com/thecodingmachine/modules.google-analytics",
+            "keywords": [
+                "google-analytics",
+                "mouf"
+            ]
+        },
+        {
             "name": "mouf/mouf",
             "version": "2.0.x-dev",
             "source": {
@@ -737,18 +806,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/mouf-installer.git",
-                "reference": "7d2073daddb53f2790684610b0c51c53e5489b74"
+                "reference": "2b573ae0826f8629f011b729237ddf82492b34bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/mouf-installer/zipball/7d2073daddb53f2790684610b0c51c53e5489b74",
-                "reference": "7d2073daddb53f2790684610b0c51c53e5489b74",
+                "url": "https://api.github.com/repos/thecodingmachine/mouf-installer/zipball/2b573ae0826f8629f011b729237ddf82492b34bb",
+                "reference": "2b573ae0826f8629f011b729237ddf82492b34bb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2013-03-11 10:27:47",
+            "time": "2013-03-19 17:56:25",
             "type": "composer-installer",
             "extra": {
                 "class": [
@@ -785,12 +854,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/mvc.splash.git",
-                "reference": "e9ead9d06c652841d3684fc909e4a722013e7a85"
+                "reference": "d9eeb8dd906530a5d70a9fec8b6672bd48fc6c71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/mvc.splash/zipball/e9ead9d06c652841d3684fc909e4a722013e7a85",
-                "reference": "e9ead9d06c652841d3684fc909e4a722013e7a85",
+                "url": "https://api.github.com/repos/thecodingmachine/mvc.splash/zipball/d9eeb8dd906530a5d70a9fec8b6672bd48fc6c71",
+                "reference": "d9eeb8dd906530a5d70a9fec8b6672bd48fc6c71",
                 "shasum": ""
             },
             "require": {
@@ -801,7 +870,7 @@
                 "mouf/utils.cache.file-cache": ">=2.1,<3.0",
                 "mouf/html.template.bootstrap": ">=2.1,<3.0"
             },
-            "time": "2013-03-19 17:13:14",
+            "time": "2013-03-19 18:18:33",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -847,7 +916,8 @@
                             "title": "Settings and error handling",
                             "url": "doc/settings_and_error_handling.md"
                         }
-                    ]
+                    ],
+                    "logo": "logo.png"
                 }
             },
             "autoload": {
@@ -1044,13 +1114,13 @@
             "version": "2.1.x-dev",
             "source": {
                 "type": "git",
-                "url": "git@github.com:thecodingmachine/utils.cache.apc-cache.git",
-                "reference": "814ed17cf05710dc5134f63e03c8e48460b75d7e"
+                "url": "https://github.com/thecodingmachine/utils.cache.apc-cache.git",
+                "reference": "5c141dc0698739a2981d7014acd8db3dddc5c223"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/utils.cache.apc-cache/zipball/814ed17cf05710dc5134f63e03c8e48460b75d7e",
-                "reference": "814ed17cf05710dc5134f63e03c8e48460b75d7e",
+                "url": "https://api.github.com/repos/thecodingmachine/utils.cache.apc-cache/zipball/5c141dc0698739a2981d7014acd8db3dddc5c223",
+                "reference": "5c141dc0698739a2981d7014acd8db3dddc5c223",
                 "shasum": ""
             },
             "require": {
@@ -1059,7 +1129,7 @@
                 "mouf/utils.cache.file-cache": "2.*",
                 "mouf/utils.log.errorlog_logger": "2.*"
             },
-            "time": "2013-01-31 15:53:41",
+            "time": "2013-03-19 22:03:09",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -1071,7 +1141,8 @@
                     ],
                     "require-admin": [
                         "src/declareApcValidator.php"
-                    ]
+                    ],
+                    "logo": "logo.png"
                 }
             },
             "autoload": {
@@ -1103,25 +1174,26 @@
             "version": "2.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "git@github.com:thecodingmachine/utils.cache.cache-interface.git",
-                "reference": "530923d1756242dfb551f040ee7c77410ec015ed"
+                "url": "https://github.com/thecodingmachine/utils.cache.cache-interface.git",
+                "reference": "2e6c4a26b5ab3808bebc84c46c9e602773171439"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/thecodingmachine/utils.cache.cache-interface/archive/530923d1756242dfb551f040ee7c77410ec015ed.zip",
-                "reference": "530923d1756242dfb551f040ee7c77410ec015ed",
+                "url": "https://api.github.com/repos/thecodingmachine/utils.cache.cache-interface/zipball/2e6c4a26b5ab3808bebc84c46c9e602773171439",
+                "reference": "2e6c4a26b5ab3808bebc84c46c9e602773171439",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2012-11-24 11:47:29",
+            "time": "2013-03-19 22:04:37",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
                     "require-admin": [
                         "CacheAdmin.php"
-                    ]
+                    ],
+                    "logo": "logo.png"
                 }
             },
             "autoload": {
@@ -1153,13 +1225,13 @@
             "version": "2.1.x-dev",
             "source": {
                 "type": "git",
-                "url": "git@github.com:thecodingmachine/utils.cache.file-cache.git",
-                "reference": "e90f1a0e51470967d4f89044356318ae124820c1"
+                "url": "https://github.com/thecodingmachine/utils.cache.file-cache.git",
+                "reference": "f42bb469c8a1e4e13ce4ea996709d1630971860a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/utils.cache.file-cache/zipball/e90f1a0e51470967d4f89044356318ae124820c1",
-                "reference": "e90f1a0e51470967d4f89044356318ae124820c1",
+                "url": "https://api.github.com/repos/thecodingmachine/utils.cache.file-cache/zipball/f42bb469c8a1e4e13ce4ea996709d1630971860a",
+                "reference": "f42bb469c8a1e4e13ce4ea996709d1630971860a",
                 "shasum": ""
             },
             "require": {
@@ -1167,7 +1239,7 @@
                 "mouf/utils.cache.cache-interface": "2.*",
                 "mouf/utils.log.log_interface": "2.*"
             },
-            "time": "2013-02-05 16:57:34",
+            "time": "2013-03-19 22:05:23",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -1176,7 +1248,8 @@
                             "type": "file",
                             "file": "src/install.php"
                         }
-                    ]
+                    ],
+                    "logo": "logo.png"
                 }
             },
             "autoload": {
@@ -1208,13 +1281,13 @@
             "version": "2.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "git@github.com:thecodingmachine/utils.cache.no-cache.git",
-                "reference": "e431eebfad39516d3c352b6798aab4dc87b67c70"
+                "url": "https://github.com/thecodingmachine/utils.cache.no-cache.git",
+                "reference": "bf1758eaea3289b9c3070009ed04dc10b7c129ab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/thecodingmachine/utils.cache.no-cache/archive/e431eebfad39516d3c352b6798aab4dc87b67c70.zip",
-                "reference": "e431eebfad39516d3c352b6798aab4dc87b67c70",
+                "url": "https://api.github.com/repos/thecodingmachine/utils.cache.no-cache/zipball/bf1758eaea3289b9c3070009ed04dc10b7c129ab",
+                "reference": "bf1758eaea3289b9c3070009ed04dc10b7c129ab",
                 "shasum": ""
             },
             "require": {
@@ -1222,7 +1295,7 @@
                 "mouf/utils.cache.cache-interface": "2.*",
                 "mouf/utils.log.log_interface": "2.*"
             },
-            "time": "2012-11-24 11:46:45",
+            "time": "2013-03-19 22:09:31",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -1231,7 +1304,8 @@
                             "type": "file",
                             "file": "src/install.php"
                         }
-                    ]
+                    ],
+                    "logo": "logo.png"
                 }
             },
             "autoload": {
@@ -1385,13 +1459,13 @@
             "version": "2.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "git@github.com:thecodingmachine/utils.log.errorlog_logger.git",
-                "reference": "d80094ddc85ca3cc8fa4ac32a4055caf7ebe387a"
+                "url": "https://github.com/thecodingmachine/utils.log.errorlog_logger.git",
+                "reference": "5a961093f1bdf03791515728ac5a45d913e04dc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/thecodingmachine/utils.log.errorlog_logger/archive/d80094ddc85ca3cc8fa4ac32a4055caf7ebe387a.zip",
-                "reference": "d80094ddc85ca3cc8fa4ac32a4055caf7ebe387a",
+                "url": "https://api.github.com/repos/thecodingmachine/utils.log.errorlog_logger/zipball/5a961093f1bdf03791515728ac5a45d913e04dc2",
+                "reference": "5a961093f1bdf03791515728ac5a45d913e04dc2",
                 "shasum": ""
             },
             "require": {
@@ -1402,7 +1476,7 @@
             "provide": {
                 "mouf/utils.log.logger": "1.0"
             },
-            "time": "2012-11-28 15:16:09",
+            "time": "2013-03-19 22:18:39",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -1411,7 +1485,8 @@
                             "type": "file",
                             "file": "src/install.php"
                         }
-                    ]
+                    ],
+                    "logo": "logo.png"
                 }
             },
             "autoload": {
@@ -1443,21 +1518,26 @@
             "version": "2.0.x-dev",
             "source": {
                 "type": "git",
-                "url": "git@github.com:thecodingmachine/utils.log.log_interface.git",
-                "reference": "97085d196987feeddf9ac6feba31068d10a54c3b"
+                "url": "https://github.com/thecodingmachine/utils.log.log_interface.git",
+                "reference": "90e4a5800b4c9329930b8118301b3bce51456ee4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/thecodingmachine/utils.log.log_interface/archive/97085d196987feeddf9ac6feba31068d10a54c3b.zip",
-                "reference": "97085d196987feeddf9ac6feba31068d10a54c3b",
+                "url": "https://api.github.com/repos/thecodingmachine/utils.log.log_interface/zipball/90e4a5800b4c9329930b8118301b3bce51456ee4",
+                "reference": "90e4a5800b4c9329930b8118301b3bce51456ee4",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "mouf/utils.log.logger": "1.*"
             },
-            "time": "2012-11-24 11:47:50",
+            "time": "2013-03-19 22:16:14",
             "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "logo": "logo.png"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Mouf": "src/"
