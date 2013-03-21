@@ -154,7 +154,7 @@ class HomePageController extends Controller {
 	    	</a>
 	    	<div class="media-body">
 	    		<h4 class="media-heading">
-	    			<?php echo "<a href='".ROOT_URL.$this->userName.'/'.$packageName."/' style='margin-right:5px; margin-bottom:5px'>".$packageName." (".$packageVersion->getVersionDisplayName().")</a>"; ?>		
+	    			<?php echo "<a href='".ROOT_URL.$this->userName.'/'.$packageName."/' style='margin-right:5px; margin-bottom:5px'>".$packageName." <small>".$packageVersion->getVersionDisplayName()."</small></a>"; ?>		
 	    		</h4>
 	    		<?php
 	    		
