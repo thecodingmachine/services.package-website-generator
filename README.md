@@ -7,6 +7,7 @@ Demo
 ----
 
 Want to see a sample? We use it at TheCodingMachine to generate the documentation of the [Mouf framework](http://mouf-php.com/packages/).
+
 You can download and use this webapp for your own project too.
 
 How does it work?
@@ -22,25 +23,31 @@ Documentation files must be declared in _composer.json_ according to the **Mouf'
 	{
 	    ...
 	    "extra": {
-	        "mouf": {
-	        	"logo": "logo64x64.png",
-	            "doc": [
-	                {
-	                    "title": "Using my package",
-	                    "url": "doc/using_package.md"
-	                },
-	                {
-	                    "title": "Date functions",
-	                    "url": "doc/date_functions.md"
-	                },
-	                {
-	                    "title": "Currency functions",
-	                    "url": "doc/currency_functions.html"
-	                }
-	            ]
-	             
-	        }
-	    }
+		    "mouf": {
+		    	"logo": "logo.png",
+		    	"doc": [
+		    		{
+		    			"title": "Introduction",
+		    			"url": "doc/introduction.html"
+		    		},
+		    		{
+		    			"title": "My first page",
+		    			"url": "doc/first_page.md"
+		    		},
+		    		{
+		    			"title": "My first chapter",
+		    			"url": "doc/chapter.html"
+		    			"children": [
+			    			{
+				    			"title": "A sub page",
+				    			"url": "doc/subpage.md"
+			    			}
+		    			]
+		    		}
+		    	]
+		    	
+		    }
+		}
 	}
 
 As you can see, you can also provide a logo (as a 64x64 image).
