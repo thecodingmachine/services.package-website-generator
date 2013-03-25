@@ -1,5 +1,5 @@
 {
-    "hash": "83eff8a8116a84b8294826d2a639ca85",
+    "hash": "6bbdbfaeaeb29bd2bbd61ba65d254a81",
     "packages": [
         {
             "name": "knplabs/github-api",
@@ -205,26 +205,27 @@
         },
         {
             "name": "mouf/html.template.bootstrap",
-            "version": "2.3.1.x-dev",
+            "version": "2.3.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/html.template.bootstrap.git",
-                "reference": "fe5554bb3b87cec84c83ecb06be29c1f3eebb413"
+                "reference": "1d4a46cfaae7b95396c51dc9dd0838feaf4f487d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/html.template.bootstrap/zipball/fe5554bb3b87cec84c83ecb06be29c1f3eebb413",
-                "reference": "fe5554bb3b87cec84c83ecb06be29c1f3eebb413",
+                "url": "https://api.github.com/repos/thecodingmachine/html.template.bootstrap/zipball/1d4a46cfaae7b95396c51dc9dd0838feaf4f487d",
+                "reference": "1d4a46cfaae7b95396c51dc9dd0838feaf4f487d",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "mouf/html.utils.weblibrarymanager": ">=2.0-dev,<3.0",
-                "mouf/html.template.templateinterface": ">=2.0-dev,<3.0",
+                "mouf/html.utils.weblibrarymanager": ">=2.0,<3.0",
+                "mouf/html.template.templateinterface": ">=2.0,<3.0",
                 "mouf/html.utils.bootstrap": "2.3.*",
-                "mouf/html.widgets.menu": "2.*"
+                "mouf/html.widgets.menu": "2.*",
+                "mouf/html.widgets.messageservice": ">=2.2,<3.0"
             },
-            "time": "2013-03-19 22:41:15",
+            "time": "2013-03-25 08:42:47",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -260,6 +261,50 @@
                 "bootstrap",
                 "template",
                 "mouf"
+            ]
+        },
+        {
+            "name": "mouf/html.template.menus.basicmenu",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thecodingmachine/html.template.menus.basicmenu.git",
+                "reference": "e90932ba56d44a1e17e24de5cadafcc51751fd37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thecodingmachine/html.template.menus.basicmenu/zipball/e90932ba56d44a1e17e24de5cadafcc51751fd37",
+                "reference": "e90932ba56d44a1e17e24de5cadafcc51751fd37",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/html.widgets.menu": "2.*"
+            },
+            "time": "2012-11-24 11:46:21",
+            "type": "mouf-library",
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package contains a single class in charge of rendering a 'Menu' instance in HTML using the toHtml() method. The rendering is performed using &lt;ul&gt; and &lt;li&gt; tags.",
+            "homepage": "https://github.com/thecodingmachine/html.template.menus.basicmenu",
+            "keywords": [
+                "menu",
+                "mouf",
+                "basicmenu"
             ]
         },
         {
@@ -461,6 +506,67 @@
             ]
         },
         {
+            "name": "mouf/html.widgets.messageservice",
+            "version": "2.2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thecodingmachine/html.widgets.messageservice.git",
+                "reference": "0af56c802d49c40f1bb95822b739c06ddc8d65bc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thecodingmachine/html.widgets.messageservice/zipball/0af56c802d49c40f1bb95822b739c06ddc8d65bc",
+                "reference": "0af56c802d49c40f1bb95822b739c06ddc8d65bc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "mouf/html.htmlelement": ">=2.0,<3.0",
+                "mouf/html.utils.weblibrarymanager": ">=2.0,<3.0",
+                "mouf/utils.session.session-manager": ">=2.0,<3.0"
+            },
+            "time": "2013-03-22 14:23:56",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "src/install.php"
+                        }
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                },
+                "files": [
+                    "src/common_functions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "Use this package to display info/warning/error messages to the user on a web page. Using the SessionMessageService class, you register messages to be displayed. Using the MessageWidget class, you display the error messages in your templates.",
+            "homepage": "https://github.com/thecodingmachine/html.widgets.messageservice",
+            "keywords": [
+                "message",
+                "widget",
+                "mouf",
+                "widgets",
+                "messageservice"
+            ]
+        },
+        {
             "name": "mouf/javascript.jquery.jquery",
             "version": "1.9.1.x-dev",
             "source": {
@@ -570,20 +676,48 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/mouf.git",
-                "reference": "2c078eee689f884060f3a9d08e247b81445a77f0"
+                "reference": "3c393b750642bc1f9380da4b28e9fb9a049cdf5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/mouf/zipball/2c078eee689f884060f3a9d08e247b81445a77f0",
-                "reference": "2c078eee689f884060f3a9d08e247b81445a77f0",
+                "url": "https://api.github.com/repos/thecodingmachine/mouf/zipball/3c393b750642bc1f9380da4b28e9fb9a049cdf5a",
+                "reference": "3c393b750642bc1f9380da4b28e9fb9a049cdf5a",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "mouf/mouf-installer": ">=2.0.0-dev"
             },
-            "time": "2013-03-13 17:32:41",
+            "time": "2013-03-21 19:36:32",
             "type": "mouf-framework",
+            "extra": {
+                "mouf": {
+                    "doc": [
+                        {
+                            "title": "Installing Mouf",
+                            "url": "doc/installing_mouf.md"
+                        },
+                        {
+                            "title": "Troubleshooting install",
+                            "url": "doc/troubleshooting.md"
+                        },
+                        {
+                            "title": "Creating a Mouf2 package",
+                            "url": "doc/create_mouf_package.md",
+                            "children": [
+                                {
+                                    "title": "Writing an install process",
+                                    "url": "doc/install_process.md"
+                                },
+                                {
+                                    "title": "Writing packages documentation",
+                                    "url": "doc/writing_packages_documentation.md"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Mouf": "src/"
@@ -762,12 +896,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/mvc.splash-common.git",
-                "reference": "0ca0e61f19e54dcdb4a27afee34302be6675a11f"
+                "reference": "7e4d106f6d38e64b7b8ad236ecd30d6f2f7cf15d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/mvc.splash-common/zipball/0ca0e61f19e54dcdb4a27afee34302be6675a11f",
-                "reference": "0ca0e61f19e54dcdb4a27afee34302be6675a11f",
+                "url": "https://api.github.com/repos/thecodingmachine/mvc.splash-common/zipball/7e4d106f6d38e64b7b8ad236ecd30d6f2f7cf15d",
+                "reference": "7e4d106f6d38e64b7b8ad236ecd30d6f2f7cf15d",
                 "shasum": ""
             },
             "require": {
@@ -775,7 +909,7 @@
                 "mouf/html.htmlelement": "2.*",
                 "mouf/utils.i18n.fine": "3.*"
             },
-            "time": "2013-03-07 19:05:01",
+            "time": "2013-03-21 19:30:25",
             "type": "mouf-library",
             "extra": {
                 "mouf": {
@@ -1267,6 +1401,58 @@
                 "log",
                 "logger",
                 "interface"
+            ]
+        },
+        {
+            "name": "mouf/utils.session.session-manager",
+            "version": "2.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thecodingmachine/utils.session.session-manager.git",
+                "reference": "7ba783159a06aaa1e9212daf2a7fb3eb6472a3e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thecodingmachine/utils.session.session-manager/zipball/7ba783159a06aaa1e9212daf2a7fb3eb6472a3e8",
+                "reference": "7ba783159a06aaa1e9212daf2a7fb3eb6472a3e8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "time": "2013-01-28 14:39:51",
+            "type": "mouf-library",
+            "extra": {
+                "mouf": {
+                    "install": [
+                        {
+                            "type": "file",
+                            "file": "src/install.php"
+                        }
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Mouf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "David Négrier",
+                    "email": "d.negrier@thecodingmachine.com",
+                    "homepage": "http://mouf-php.com"
+                }
+            ],
+            "description": "This package is used to manage sessions. It provides a DefaultSessionManager class that you can use to configure your PHP sessions, and a SessionManagerInterface that you can implement if you want to provide your own session management.",
+            "homepage": "https://github.com/thecodingmachine/utils.session.session-manager",
+            "keywords": [
+                "session",
+                "mouf"
             ]
         }
     ],

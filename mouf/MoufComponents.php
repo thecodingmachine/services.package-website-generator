@@ -77,44 +77,6 @@ $moufManager->setAllVariables(array (
 ));
 
 $moufManager->addComponentInstances(array (
-  '__anonymous_1359148369926' => 
-  array (
-    'class' => 'Mouf\\Html\\Template\\Menus\\BootstrapMenuRenderer',
-    'external' => false,
-    'weak' => true,
-    'anonymous' => true,
-    'constructor' => 
-    array (
-      0 => 
-      array (
-        'value' => 'documentationMenu',
-        'parametertype' => 'object',
-        'type' => 'string',
-        'metadata' => 
-        array (
-        ),
-      ),
-    ),
-    'fieldProperties' => 
-    array (
-      'pills' => 
-      array (
-        'type' => 'string',
-        'value' => true,
-        'metadata' => 
-        array (
-        ),
-      ),
-      'stacked' => 
-      array (
-        'type' => 'string',
-        'value' => true,
-        'metadata' => 
-        array (
-        ),
-      ),
-    ),
-  ),
   '__anonymous_1359315228607' => 
   array (
     'class' => 'Mouf\\Html\\Template\\Menus\\BootstrapMenuRenderer',
@@ -196,6 +158,36 @@ $moufManager->addComponentInstances(array (
       ),
     ),
   ),
+  '__anonymous_1364234789150' => 
+  array (
+    'class' => 'Mouf\\Html\\Template\\Menus\\BasicMenuRenderer',
+    'external' => false,
+    'weak' => true,
+    'anonymous' => true,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'documentationMenu',
+        'parametertype' => 'object',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+    'fieldProperties' => 
+    array (
+      'cssClass' => 
+      array (
+        'type' => 'string',
+        'value' => 'nav  nav-pills nav-stacked',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
   'apcCacheService' => 
   array (
     'class' => 'Mouf\\Utils\\Cache\\ApcCache',
@@ -260,9 +252,16 @@ $moufManager->addComponentInstances(array (
     array (
       'children' => 
       array (
-        0 => '__anonymous_1359148369926',
+        0 => 'block.logoHolder',
+        1 => '__anonymous_1364234789150',
       ),
     ),
+  ),
+  'block.logoHolder' => 
+  array (
+    'class' => 'Mouf\\Html\\HtmlElement\\HtmlBlock',
+    'external' => false,
+    'weak' => false,
   ),
   'block.right' => 
   array (
@@ -297,60 +296,28 @@ $moufManager->addComponentInstances(array (
     ),
     'setterProperties' => 
     array (
+      'setLeftColumnSize' => 
+      array (
+        'type' => 'string',
+        'value' => '3',
+        'metadata' => 
+        array (
+        ),
+      ),
+      'setWrapLeftSideBarInWell' => 
+      array (
+        'type' => 'string',
+        'value' => true,
+        'metadata' => 
+        array (
+        ),
+      ),
     ),
   ),
   'daoFactory' => 
   array (
     'class' => 'Mouf\\Dao\\DaoFactory',
     'external' => false,
-  ),
-  'dbConnection' => 
-  array (
-    'class' => 'Mouf\\Database\\DBConnection\\MySqlConnection',
-    'external' => false,
-    'fieldProperties' => 
-    array (
-      'host' => 
-      array (
-        'value' => 'DB_HOST',
-        'type' => 'config',
-        'metadata' => 
-        array (
-        ),
-      ),
-      'port' => 
-      array (
-        'value' => 'DB_PORT',
-        'type' => 'config',
-        'metadata' => 
-        array (
-        ),
-      ),
-      'user' => 
-      array (
-        'value' => 'DB_USERNAME',
-        'type' => 'config',
-        'metadata' => 
-        array (
-        ),
-      ),
-      'password' => 
-      array (
-        'value' => 'DB_PASSWORD',
-        'type' => 'config',
-        'metadata' => 
-        array (
-        ),
-      ),
-      'dbname' => 
-      array (
-        'value' => 'DB_NAME',
-        'type' => 'config',
-        'metadata' => 
-        array (
-        ),
-      ),
-    ),
   ),
   'defaultLanguageDetection' => 
   array (
@@ -778,6 +745,7 @@ $moufManager->addComponentInstances(array (
       'versionsMenuItem' => 'versionsMenuItem',
       'packagesMenuItem' => 'packagesMenuItem',
       'packageExporer' => 'packageExplorer',
+      'logoHolder' => 'block.logoHolder',
     ),
     'fieldProperties' => 
     array (
@@ -887,26 +855,6 @@ $moufManager->addComponentInstances(array (
       'setLanguageDetection' => 'splashBrowserLanguageDetection',
     ),
   ),
-  'tdbmService' => 
-  array (
-    'class' => 'Mouf\\Database\\TDBM\\TDBMService',
-    'external' => false,
-    'setterBinds' => 
-    array (
-      'setConnection' => 'dbConnection',
-      'setCacheService' => 'noCacheService',
-    ),
-  ),
-  'userService' => 
-  array (
-    'class' => 'Mouf\\Security\\UserService\\UserService',
-    'external' => false,
-    'weak' => false,
-    'fieldBinds' => 
-    array (
-      'log' => 'errorLogLogger',
-    ),
-  ),
   'versionsMenuItem' => 
   array (
     'class' => 'Mouf\\Html\\Widgets\\Menu\\MenuItem',
@@ -959,13 +907,6 @@ unset($moufManager);
 					/**
 	 * @return Mouf\Html\Template\Menus\BootstrapMenuRenderer
 	 */
-	 public static function get__anonymous_1359148369926() {
-	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1359148369926');
-	 }
-
-	/**
-	 * @return Mouf\Html\Template\Menus\BootstrapMenuRenderer
-	 */
 	 public static function get__anonymous_1359315228607() {
 	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1359315228607');
 	 }
@@ -989,6 +930,13 @@ unset($moufManager);
 	 */
 	 public static function get__anonymous_1363619493475() {
 	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1363619493475');
+	 }
+
+	/**
+	 * @return Mouf\Html\Template\Menus\BasicMenuRenderer
+	 */
+	 public static function get__anonymous_1364234789150() {
+	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1364234789150');
 	 }
 
 	/**
@@ -1029,6 +977,13 @@ unset($moufManager);
 	/**
 	 * @return Mouf\Html\HtmlElement\HtmlBlock
 	 */
+	 public static function getBlock_logoHolder() {
+	 	return MoufManager::getMoufManager()->getInstance('block.logoHolder');
+	 }
+
+	/**
+	 * @return Mouf\Html\HtmlElement\HtmlBlock
+	 */
 	 public static function getBlock_right() {
 	 	return MoufManager::getMoufManager()->getInstance('block.right');
 	 }
@@ -1045,13 +1000,6 @@ unset($moufManager);
 	 */
 	 public static function getDaoFactory() {
 	 	return MoufManager::getMoufManager()->getInstance('daoFactory');
-	 }
-
-	/**
-	 * @return Mouf\Database\DBConnection\MySqlConnection
-	 */
-	 public static function getDbConnection() {
-	 	return MoufManager::getMoufManager()->getInstance('dbConnection');
 	 }
 
 	/**
@@ -1227,20 +1175,6 @@ unset($moufManager);
 	 */
 	 public static function getSplashTranslateService() {
 	 	return MoufManager::getMoufManager()->getInstance('splashTranslateService');
-	 }
-
-	/**
-	 * @return Mouf\Database\TDBM\TDBMService
-	 */
-	 public static function getTdbmService() {
-	 	return MoufManager::getMoufManager()->getInstance('tdbmService');
-	 }
-
-	/**
-	 * @return Mouf\Security\UserService\UserService
-	 */
-	 public static function getUserService() {
-	 	return MoufManager::getMoufManager()->getInstance('userService');
 	 }
 
 	/**

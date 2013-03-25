@@ -49,6 +49,13 @@ class RootController extends Controller {
 	public $content;
 	
 	/**
+	 * This object represents the block containing the logo of the package.
+	 *
+	 * @var HtmlBlock
+	 */
+	public $logoHolder;
+	
+	/**
 	 * The 404 errors handler.
 	 * 
 	 * @var Http404HandlerInterface
@@ -207,6 +214,14 @@ class RootController extends Controller {
 			$this->addMenu($parsedComposerJson, $targetDir, $rootUrl, $packageVersion);
 			$this->http404Handler->pageNotFound("");
 			return;
+		}
+		
+		// Let's add the icon, if any
+		if (isset($parsedComposerJson['extra']['mouf']['logo'])) {
+			$logoUrl = $parsedComposerJson['extra']['mouf']['logo'];
+			$imgUrl = ROOT_URL.$owner.'/'.$projectname.'/'.$logoUrl;
+			
+			$this->logoHolder->addText('<img src="'.htmlentities($imgUrl, ENT_QUOTES, 'UTF-8').'" alt="" />');
 		}
 		
 		if (is_dir($fileName)) {
@@ -445,8 +460,9 @@ class RootController extends Controller {
 			if (isset($docPage['children'])) {
 				$this->fillMenu($menuItem, $docPage['children'], $rootUrl);
 			}
-			$menu->addChild($menuItem);
+			$children[] = $menuItem;
 		}
+		$menu->setChildren($children);
 	}
 	
 	/**
