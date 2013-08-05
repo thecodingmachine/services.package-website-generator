@@ -2,7 +2,8 @@
     "require": {
         "mouf/mouf": "2.*",
         "mouf/mvc.splash": "4.*",
-        "mouf/html.template.bootstrap": "2.3.*",
+        "mouf/html.template.templateinterface": "<2.1",
+        "mouf/html.template.bootstrap": "2.3.*,<2.3.3",
 		"michelf/php-markdown": "~1.3",
 	    "knplabs/github-api": "~1.1",
 	    "knplabs/packagist-api": "*",

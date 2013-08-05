@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "98de4d53849350b2a6fc5b44272e7e0d",
+    "hash": "8ec1766fee45d830a0dcc28a4cdd9e15",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -529,25 +529,26 @@
             "time": "2013-05-24 13:39:25"
         },
         {
-            "name": "mouf/html.renderer",
-            "version": "1.0.x-dev",
+            "name": "mouf/html.template.bootstrap",
+            "version": "2.3.2.x-dev",
             "source": {
                 "type": "git",
-                "url": "https://github.com/thecodingmachine/html.renderer.git",
-                "reference": "09c65aaf55d994f24076248ea0f0ac191d7ea02c"
+                "url": "https://github.com/thecodingmachine/html.template.bootstrap.git",
+                "reference": "74c9ebff540582b2af1deafcd918fa6b5bedbf1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/html.renderer/zipball/09c65aaf55d994f24076248ea0f0ac191d7ea02c",
-                "reference": "09c65aaf55d994f24076248ea0f0ac191d7ea02c",
+                "url": "https://api.github.com/repos/thecodingmachine/html.template.bootstrap/zipball/74c9ebff540582b2af1deafcd918fa6b5bedbf1d",
+                "reference": "74c9ebff540582b2af1deafcd918fa6b5bedbf1d",
                 "shasum": ""
             },
             "require": {
-                "mouf/html.htmlelement": "~2.0",
-                "mouf/utils.cache.apc-cache": "~2.0",
-                "mouf/utils.cache.in-memory-cache": "~1.0",
-                "php": ">=5.4.0",
-                "twig/twig": "1.*@stable"
+                "mouf/html.template.templateinterface": "~2.0",
+                "mouf/html.utils.bootstrap": "2.3.*",
+                "mouf/html.utils.weblibrarymanager": "~2.0",
+                "mouf/html.widgets.menu": "2.*",
+                "mouf/html.widgets.messageservice": "~2.2",
+                "php": ">=5.3.0"
             },
             "type": "mouf-library",
             "extra": {
@@ -556,88 +557,6 @@
                         {
                             "type": "file",
                             "file": "src/install.php"
-                        }
-                    ],
-                    "doc": [
-                        {
-                            "title": "For application developers",
-                            "url": "doc/for_application_developers.md"
-                        },
-                        {
-                            "title": "For package developers",
-                            "url": "doc/for_package_developers.md"
-                        },
-                        {
-                            "title": "For template developers",
-                            "url": "doc/for_template_developers.md"
-                        },
-                        {
-                            "title": "Twig extensions",
-                            "url": "doc/twig_extensions.md"
-                        },
-                        {
-                            "title": "Advanced topics",
-                            "url": "doc/advanced.md"
-                        }
-                    ],
-                    "logo": "logo.png"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Mouf": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "David Négrier",
-                    "email": "d.negrier@thecodingmachine.com",
-                    "homepage": "http://mouf-php.com"
-                }
-            ],
-            "description": "This package contains the rendering mechanism of the Mouf framework. It is a mechanism allowing packages/templates/developers to overload a default template for various HTML objects.",
-            "homepage": "http://mouf-php.com/packages/mouf/html.renderer",
-            "keywords": [
-                "html",
-                "interface",
-                "render",
-                "tohtml"
-            ],
-            "time": "2013-08-03 16:43:25"
-        },
-        {
-            "name": "mouf/html.template.bootstrap",
-            "version": "2.3.3.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thecodingmachine/html.template.bootstrap.git",
-                "reference": "eb2be12e2654f88433ffd07eefe0d5a975c068ba"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/html.template.bootstrap/zipball/eb2be12e2654f88433ffd07eefe0d5a975c068ba",
-                "reference": "eb2be12e2654f88433ffd07eefe0d5a975c068ba",
-                "shasum": ""
-            },
-            "require": {
-                "mouf/html.template.templateinterface": "~2.1",
-                "mouf/html.utils.bootstrap": "2.3.*",
-                "mouf/html.utils.weblibrarymanager": "~2.0",
-                "mouf/html.widgets.menu": "2.*",
-                "mouf/html.widgets.messageservice": "~3.0",
-                "php": ">=5.3.0"
-            },
-            "type": "mouf-library",
-            "extra": {
-                "mouf": {
-                    "install": [
-                        {
-                            "file": "src/install.php",
-                            "type": "file"
                         }
                     ],
                     "logo": "icons/logo.png"
@@ -667,7 +586,7 @@
                 "mouf",
                 "template"
             ],
-            "time": "2013-08-02 10:40:39"
+            "time": "2013-07-17 15:47:31"
         },
         {
             "name": "mouf/html.template.menus.basicmenu",
@@ -715,20 +634,19 @@
         },
         {
             "name": "mouf/html.template.templateinterface",
-            "version": "2.1.x-dev",
+            "version": "2.0.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/html.template.templateinterface.git",
-                "reference": "f399107269b68e7d42b2cb83b75d93e35c6a2854"
+                "reference": "1c74736919bc9a323ea19c91fa0df9cc0ba06ab1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/html.template.templateinterface/zipball/f399107269b68e7d42b2cb83b75d93e35c6a2854",
-                "reference": "f399107269b68e7d42b2cb83b75d93e35c6a2854",
+                "url": "https://api.github.com/repos/thecodingmachine/html.template.templateinterface/zipball/1c74736919bc9a323ea19c91fa0df9cc0ba06ab1",
+                "reference": "1c74736919bc9a323ea19c91fa0df9cc0ba06ab1",
                 "shasum": ""
             },
             "require": {
-                "mouf/html.renderer": "~1.0",
                 "mouf/html.utils.weblibrarymanager": ">=2.0-dev,<3.0",
                 "php": ">=5.3.0"
             },
@@ -756,7 +674,7 @@
                 "template",
                 "templateinterface"
             ],
-            "time": "2013-08-02 10:39:45"
+            "time": "2013-02-06 15:35:29"
         },
         {
             "name": "mouf/html.utils.bootstrap",
@@ -914,21 +832,20 @@
         },
         {
             "name": "mouf/html.widgets.messageservice",
-            "version": "3.0.x-dev",
+            "version": "2.2.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/html.widgets.messageservice.git",
-                "reference": "0fca6a5c6ed6a1b304d44837f4e20095550b3f4f"
+                "reference": "de6448dca47a2df85a982fd87d2afeaf756b89dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/html.widgets.messageservice/zipball/0fca6a5c6ed6a1b304d44837f4e20095550b3f4f",
-                "reference": "0fca6a5c6ed6a1b304d44837f4e20095550b3f4f",
+                "url": "https://api.github.com/repos/thecodingmachine/html.widgets.messageservice/zipball/de6448dca47a2df85a982fd87d2afeaf756b89dd",
+                "reference": "de6448dca47a2df85a982fd87d2afeaf756b89dd",
                 "shasum": ""
             },
             "require": {
                 "mouf/html.htmlelement": "~2.0",
-                "mouf/html.renderer": "~1.0",
                 "mouf/html.utils.weblibrarymanager": "~2.0",
                 "mouf/utils.session.session-manager": "~2.0",
                 "php": ">=5.3.0"
@@ -938,8 +855,8 @@
                 "mouf": {
                     "install": [
                         {
-                            "file": "src/install.php",
-                            "type": "file"
+                            "type": "file",
+                            "file": "src/install.php"
                         }
                     ]
                 }
@@ -972,7 +889,7 @@
                 "widget",
                 "widgets"
             ],
-            "time": "2013-08-05 08:59:13"
+            "time": "2013-06-19 13:17:17"
         },
         {
             "name": "mouf/javascript.jquery.jquery",
@@ -1625,50 +1542,6 @@
             "time": "2013-03-25 18:09:43"
         },
         {
-            "name": "mouf/utils.cache.in-memory-cache",
-            "version": "1.0.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thecodingmachine/utils.cache.in-memory-cache.git",
-                "reference": "07d40e3a4be12e033f3255f49f7fc4df808974d2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/utils.cache.in-memory-cache/zipball/07d40e3a4be12e033f3255f49f7fc4df808974d2",
-                "reference": "07d40e3a4be12e033f3255f49f7fc4df808974d2",
-                "shasum": ""
-            },
-            "require": {
-                "mouf/utils.cache.cache-interface": "2.*",
-                "php": ">=5.3.0"
-            },
-            "type": "mouf-library",
-            "autoload": {
-                "psr-0": {
-                    "Mouf": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "David Négrier",
-                    "email": "d.negrier@thecodingmachine.com",
-                    "homepage": "http://mouf-php.com"
-                }
-            ],
-            "description": "This package contains the most basic cache mechanism. It stores cache items in an array. It means the cache is flushed as soon as the script returns. It is very basic, but also very fast. You will usually use this mechanism with another one just behind.",
-            "homepage": "https://mouf-php/packages/mouf/utils.cache.local-cache",
-            "keywords": [
-                "cache",
-                "in-memory",
-                "mouf"
-            ],
-            "time": "2013-07-21 18:06:31"
-        },
-        {
             "name": "mouf/utils.cache.no-cache",
             "version": "2.0.x-dev",
             "source": {
@@ -2168,55 +2041,6 @@
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
             "time": "2013-07-21 20:19:01"
-        },
-        {
-            "name": "twig/twig",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/fabpot/Twig.git",
-                "reference": "f888818fd4c087fcc99731d0447c23b33e7cc60e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/f888818fd4c087fcc99731d0447c23b33e7cc60e",
-                "reference": "f888818fd4c087fcc99731d0447c23b33e7cc60e",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.14-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Twig_": "lib/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Armin Ronacher",
-                    "email": "armin.ronacher@active-4.com"
-                }
-            ],
-            "description": "Twig, the flexible, fast, and secure template language for PHP",
-            "homepage": "http://twig.sensiolabs.org",
-            "keywords": [
-                "templating"
-            ],
-            "time": "2013-08-05 16:00:05"
         }
     ],
     "packages-dev": [
