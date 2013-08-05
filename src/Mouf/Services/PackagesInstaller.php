@@ -5,13 +5,13 @@ use Composer\Command\CreateProjectCommand;
 
 use Composer\Factory;
 
-use Mouf\Composer\MoufJsComposerIO;
+use Mouf\Composer\MoufErrorLogComposerIO;
 
 use Mouf\Composer\OnPackageFoundInterface;
 
 use Composer\Package\PackageInterface;
 use Mouf\Composer\ComposerService;
-
+use Composer\Repository\RepositoryInterface;
 
 /**
  * A service that downloads/updates packages from Packagist.
@@ -30,6 +30,7 @@ class PackagesInstaller {
 	 */
 	public function __construct($packagesBaseDirectory) {
 		$this->packagesBaseDirectory = $packagesBaseDirectory;
+		$this->packagistClient = new \Packagist\Api\Client();
 		$this->initComposer();
 	}
 	
@@ -49,7 +50,7 @@ class PackagesInstaller {
 		$loader->register();
 		
 		chdir(__DIR__."/../../..");
-		$this->io = new MoufJsComposerIO();
+		$this->io = new MoufErrorLogComposerIO();
 		$this->composer = Factory::create($this->io);
 	}
 	
@@ -57,10 +58,33 @@ class PackagesInstaller {
 	 * Returns the list of minimal packages whose owner is "$owner"
 	 *  
 	 * @param string $owner
-	 * @return array
+	 * @return array<string> List of packages names (no version)
 	 */
-	public function findPackagesListByOwner($owner) {
-		$repos = $this->composer->getRepositoryManager()->getRepositories();
+	public function findPackagesListByOwner($owner, $verbose) {
+		
+		$results = array();
+		foreach ($this->packagistClient->search($owner.'/') as $result) {
+			$results[] = $result->getName();
+		}
+		return $results;
+		
+		/*$repos = $this->composer->getRepositoryManager()->getRepositories();
+		
+
+		var_dump($repos[0]->search('mouf/', RepositoryInterface::SEARCH_FULLTEXT));exit;
+		
+		$foundPackagesNames = $repos[0]->search($owner.'/', RepositoryInterface::SEARCH_NAME);
+		foreach ($foundPackagesNames as $package) {
+			$name = $package['name'];
+			
+			if (strpos($minimalPackage['name'], $owner.'/') === 0) {
+				$result[] = $minimalPackage;
+			}
+		}
+		
+		//var_dump($repos[0]->getMinimalPackages());
+		var_dump($repos[0]->search('mouf/', RepositoryInterface::SEARCH_NAME));
+		
 		$minimalPackages = $repos[0]->getMinimalPackages();
 		$result = array();
 		foreach ($minimalPackages as $minimalPackage) {
@@ -68,14 +92,26 @@ class PackagesInstaller {
 				$result[] = $minimalPackage;
 			}
 		}
-		return $result;
+		return $result;*/
 	}
 	
-	public function run($owner) {
-		$minimalPackages = $this->findPackagesListByOwner($owner);
+	public function run($owner, $verbose) {
+		$packagesNames = $this->findPackagesListByOwner($owner, $verbose);
 		
-		foreach ($minimalPackages as $minimalPackage) {
-			$this->installOrUpdate($minimalPackage['name'], $minimalPackage['version']);
+		if ($verbose) {
+			error_log("Found ".count($packagesNames)." packages.");
+		}
+		
+		foreach ($packagesNames as $packageName) {
+			$versions = $this->packagistClient->get($packageName)->getVersions();
+			foreach ($versions as $key=>$version) {
+				/* @var $version \Packagist\Api\Result\Package\Version */
+				if ($verbose) {
+					error_log("Installing or updating ".$packageName." - ".$version->getVersionNormalized());
+				}
+				$this->installOrUpdate($packageName, $version->getVersionNormalized());
+			}
+			//$this->installOrUpdate($minimalPackage['name'], $minimalPackage['version']);
 		}
 	}
 
@@ -102,8 +138,9 @@ class PackagesInstaller {
 			}
 			
 			try {
+				$config = Factory::createConfig();
 				$createProjectCommand = new CreateProjectCommand();
-				$createProjectCommand->installProject($this->io, $name, $packageDir, $version, 
+				$createProjectCommand->installProject($this->io, $config, $name, $packageDir, $version, 
 						'dev', false, false, false,
 						null, false, false, true);
 			} catch (\Exception $e) {

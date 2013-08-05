@@ -223,6 +223,12 @@ $moufManager->addComponentInstances(array (
     'class' => 'Mouf\\Html\\HtmlElement\\HtmlBlock',
     'external' => false,
     'weak' => false,
+    'fieldBinds' => 
+    array (
+    ),
+    'fieldProperties' => 
+    array (
+    ),
   ),
   'block.footer' => 
   array (
@@ -269,6 +275,51 @@ $moufManager->addComponentInstances(array (
     'external' => false,
     'weak' => false,
   ),
+  'bootstrapRenderer' => 
+  array (
+    'class' => 'Mouf\\Html\\Renderer\\FileBasedRenderer',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'vendor/mouf/html.template.bootstrap/src/templates',
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      1 => 
+      array (
+        'value' => 'rendererCacheService',
+        'parametertype' => 'object',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      2 => 
+      array (
+        'value' => 'template',
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      3 => 
+      array (
+        'value' => 0,
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
   'bootstrapTemplate' => 
   array (
     'class' => 'Mouf\\Html\\Template\\BootstrapTemplate',
@@ -282,6 +333,8 @@ $moufManager->addComponentInstances(array (
       'setHeader' => 'block.header',
       'setFooter' => 'block.footer',
       'setWebLibraryManager' => 'defaultWebLibraryManager',
+      'setTemplateRenderer' => 'bootstrapRenderer',
+      'setDefaultRenderer' => 'defaultRenderer',
     ),
     'fieldProperties' => 
     array (
@@ -314,6 +367,51 @@ $moufManager->addComponentInstances(array (
       ),
     ),
   ),
+  'customRenderer' => 
+  array (
+    'class' => 'Mouf\\Html\\Renderer\\FileBasedRenderer',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'src/templates',
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      1 => 
+      array (
+        'value' => 'rendererCacheService',
+        'parametertype' => 'object',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      2 => 
+      array (
+        'value' => 'custom',
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      3 => 
+      array (
+        'value' => 0,
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
   'daoFactory' => 
   array (
     'class' => 'Mouf\\Dao\\DaoFactory',
@@ -324,6 +422,24 @@ $moufManager->addComponentInstances(array (
     'class' => 'Mouf\\Utils\\I18n\\Fine\\Language\\BrowserLanguageDetection',
     'external' => false,
     'weak' => false,
+  ),
+  'defaultRenderer' => 
+  array (
+    'class' => 'Mouf\\Html\\Renderer\\AutoChainRenderer',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'rendererCacheService',
+        'parametertype' => 'object',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
   ),
   'defaultTranslationService' => 
   array (
@@ -360,6 +476,7 @@ $moufManager->addComponentInstances(array (
         3 => '__anonymous_1360168489288',
         4 => '__anonymous_1363619493475',
         5 => 'googleAnalyticsWebLibrary',
+        6 => 'messageServiceLibrary',
       ),
     ),
   ),
@@ -371,6 +488,12 @@ $moufManager->addComponentInstances(array (
   'documentationMenu' => 
   array (
     'class' => 'Mouf\\Html\\Widgets\\Menu\\Menu',
+    'external' => false,
+    'weak' => false,
+  ),
+  'emailValidator' => 
+  array (
+    'class' => 'Mouf\\Utils\\Common\\Validators\\EmailValidator',
     'external' => false,
     'weak' => false,
   ),
@@ -623,6 +746,52 @@ $moufManager->addComponentInstances(array (
       ),
     ),
   ),
+  'messageServiceLibrary' => 
+  array (
+    'class' => 'Mouf\\Html\\Utils\\WebLibraryManager\\WebLibrary',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 
+        array (
+        ),
+        'parametertype' => 'object',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      1 => 
+      array (
+        'value' => 
+        array (
+          0 => 'vendor/mouf/html.widgets.messageservice/messages.css',
+        ),
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+    'setterBinds' => 
+    array (
+      'setRenderer' => 'defaultWebLibraryRenderer',
+    ),
+  ),
+  'messageWidget' => 
+  array (
+    'class' => 'Mouf\\Html\\Widgets\\MessageService\\Widget\\MessageWidget',
+    'external' => false,
+    'weak' => false,
+    'fieldBinds' => 
+    array (
+      'messageProvider' => 'userMessageService',
+    ),
+  ),
   'navBar' => 
   array (
     'class' => 'Mouf\\Html\\Template\\Menus\\BootstrapNavBar',
@@ -657,6 +826,23 @@ $moufManager->addComponentInstances(array (
       'log' => 'errorLogLogger',
     ),
   ),
+  'numericValidatorDecimals' => 
+  array (
+    'class' => 'Mouf\\Utils\\Common\\Validators\\NumericValidator',
+    'external' => false,
+    'weak' => false,
+    'fieldProperties' => 
+    array (
+      'allowDecimals' => 
+      array (
+        'value' => true,
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
   'packageExplorer' => 
   array (
     'class' => 'Mouf\\Services\\PackageExplorer',
@@ -669,6 +855,51 @@ $moufManager->addComponentInstances(array (
         'value' => 'REPOSITORY_PATH',
         'parametertype' => 'primitive',
         'type' => 'config',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
+  'packageRenderer_mouf/html.widgets.messageservice' => 
+  array (
+    'class' => 'Mouf\\Html\\Renderer\\FileBasedRenderer',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'vendor/mouf/html.widgets.messageservice/src/templates',
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      1 => 
+      array (
+        'value' => 'rendererCacheService',
+        'parametertype' => 'object',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      2 => 
+      array (
+        'value' => 'package',
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      3 => 
+      array (
+        'value' => 0,
+        'parametertype' => 'primitive',
+        'type' => 'string',
         'metadata' => 
         array (
         ),
@@ -731,6 +962,22 @@ $moufManager->addComponentInstances(array (
       ),
     ),
   ),
+  'rendererCacheService' => 
+  array (
+    'class' => 'Mouf\\Utils\\Cache\\InMemoryCache',
+    'external' => false,
+    'weak' => false,
+    'fieldBinds' => 
+    array (
+      'chainWith' => 'apcCacheService',
+    ),
+  ),
+  'requiredValidator' => 
+  array (
+    'class' => 'Mouf\\Utils\\Common\\Validators\\RequiredValidator',
+    'external' => false,
+    'weak' => false,
+  ),
   'rootController' => 
   array (
     'class' => 'Mouf\\Controllers\\RootController',
@@ -758,6 +1005,11 @@ $moufManager->addComponentInstances(array (
         ),
       ),
     ),
+  ),
+  'sessionManager' => 
+  array (
+    'class' => 'Mouf\\Utils\\Session\\SessionManager\\DefaultSessionManager',
+    'external' => false,
   ),
   'splash' => 
   array (
@@ -855,6 +1107,66 @@ $moufManager->addComponentInstances(array (
       'setLanguageDetection' => 'splashBrowserLanguageDetection',
     ),
   ),
+  'uRLValidatorFtpHttps' => 
+  array (
+    'class' => 'Mouf\\Utils\\Common\\Validators\\URLValidator',
+    'external' => false,
+    'weak' => false,
+    'fieldProperties' => 
+    array (
+      'allowFtp' => 
+      array (
+        'value' => true,
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      'allowHttps' => 
+      array (
+        'value' => true,
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
+  'userMessageService' => 
+  array (
+    'class' => 'Mouf\\Html\\Widgets\\MessageService\\Service\\SessionMessageService',
+    'external' => false,
+    'weak' => false,
+    'fieldBinds' => 
+    array (
+      'sessionManager' => 'sessionManager',
+    ),
+  ),
+  'validatorsBrowserLanguageDetection' => 
+  array (
+    'class' => 'Mouf\\Utils\\I18n\\Fine\\Language\\BrowserLanguageDetection',
+    'external' => false,
+  ),
+  'validatorsTranslateService' => 
+  array (
+    'class' => 'Mouf\\Utils\\I18n\\Fine\\Translate\\FinePHPArrayTranslationService',
+    'external' => false,
+    'fieldProperties' => 
+    array (
+      'i18nMessagePath' => 
+      array (
+        'value' => 'vendor/mouf/utils.common.validators/src/resources/',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+    'setterBinds' => 
+    array (
+      'setLanguageDetection' => 'validatorsBrowserLanguageDetection',
+    ),
+  ),
   'versionsMenuItem' => 
   array (
     'class' => 'Mouf\\Html\\Widgets\\Menu\\MenuItem',
@@ -905,41 +1217,6 @@ unset($moufManager);
 				*/
 				class Mouf {
 					/**
-	 * @return Mouf\Html\Template\Menus\BootstrapMenuRenderer
-	 */
-	 public static function get__anonymous_1359315228607() {
-	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1359315228607');
-	 }
-
-	/**
-	 * @return Mouf\Html\Widgets\Menu\Menu
-	 */
-	 public static function get__anonymous_1359315236912() {
-	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1359315236912');
-	 }
-
-	/**
-	 * @return Mouf\Html\Utils\WebLibraryManager\InlineWebLibrary
-	 */
-	 public static function get__anonymous_1360168489288() {
-	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1360168489288');
-	 }
-
-	/**
-	 * @return Mouf\Html\Utils\WebLibraryManager\WebLibrary
-	 */
-	 public static function get__anonymous_1363619493475() {
-	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1363619493475');
-	 }
-
-	/**
-	 * @return Mouf\Html\Template\Menus\BasicMenuRenderer
-	 */
-	 public static function get__anonymous_1364234789150() {
-	 	return MoufManager::getMoufManager()->getInstance('__anonymous_1364234789150');
-	 }
-
-	/**
 	 * @return Mouf\Utils\Cache\ApcCache
 	 */
 	 public static function getApcCacheService() {
@@ -989,10 +1266,24 @@ unset($moufManager);
 	 }
 
 	/**
+	 * @return Mouf\Html\Renderer\FileBasedRenderer
+	 */
+	 public static function getBootstrapRenderer() {
+	 	return MoufManager::getMoufManager()->getInstance('bootstrapRenderer');
+	 }
+
+	/**
 	 * @return Mouf\Html\Template\BootstrapTemplate
 	 */
 	 public static function getBootstrapTemplate() {
 	 	return MoufManager::getMoufManager()->getInstance('bootstrapTemplate');
+	 }
+
+	/**
+	 * @return Mouf\Html\Renderer\FileBasedRenderer
+	 */
+	 public static function getCustomRenderer() {
+	 	return MoufManager::getMoufManager()->getInstance('customRenderer');
 	 }
 
 	/**
@@ -1007,6 +1298,13 @@ unset($moufManager);
 	 */
 	 public static function getDefaultLanguageDetection() {
 	 	return MoufManager::getMoufManager()->getInstance('defaultLanguageDetection');
+	 }
+
+	/**
+	 * @return Mouf\Html\Renderer\AutoChainRenderer
+	 */
+	 public static function getDefaultRenderer() {
+	 	return MoufManager::getMoufManager()->getInstance('defaultRenderer');
 	 }
 
 	/**
@@ -1035,6 +1333,13 @@ unset($moufManager);
 	 */
 	 public static function getDocumentationMenu() {
 	 	return MoufManager::getMoufManager()->getInstance('documentationMenu');
+	 }
+
+	/**
+	 * @return Mouf\Utils\Common\Validators\EmailValidator
+	 */
+	 public static function getEmailValidator() {
+	 	return MoufManager::getMoufManager()->getInstance('emailValidator');
 	 }
 
 	/**
@@ -1101,6 +1406,20 @@ unset($moufManager);
 	 }
 
 	/**
+	 * @return Mouf\Html\Utils\WebLibraryManager\WebLibrary
+	 */
+	 public static function getMessageServiceLibrary() {
+	 	return MoufManager::getMoufManager()->getInstance('messageServiceLibrary');
+	 }
+
+	/**
+	 * @return Mouf\Html\Widgets\MessageService\Widget\MessageWidget
+	 */
+	 public static function getMessageWidget() {
+	 	return MoufManager::getMoufManager()->getInstance('messageWidget');
+	 }
+
+	/**
 	 * @return Mouf\Html\Template\Menus\BootstrapNavBar
 	 */
 	 public static function getNavBar() {
@@ -1115,10 +1434,24 @@ unset($moufManager);
 	 }
 
 	/**
+	 * @return Mouf\Utils\Common\Validators\NumericValidator
+	 */
+	 public static function getNumericValidatorDecimals() {
+	 	return MoufManager::getMoufManager()->getInstance('numericValidatorDecimals');
+	 }
+
+	/**
 	 * @return Mouf\Services\PackageExplorer
 	 */
 	 public static function getPackageExplorer() {
 	 	return MoufManager::getMoufManager()->getInstance('packageExplorer');
+	 }
+
+	/**
+	 * @return Mouf\Html\Renderer\FileBasedRenderer
+	 */
+	 public static function getPackageRenderer_moufhtml_widgets_messageservice() {
+	 	return MoufManager::getMoufManager()->getInstance('packageRenderer_mouf/html.widgets.messageservice');
 	 }
 
 	/**
@@ -1136,10 +1469,31 @@ unset($moufManager);
 	 }
 
 	/**
+	 * @return Mouf\Utils\Cache\InMemoryCache
+	 */
+	 public static function getRendererCacheService() {
+	 	return MoufManager::getMoufManager()->getInstance('rendererCacheService');
+	 }
+
+	/**
+	 * @return Mouf\Utils\Common\Validators\RequiredValidator
+	 */
+	 public static function getRequiredValidator() {
+	 	return MoufManager::getMoufManager()->getInstance('requiredValidator');
+	 }
+
+	/**
 	 * @return Mouf\Controllers\RootController
 	 */
 	 public static function getRootController() {
 	 	return MoufManager::getMoufManager()->getInstance('rootController');
+	 }
+
+	/**
+	 * @return Mouf\Utils\Session\SessionManager\DefaultSessionManager
+	 */
+	 public static function getSessionManager() {
+	 	return MoufManager::getMoufManager()->getInstance('sessionManager');
 	 }
 
 	/**
@@ -1175,6 +1529,34 @@ unset($moufManager);
 	 */
 	 public static function getSplashTranslateService() {
 	 	return MoufManager::getMoufManager()->getInstance('splashTranslateService');
+	 }
+
+	/**
+	 * @return Mouf\Utils\Common\Validators\URLValidator
+	 */
+	 public static function getURLValidatorFtpHttps() {
+	 	return MoufManager::getMoufManager()->getInstance('uRLValidatorFtpHttps');
+	 }
+
+	/**
+	 * @return Mouf\Html\Widgets\MessageService\Service\SessionMessageService
+	 */
+	 public static function getUserMessageService() {
+	 	return MoufManager::getMoufManager()->getInstance('userMessageService');
+	 }
+
+	/**
+	 * @return Mouf\Utils\I18n\Fine\Language\BrowserLanguageDetection
+	 */
+	 public static function getValidatorsBrowserLanguageDetection() {
+	 	return MoufManager::getMoufManager()->getInstance('validatorsBrowserLanguageDetection');
+	 }
+
+	/**
+	 * @return Mouf\Utils\I18n\Fine\Translate\FinePHPArrayTranslationService
+	 */
+	 public static function getValidatorsTranslateService() {
+	 	return MoufManager::getMoufManager()->getInstance('validatorsTranslateService');
 	 }
 
 	/**
