@@ -495,11 +495,12 @@ class RootController extends Controller {
 								
 				$node =& $tree;
 				foreach ($items as $str) {
-					if (!isset($node[$str])) {
-						$node[$str] = array();
+					if (!isset($node["children"][$str])) {
+						$node["children"][$str] = array();
 					}
-					$node =& $node[$str];
+					$node =& $node["children"][$str];
 				}
+				$node['package'] = $package;
 			}
 		}
 		
@@ -507,8 +508,16 @@ class RootController extends Controller {
 	}
 	
 	private function walkMenuTree($node, $path, MenuItem $parentMenuItem) {
-		if (!empty($node)) {
-			foreach ($node as $key=>$array) {
+		if (isset($node["children"]) && !empty($node["children"])) {
+			// If there is a package and there are subpackages in the same name...
+			if (isset($node["package"])) {
+				$menuItem = new MenuItem();
+				$menuItem->setLabel("<em>Main package</em>");
+				$menuItem->setUrl(ROOT_URL.$path);
+				$parentMenuItem->addMenuItem($menuItem);
+			}
+
+			foreach ($node['children'] as $key=>$array) {
 				$menuItem = new MenuItem();
 				$menuItem->setLabel($key);
 				$parentMenuItem->addMenuItem($menuItem);
