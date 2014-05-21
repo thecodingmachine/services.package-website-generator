@@ -1,3 +1,256 @@
+html, body{
+height: 100%;
+}
+
+body{
+}
+
+
 #sidebar-left li a {
 	word-wrap: break-word;
+}
+
+.navbar-inner{
+    height: 71px;
+    
+}
+
+.navbar-inner
+{
+    margin: 0 auto;
+
+}
+
+.navbar-inverse .navbar-inner, .navbar-inverse{
+    background: rgb(250,250,250); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(250,250,250,1) 0%, rgba(243,243,243,1) 50%, rgba(239,238,236,1) 50%, rgba(230,230,230,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(250,250,250,1)), color-stop(50%,rgba(243,243,243,1)), color-stop(50%,rgba(239,238,236,1)), color-stop(100%,rgba(230,230,230,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(250,250,250,1) 0%,rgba(243,243,243,1) 50%,rgba(239,238,236,1) 50%,rgba(230,230,230,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(250,250,250,1) 0%,rgba(243,243,243,1) 50%,rgba(239,238,236,1) 50%,rgba(230,230,230,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(250,250,250,1) 0%,rgba(243,243,243,1) 50%,rgba(239,238,236,1) 50%,rgba(230,230,230,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(250,250,250,1) 0%,rgba(243,243,243,1) 50%,rgba(239,238,236,1) 50%,rgba(230,230,230,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#e6e6e6',GradientType=0 ); /* IE6-9 */
+    border: none;
+    border-bottom: 1px solid #F2F2F2;
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.05);
+    color: #000;
+}
+
+.navbar-inverse .brand{
+    color: #444;
+    text-shadow: 0px 1px 0px #ffffff;
+}
+
+.navbar-inner .container a.brand{
+font-weight: bold;
+height: 25px;
+padding: 23px 20px 23px 40px;
+margin-right: 20px;
+}
+
+.navbar-inner .container a.brand:hover{
+color: #000;
+}
+
+.navbar-inner .container .nav .dropdown{
+height: 71px;
+padding: 0px;
+}
+
+
+.navbar-inner .container .nav .dropdown a.dropdown-toggle{
+height: 25px;
+color: #666;
+padding: 23px 25px;
+border-right: 1px solid #F6F6F6;
+text-shadow: 0px 1px 0px #ffffff;
+}
+
+.navbar-inner .container .nav .dropdown:first-child a.dropdown-toggle{
+border-left: 1px solid #F6F6F6;
+}
+
+.navbar-inner .container .nav .dropdown a.dropdown-toggle:hover{
+color: #555;
+
+}
+
+.navbar-inner .container .nav .dropdown.open a.dropdown-toggle{
+color: #000;
+text-shadow: 0px 1px 0px rgba(255,255,255,1);
+background: rgb(243,243,243); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(243,243,243,1) 0%, rgba(232,232,232,1) 50%, rgba(224,222,218,1) 50%, rgba(207,207,207,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(243,243,243,1)), color-stop(50%,rgba(232,232,232,1)), color-stop(50%,rgba(224,222,218,1)), color-stop(100%,rgba(207,207,207,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(243,243,243,1) 0%,rgba(232,232,232,1) 50%,rgba(224,222,218,1) 50%,rgba(207,207,207,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(243,243,243,1) 0%,rgba(232,232,232,1) 50%,rgba(224,222,218,1) 50%,rgba(207,207,207,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(243,243,243,1) 0%,rgba(232,232,232,1) 50%,rgba(224,222,218,1) 50%,rgba(207,207,207,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(243,243,243,1) 0%,rgba(232,232,232,1) 50%,rgba(224,222,218,1) 50%,rgba(207,207,207,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f3f3f3', endColorstr='#cfcfcf',GradientType=0 ); /* IE6-9 */
+}
+
+#sidebar-left .well{
+background: #393939;
+-webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+color: #FFF;
+border-radius: 5px;
+border: 1px solid #000;
+max-width: 250px;
+}
+
+#sidebar-left .well img{
+padding: 15px;
+background: #FFF;
+border-radius: 5px;
+margin-bottom: 5px;
+border: 1px solid #000;
+}
+
+#sidebar-left .well .nav-pills li{
+color: #FFF;
+font-size: 14px;
+text-shadow: 0px 1px 0px #000;
+}
+
+#sidebar-left .well .nav-pills li a{
+color: #E0A74A;
+font-size: 13px;
+}
+
+
+#sidebar-left .well .nav-pills li.active > a{
+background: #E0A74A;
+color: #000;
+text-shadow: 0px 1px 0px #E5CC2B;
+}
+
+.nav > li > a:hover{
+background: #515151;
+}
+
+body .container{
+position: relative;
+padding-top: 100px;
+}
+
+#page .container{
+padding: 0px;
+}
+
+#sidebar-left{
+position: absolute;
+}
+
+#sidebar-left .well{
+position: fixed;
+}
+
+#content{
+float: right;
+}
+
+#page{
+position: absolute;
+}
+
+#page .navbar-inverse{
+position: fixed;
+width: 100%;
+z-index: 2;
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus, .dropdown-submenu:hover > a, .dropdown-submenu:focus > a{
+background: rgb(57,57,57); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(57,57,57,1) 0%, rgba(25,25,25,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(57,57,57,1)), color-stop(100%,rgba(25,25,25,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(57,57,57,1) 0%,rgba(25,25,25,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(57,57,57,1) 0%,rgba(25,25,25,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(57,57,57,1) 0%,rgba(25,25,25,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(57,57,57,1) 0%,rgba(25,25,25,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#393939', endColorstr='#191919',GradientType=0 ); /* IE6-9 */
+color: #E8C62E;
+}
+
+.nav dropdown .dropdown-menu li:hover {
+color: #E0A74A;
+}
+
+.dropdown-menu li{
+font-size: 14px;
+}
+
+pre{
+background: #393939;
+-webkit-box-shadow: inset 0px -5px 5px 0px rgba(0, 0, 0, 0.5);
+box-shadow: inset 0px -5px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+pre code{
+background: rgba(255,255,255,0.85);
+-webkit-box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 1);
+box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 1);
+padding: 10px 25px;
+}
+
+pre code.bash{
+color: #E8C62E;
+background: #474747;
+background: rgba(255,255,255,0.2);
+-webkit-box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.5);
+box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.5);
+}
+
+pre code.bash span.comment{
+color: #BBB;
+}
+
+.staticwebsite h1, .staticwebsite h2{
+color: #393939;
+}
+
+.staticwebsite h1{
+border-bottom: 1px dotted #393939;
+padding-bottom: 5px;
+}
+
+.staticwebsite h2{
+padding-left: 15px;
+}
+
+pre{
+color: #EEE;
+}
+
+pre code.js, pre code.bash{
+background: none;
+box-shadow: none;
+}
+
+pre code.javascript{
+background: rgba(255,255,255,0.75);
+}
+
+pre code.js.undefined{
+color: #FFF;
+}
+
+
+@media screen and (max-width: 1200px) {
+#sidebar-left{
+width: 100%;
+position: relative;
+}
+
+#sidebar-left .well{
+position: relative;
+width: 100%;
+max-width: 100%;
+padding-right: 0px;
+}
+
+#content{
+width: 100%;
+}
+
 }
