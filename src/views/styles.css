@@ -223,18 +223,18 @@ pre{
 color: #EEE;
 }
 
-pre code.js, pre code.bash{
+/*pre code.js, pre code.bash{
 background: none;
 box-shadow: none;
-}
+}*/
 
-pre code.javascript{
+/*pre code.javascript{
 background: rgba(255,255,255,0.75);
 }
 
 pre code.js.undefined{
 color: #FFF;
-}
+}*/
 
 
 @media screen and (max-width: 1200px) {
