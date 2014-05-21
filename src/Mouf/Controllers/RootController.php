@@ -263,6 +263,7 @@ class RootController extends Controller {
 		}
 		
 		if ($extension == "html" || $extension == "md") {
+			$previousNextButtonsHtml = $this->getPreviousNextButtons($path, $parsedComposerJson, $rootUrl, $targetDir);
 			$this->addMenu($parsedComposerJson, $targetDir, $rootUrl, $packageVersion);
 		
 			$fileStr = file_get_contents($fileName);
@@ -279,11 +280,14 @@ class RootController extends Controller {
 				// Let's parse and transform markdown format in HTML
 				$fileStr = $markdownParser->transform($fileStr);
 				
+				$fileStr = $previousNextButtonsHtml.$fileStr.$previousNextButtonsHtml;
+				
 				$this->content->addText('<div class="staticwebsite">'.$fileStr.'</div>');
 				$this->template->toHtml();
 			} else {
 				$bodyStart = strpos($fileStr, "<body");
 				if ($bodyStart === false) {
+					$fileStr = $previousNextButtonsHtml.$fileStr.$previousNextButtonsHtml;
 					$this->content->addText('<div class="staticwebsite">'.$fileStr.'</div>');
 					$this->template->toHtml();
 				} else {
@@ -297,6 +301,7 @@ class RootController extends Controller {
 					}
 					$body = substr($partBody, 0, $bodyEndTag);
 			
+					$body = $previousNextButtonsHtml.$body.$previousNextButtonsHtml;
 					$this->content->addText('<div class="staticwebsite">'.$body.'</div>');
 					$this->template->toHtml();
 				}
@@ -534,4 +539,37 @@ class RootController extends Controller {
 		}
 	}
 	
+	private function getPreviousNextButtons($path, $parsedComposerJson, $rootUrl, $targetDir) {
+		if (isset($parsedComposerJson['extra']['mouf']['doc'])) {
+			// TODO: suboptimal, getDocPages is called twice. We should pass $docPages directly in parameter.
+			$docPages = $this->getDocPages($parsedComposerJson, $targetDir);
+			
+			// Let's flatten the doc array (to find previous and next in children or parents.
+			$flatDocArray = $this->flattenDocArray($docPages);
+			for ($i = 0; $i<count($flatDocArray); $i++) {
+				if ($flatDocArray[$i]['url'] == $path) {
+					$html = '<div>';
+					if ($i > 0) {
+						$html .= '<a href="'.$rootUrl.$flatDocArray[$i-1]['url'].'" class="btn btn-small"><i class="icon-chevron-left"></i> '.$flatDocArray[$i-1]['title'].'</a>';
+					}
+					if ($i < count($flatDocArray) - 1) {
+						$html .= '<a href="'.$rootUrl.$flatDocArray[$i+1]['url'].'" class="btn btn-small pull-right">'.$flatDocArray[$i+1]['title'].' <i class="icon-chevron-right"></i></a>';
+					}
+					$html .= '</div>';
+					return $html;
+				}
+			}
+		}
+		return "";
+	}
+	
+	private function flattenDocArray(array $docArray) {
+		$docs = array();
+		foreach ($docArray as $doc) {
+			$docs[] = $doc;
+			if (isset($doc['children']))
+			$docs = array_merge($docs, $this->flattenDocArray($doc['children']));
+		}
+		return $docs;
+	}
 }
