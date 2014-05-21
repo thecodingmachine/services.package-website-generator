@@ -376,6 +376,10 @@ class RootController extends Controller {
 			$this->documentationMenu->addChild($menuItem);
 		}
 		
+		$menuItem = new MenuItem("Packagist");
+		$menuItem->setUrl("https://packagist.org/packages/".$composerJson['name']);
+		$this->documentationMenu->addChild($menuItem);
+		
 		$requires = $this->packageExporer->getRequires($packageVersion);
 		
 		if (!empty($requires)) {

@@ -290,3 +290,8 @@ color: #FFF;
 	
 	box-shadow: 0px 0px 30px #555;
 }
+
+#sidebar-left ul ul {
+	margin-left: 30px;
+	list-style-image: url(images/listitem.png)
+}
