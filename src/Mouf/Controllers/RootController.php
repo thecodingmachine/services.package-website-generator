@@ -550,10 +550,10 @@ class RootController extends Controller {
 				if ($flatDocArray[$i]['url'] == $path) {
 					$html = '<div>';
 					if ($i > 0) {
-						$html .= '<a href="'.$rootUrl.$flatDocArray[$i-1]['url'].'" class="btn btn-small"><i class="icon-chevron-left"></i> '.$flatDocArray[$i-1]['title'].'</a>';
+						$html .= '<a href="'.$rootUrl.$flatDocArray[$i-1]['url'].'" class="btn btn-mini"><i class="icon-chevron-left"></i> '.$flatDocArray[$i-1]['title'].'</a>';
 					}
 					if ($i < count($flatDocArray) - 1) {
-						$html .= '<a href="'.$rootUrl.$flatDocArray[$i+1]['url'].'" class="btn btn-small pull-right">'.$flatDocArray[$i+1]['title'].' <i class="icon-chevron-right"></i></a>';
+						$html .= '<a href="'.$rootUrl.$flatDocArray[$i+1]['url'].'" class="btn btn-mini pull-right">'.$flatDocArray[$i+1]['title'].' <i class="icon-chevron-right"></i></a>';
 					}
 					$html .= '</div>';
 					return $html;
