@@ -105,7 +105,7 @@ class RootController extends Controller {
 	
 	private $forbiddenExtension=array("php", "PHP");
 	
-	private $readMeFiles=array('index.md', 'README.md', 'readme.md', 'README.html', 'README.txt', 'README', 'index.html', 'index.htm');
+	private $readMeFiles=array('index.md', 'README.md', 'readme.md', 'README.html', 'README.txt', 'README', 'README.mdown', 'index.html', 'index.htm');
 	
 	/**
 	 * There is only one action and it captures all URLs.
@@ -267,6 +267,15 @@ class RootController extends Controller {
 			$this->addMenu($parsedComposerJson, $targetDir, $rootUrl, $packageVersion);
 		
 			$fileStr = file_get_contents($fileName);
+			
+			// Let's put a title according to the menu.
+			$docPages = $this->getDocPages($parsedComposerJson, $targetDir);
+			$flatDocPages = $this->flattenDocArray($docPages);
+			foreach ($flatDocPages as $page) {
+				if (isset($page['url']) && $page['url'] == $path && isset($page['title'])) {
+					$this->template->setTitle($page['title']. " | ".$projectname);
+				}
+			}
 		
 			if ($extension = "md") {
 				// The line below is a workaround around a bug in markdown implementation.
@@ -401,6 +410,8 @@ class RootController extends Controller {
 		
 	}
 	
+	protected $docPages = null;
+	
 	/**
 	 * Returns an array of doc pages with the format:
 	 * 	[
@@ -420,26 +431,29 @@ class RootController extends Controller {
 	 *
 	 */
 	protected function getDocPages($composerJson, $targetDir) {
+		if ($this->docPages === null) {
 	
-		$docArray = array();
-	
-		// Let's find if there is a README file.
-		$packagePath = $targetDir."/";
+			$docArray = array();
 		
-		
-		foreach ($this->readMeFiles as $readme) {
-			if (file_exists($packagePath.$readme)) {
-				$docArray[] = array("title"=> "Read me",
-					"url"=>$readme
-				);
-				break;
+			// Let's find if there is a README file.
+			$packagePath = $targetDir."/";
+			
+			
+			foreach ($this->readMeFiles as $readme) {
+				if (file_exists($packagePath.$readme)) {
+					$docArray[] = array("title"=> "Read me",
+						"url"=>$readme
+					);
+					break;
+				}
 			}
+			
+			if (isset($composerJson['extra']['mouf']['doc']) && is_array($composerJson['extra']['mouf']['doc'])) {
+				$docArray = array_merge($docArray, $composerJson['extra']['mouf']['doc']);
+			}
+			$this->docPages = $docArray;
 		}
-		
-		if (isset($composerJson['extra']['mouf']['doc']) && is_array($composerJson['extra']['mouf']['doc'])) {
-			$docArray = array_merge($docArray, $composerJson['extra']['mouf']['doc']);
-		}
-		return $docArray;
+		return $this->docPages;
 	}
 	
 	/**
@@ -541,7 +555,6 @@ class RootController extends Controller {
 	
 	private function getPreviousNextButtons($path, $parsedComposerJson, $rootUrl, $targetDir) {
 		if (isset($parsedComposerJson['extra']['mouf']['doc'])) {
-			// TODO: suboptimal, getDocPages is called twice. We should pass $docPages directly in parameter.
 			$docPages = $this->getDocPages($parsedComposerJson, $targetDir);
 			
 			// Let's flatten the doc array (to find previous and next in children or parents.
