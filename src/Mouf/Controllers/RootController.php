@@ -219,9 +219,12 @@ class RootController extends Controller {
 		// Let's add the icon, if any
 		if (isset($parsedComposerJson['extra']['mouf']['logo'])) {
 			$logoUrl = $parsedComposerJson['extra']['mouf']['logo'];
-			$imgUrl = ROOT_URL.$owner.'/'.$projectname.'/'.$logoUrl;
+			$imgUrl = $owner.'/'.$projectname.'/'.$logoUrl;
 			
-			$this->logoHolder->addText('<img src="'.htmlentities($imgUrl, ENT_QUOTES, 'UTF-8').'" alt="" />');
+			$this->logoHolder->addText('<img src="'.htmlentities(ROOT_URL.$imgUrl, ENT_QUOTES, 'UTF-8').'" alt="" />');
+			
+			// Let's add a favicon:
+			$this->template->favIconUrl = $imgUrl;
 		}
 		
 		if (is_dir($fileName)) {
@@ -274,9 +277,10 @@ class RootController extends Controller {
 			foreach ($flatDocPages as $page) {
 				if (isset($page['url']) && $page['url'] == $path && isset($page['title'])) {
 					$this->template->setTitle($page['title']. " | ".$projectname);
+					break;
 				}
 			}
-		
+			
 			if ($extension = "md") {
 				// The line below is a workaround around a bug in markdown implementation.
 				$forceautoload = new \ReflectionClass('\\Michelf\\Markdown');
