@@ -12,6 +12,7 @@ use Mouf\Composer\OnPackageFoundInterface;
 use Composer\Package\PackageInterface;
 use Mouf\Composer\ComposerService;
 use Composer\Repository\RepositoryInterface;
+use Packagist\Api\Result\Package\Source;
 
 /**
  * A service that downloads/updates packages from Packagist.
@@ -109,7 +110,7 @@ class PackagesInstaller {
 				if ($verbose) {
 					error_log("Installing or updating ".$packageName." - ".$version->getVersionNormalized());
 				}
-				$this->installOrUpdate($packageName, $version->getVersionNormalized());
+				$this->installOrUpdate($packageName, $version->getVersionNormalized(), $version->getSource());
 			}
 			//$this->installOrUpdate($minimalPackage['name'], $minimalPackage['version']);
 		}
@@ -121,7 +122,7 @@ class PackagesInstaller {
 	 * @param string $name
 	 * @param string $version
 	 */
-	public function installOrUpdate($name, $version) {
+	public function installOrUpdate($name, $version, Source $source) {
 		$prettyVersion = str_replace(".9999999", "", $version);
 		$packageDir = $this->packagesBaseDirectory.'/'.$name.'/'.$prettyVersion;
 		if (file_exists($packageDir)) {
@@ -150,6 +151,10 @@ class PackagesInstaller {
 				error_log($e->getTraceAsString()."\n");
 			}
 		}
-		
+		file_put_contents($packageDir.'/.sourceUrl', $source->getUrl());
+		/*echo "SOURCE URL: ".$source->getUrl()."\n";
+		echo "SOURCE TYPE: ".$source->getType()."\n";
+		echo "SOURCE REFERENCE: ".$source->getReference()."\n";
+		exit;*/
 	}
 }

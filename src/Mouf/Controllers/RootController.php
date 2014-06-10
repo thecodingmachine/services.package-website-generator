@@ -207,7 +207,7 @@ class RootController extends Controller {
 		$packageName = $parsedComposerJson['name'];
 		$this->template->setTitle($packageName);
 		$this->navBar->title = $packageName.' ('.$packageVersion->getVersionDisplayName().')';
-		$this->navBar->titleLink = $packageName; 
+		$this->navBar->titleLink = $packageName;
 		
 		$fileName = $targetDir.DIRECTORY_SEPARATOR.$path;
 		if (!file_exists($fileName)) {
@@ -255,7 +255,33 @@ class RootController extends Controller {
 				return;
 			}
 		}
+
+		// Let's add a "edit online" link that allows the user to directly edit in Github.
+		$editButton = null;
+		if (file_exists($targetDir.'/.sourceUrl')) {
+			$sourceUrl = file_get_contents($targetDir.'/.sourceUrl');
+			if (strpos($sourceUrl, 'github.com') !== false) {
+				// Let's remove the trailing .git in the URL
+				$githubRootUrl = substr($sourceUrl, 0, strlen($sourceUrl)-4);
 		
+				$targetVersion = null;
+				// Let's get the latest "dev" release.
+				foreach ($versions as $version) {
+					if (strpos($version, '-dev') !== false) {
+						$targetVersion = substr($version, 0, strpos($version, '-dev'));
+						break;
+					} elseif ($version == 'dev-master') {
+						$targetVersion = 'master';
+						break;
+					}
+				}
+				if ($targetVersion) {
+					$editLink = $githubRootUrl.'/edit/'.$targetVersion.'/'.$path;
+						
+					$editButton = '<p class="fork-and-edit">Found a typo? Something is wrong in this documentation? Just <a href="'.$editLink.'">fork and edit it</a>!</p>';
+				}
+			}
+		}
 		
 		
 		$pathinfo = pathinfo($fileName);
@@ -294,6 +320,7 @@ class RootController extends Controller {
 				$fileStr = $markdownParser->transform($fileStr);
 				
 				$fileStr = $previousNextButtonsHtml.$fileStr.$previousNextButtonsHtml;
+				$fileStr .= $editButton;
 				
 				$this->content->addText('<div class="staticwebsite">'.$fileStr.'</div>');
 				$this->template->toHtml();
@@ -315,6 +342,8 @@ class RootController extends Controller {
 					$body = substr($partBody, 0, $bodyEndTag);
 			
 					$body = $previousNextButtonsHtml.$body.$previousNextButtonsHtml;
+					$body .= $editButton;
+					
 					$this->content->addText('<div class="staticwebsite">'.$body.'</div>');
 					$this->template->toHtml();
 				}

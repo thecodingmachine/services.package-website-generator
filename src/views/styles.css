@@ -295,3 +295,13 @@ color: #FFF;
 	margin-left: 30px;
 	list-style-image: url(images/listitem.png)
 }
+
+p.fork-and-edit {
+    background: url("images/github.gif") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    font-style: italic;
+    height: 40px;
+    margin: 40px auto 0;
+    max-width: 580px;
+    padding-left: 40px;
+    padding-top: 5px;
+}
