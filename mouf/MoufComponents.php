@@ -110,6 +110,8 @@ $moufManager->addComponentInstances(array (
         array (
           0 => 'versionsMenuItem',
           1 => 'packagesMenuItem',
+          2 => 'learnMenuItem',
+          3 => 'homeMenuItem',
         ),
         'parametertype' => 'object',
         'type' => 'string',
@@ -589,6 +591,33 @@ $moufManager->addComponentInstances(array (
       ),
     ),
   ),
+  'homeMenuItem' => 
+  array (
+    'class' => 'Mouf\\Html\\Widgets\\Menu\\MenuItem',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'Home',
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      1 => 
+      array (
+        'value' => 'http://mouf-php.com',
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
   'homePageController' => 
   array (
     'class' => 'Mouf\\Controllers\\HomePageController',
@@ -736,6 +765,33 @@ $moufManager->addComponentInstances(array (
         array (
           0 => 'javascript/highlight.js/styles/googlecode.css',
         ),
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
+  'learnMenuItem' => 
+  array (
+    'class' => 'Mouf\\Html\\Widgets\\Menu\\MenuItem',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'Learn',
+        'parametertype' => 'primitive',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      1 => 
+      array (
+        'value' => 'http://mouf-php.com/skills',
         'parametertype' => 'primitive',
         'type' => 'string',
         'metadata' => 
@@ -1404,6 +1460,13 @@ unset($moufManager);
 	 }
 
 	/**
+	 * @return Mouf\Html\Widgets\Menu\MenuItem
+	 */
+	 public static function getLearnMenuItem() {
+	 	return MoufManager::getMoufManager()->getInstance('learnMenuItem');
+	 }
+
+	/**
 	 * @return Mouf\Html\Utils\WebLibraryManager\WebLibrary
 	 */
 	 public static function getMessageServiceLibrary() {
@@ -1562,6 +1625,13 @@ unset($moufManager);
 	 */
 	 public static function getVersionsMenuItem() {
 	 	return MoufManager::getMoufManager()->getInstance('versionsMenuItem');
+	 }
+
+	/**
+	 * @return Mouf\Html\Widgets\Menu\MenuItem
+	 */
+	 public static function getHomeMenuItem() {
+	 	return MoufManager::getMoufManager()->getInstance('homeMenuItem');
 	 }
 
 }

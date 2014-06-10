@@ -53,13 +53,13 @@ margin-right: 20px;
 color: #000;
 }
 
-.navbar-inner .container .nav .dropdown{
+.navbar-inner .container .nav > li {
 height: 71px;
 padding: 0px;
 }
 
 
-.navbar-inner .container .nav .dropdown a.dropdown-toggle{
+.navbar-inner .container .nav > li > a {
 height: 25px;
 color: #666;
 padding: 23px 25px;
@@ -67,11 +67,11 @@ border-right: 1px solid #F6F6F6;
 text-shadow: 0px 1px 0px #ffffff;
 }
 
-.navbar-inner .container .nav .dropdown:first-child a.dropdown-toggle{
+.navbar-inner .container .nav > li:first-child > a {
 border-left: 1px solid #F6F6F6;
 }
 
-.navbar-inner .container .nav .dropdown a.dropdown-toggle:hover{
+.navbar-inner .container .nav > li:first-child > a:hover{
 color: #555;
 
 }
