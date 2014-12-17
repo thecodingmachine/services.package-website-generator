@@ -13,6 +13,7 @@ use Composer\Package\PackageInterface;
 use Mouf\Composer\ComposerService;
 use Composer\Repository\RepositoryInterface;
 use Packagist\Api\Result\Package\Source;
+use Guzzle\Http\Exception\ClientErrorResponseException;
 
 /**
  * A service that downloads/updates packages from Packagist.
@@ -97,14 +98,28 @@ class PackagesInstaller {
 	}
 	
 	public function run($owner, $verbose) {
+		
 		$packagesNames = $this->findPackagesListByOwner($owner, $verbose);
+		
 		
 		if ($verbose) {
 			error_log("Found ".count($packagesNames)." packages.");
 		}
 		
 		foreach ($packagesNames as $packageName) {
-			$versions = $this->packagistClient->get($packageName)->getVersions();
+			try {
+				$versions = $this->packagistClient->get($packageName)->getVersions();
+			} catch (ClientErrorResponseException $e) {
+				if ($e->getCode() == 404) {
+					// Let's ignore, it might only be a problem of virtual package that is returned but does not exist.
+					if ($verbose) {
+						error_log("Could not find '".$packageName."'. It might be a virtual package.");
+						continue;
+					} else {
+						throw $e;
+					}
+				}
+			}
 			foreach ($versions as $key=>$version) {
 				/* @var $version \Packagist\Api\Result\Package\Version */
 				if ($verbose) {
