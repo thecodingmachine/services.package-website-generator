@@ -1,13 +1,19 @@
 <?php 
-namespace Mouf\Services;
+namespace Mouf\Widgets;
+
+use Mouf\Html\HtmlElement\HtmlElementInterface;
+use Mouf\Html\Renderer\Renderable;
+use Mouf\Services\PackageVersion;
 
 /**
  * Represents a whole package (with all branches and tags it contains)
  * 
  * @author David Negrier
  */
-class Package {
-	
+class Package implements HtmlElementInterface{
+
+    use Renderable;
+
 	private $packageDir;
 	
 	private $versions;
@@ -27,6 +33,17 @@ class Package {
 		return basename($this->packageDir);
 	}
 
+    public function getOwner(){
+        return basename(dirname($this->packageDir));
+    }
+
+    /**
+     * @return PackageVersion
+     */
+    public function getLatestPackageVersion(){
+        return $this->getPackageVersion($this->getLatest());
+
+    }
 	/**
 	 * Returns the list of all branch versions for the package in directory $dir
 	 */

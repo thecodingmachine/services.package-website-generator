@@ -14,6 +14,7 @@ use Mouf\Composer\ComposerService;
 use Composer\Repository\RepositoryInterface;
 use Packagist\Api\Result\Package\Source;
 use Guzzle\Http\Exception\ClientErrorResponseException;
+use Mouf\Widgets\Package;
 
 /**
  * A service that downloads/updates packages from Packagist.

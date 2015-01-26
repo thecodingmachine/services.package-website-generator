@@ -1,6 +1,8 @@
 <?php 
 namespace Mouf\Services;
 
+use Mouf\Widgets\Package;
+
 /**
  * Represents a specific version (tag or branch) from a package.
  * 

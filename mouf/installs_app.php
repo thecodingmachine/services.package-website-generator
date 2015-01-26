@@ -10,118 +10,146 @@ return array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'src/install.php',
-    'package' => 'mouf/utils.cache.file-cache',
+    'package' => 'mouf/html.renderer.twig-extensions',
   ),
   1 => 
   array (
     'status' => 'done',
-    'type' => 'file',
-    'file' => 'src/install.php',
-    'package' => 'mouf/utils.log.errorlog_logger',
+    'type' => 'class',
+    'class' => 'Mouf\\Utils\\Constants\\SecretInstaller',
+    'package' => 'mouf/utils.constants.secret',
   ),
   2 => 
   array (
     'status' => 'done',
-    'type' => 'file',
-    'file' => 'src/install.php',
-    'package' => 'mouf/utils.cache.apc-cache',
+    'type' => 'class',
+    'class' => 'Mouf\\Utils\\Cache\\FileCacheInstaller',
+    'package' => 'mouf/utils.cache.file-cache',
   ),
   3 => 
+  array (
+    'status' => 'done',
+    'type' => 'class',
+    'class' => 'Mouf\\Utils\\Log\\Psr\\ErrorLogLoggerInstaller',
+    'package' => 'mouf/utils.log.psr.errorlog_logger',
+  ),
+  4 => 
+  array (
+    'status' => 'done',
+    'type' => 'class',
+    'class' => 'Mouf\\Utils\\Cache\\ApcCacheInstaller',
+    'package' => 'mouf/utils.cache.apc-cache',
+  ),
+  5 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'src/install.php',
     'package' => 'mouf/html.renderer',
   ),
-  4 => 
+  6 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'install.php',
     'package' => 'mouf/html.utils.weblibrarymanager',
   ),
-  5 => 
+  7 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'install.php',
     'package' => 'mouf/javascript.jquery.jquery',
   ),
-  6 => 
+  8 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'install.php',
     'package' => 'mouf/html.utils.bootstrap',
   ),
-  7 => 
+  9 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'src/install.php',
     'package' => 'mouf/utils.i18n.fine',
   ),
-  8 => 
+  10 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'src/install.php',
     'package' => 'mouf/utils.session.session-manager',
   ),
-  9 => 
+  11 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'src/install.php',
     'package' => 'mouf/html.widgets.messageservice',
   ),
-  10 => 
+  12 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'src/install.php',
     'package' => 'mouf/html.template.bootstrap',
   ),
-  11 => 
+  13 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'src/validatorsInstall.php',
     'package' => 'mouf/utils.common.validators',
   ),
-  12 => 
+  14 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'src/splashCommonInstall.php',
     'package' => 'mouf/mvc.splash-common',
   ),
-  13 => 
+  15 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'src/install.php',
     'package' => 'mouf/utils.cache.no-cache',
   ),
-  14 => 
+  16 => 
+  array (
+    'status' => 'done',
+    'type' => 'class',
+    'class' => 'Mouf\\Utils\\Constants\\DebugInstaller',
+    'package' => 'mouf/utils.constants.debug',
+  ),
+  17 => 
   array (
     'status' => 'done',
     'type' => 'url',
     'url' => 'splashinstall/',
     'package' => 'mouf/mvc.splash',
   ),
-  15 => 
+  18 => 
   array (
     'status' => 'done',
     'type' => 'url',
     'url' => 'splashinstall/writeHtAccess',
     'package' => 'mouf/mvc.splash',
   ),
-  16 => 
+  19 => 
   array (
     'status' => 'done',
     'type' => 'file',
     'file' => 'install.php',
     'package' => 'mouf/modules.google-analytics',
+  ),
+  20 => 
+  array (
+    'status' => 'done',
+    'type' => 'file',
+    'file' => 'src/install.php',
+    'package' => 'mouf/utils.log.errorlog_logger',
   ),
 );

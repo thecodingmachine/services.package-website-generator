@@ -1,6 +1,8 @@
 <?php 
 namespace Mouf\Services;
 
+use Mouf\Widgets\Package;
+
 /**
  * A service to find all the packages installed.
  * 
