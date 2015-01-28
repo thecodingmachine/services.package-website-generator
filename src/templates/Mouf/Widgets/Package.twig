@@ -1,0 +1,17 @@
+<div class="media">
+    <a class="pull-left" href="#">
+        {% if this.latestPackageVersion.composerJson.extra.mouf.logo %}
+            <img class="media-object" src={{ constant('ROOT_URL') }}{{ this.owner }}/{{ this.name }}/{{ this.latestPackageVersion.composerJson.extra.mouf.logo }}>
+        {% else %}
+            <img class="media-object" src={{ constant('ROOT_URL') }}'src/views/images/package.png'>
+        {% endif %}
+    </a>
+    <div class="media-body">
+        <h4 class="media-heading">
+            <a href='{{ constant('ROOT_URL') }}{{ this.owner }}/{{ this.name }}/' style='margin-right:5px; margin-bottom:5px'>{{ this.name }}<small>{{ this.latestPackageVersion.versionDisplayName }}</small></a>
+        </h4>
+        {% if this.latestPackageVersion.composerJson.description %}
+            {{ this.latestPackageVersion.composerJson.description | raw }}
+        {% endif %}
+    </div>
+</div>

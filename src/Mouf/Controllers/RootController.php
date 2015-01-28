@@ -24,7 +24,7 @@ use Mouf\Mvc\Splash\Controllers\HttpErrorsController;
 use Mouf\Html\HtmlElement\HtmlBlock;
 use Mouf\Html\Template\TemplateInterface;
 use Mouf\Mvc\Splash\Controllers\Controller;
-use Mouf\Services\Package;
+use Mouf\Widgets\Package;
 use Mouf\Services\PackageVersion;				
 
 /**

@@ -1,6 +1,10 @@
 <?php
 namespace Mouf\Controllers;
 				
+use Mouf\Html\Renderer\Twig\TwigTemplate;
+use Mouf\Services\SectionBuilder;
+use Mouf\Widgets\PageDisplayer;
+use Mouf\Widgets\Section;
 use Mouf\Utils\Common\ConditionInterface\FalseCondition;
 
 use Mouf\Html\Utils\WebLibraryManager\WebLibrary;
@@ -24,7 +28,7 @@ use Mouf\Mvc\Splash\Controllers\HttpErrorsController;
 use Mouf\Html\HtmlElement\HtmlBlock;
 use Mouf\Html\Template\TemplateInterface;
 use Mouf\Mvc\Splash\Controllers\Controller;
-use Mouf\Services\Package;
+use Mouf\Widgets\Package;
 use Mouf\Services\PackageVersion;				
 
 /**
@@ -47,8 +51,15 @@ class HomePageController extends Controller {
 	 * @var HtmlBlock
 	 */
 	public $content;
-	
-	/**
+
+    /**
+     * The Twig environment (used to render Twig templates).
+     * @var \Twig_Environment
+     */
+    public $twig;
+
+
+    /**
 	 * The documentation menu.
 	 *
 	 * @var Menu
@@ -88,8 +99,18 @@ class HomePageController extends Controller {
 	 * @var string
 	 */
 	public $repositoryPath;
-	
-	protected $starredPackages = array();
+
+    /**
+     * @var SectionBuilder
+     */
+    public $sectionBuilder;
+
+    /**
+     * @var PageDisplayer
+     */
+    public $pageDisplayer;
+
+    protected $sections = array();
 	protected $packages = array();
 	protected $userName;
 	
@@ -102,29 +123,18 @@ class HomePageController extends Controller {
 		
 		$packageExplorer = new PackageExplorer($this->repositoryPath);
 		$packages = $packageExplorer->getPackages();
-		
-		$starredPackagesList = explode(";", STARRED_PACKAGES);
-		
+
 		// Let's fill the menu with the packages.
 		foreach ($packages as $owner=>$packageList) {
-					
 			$this->userName = $owner;
-			
-			foreach ($packageList as $packageName) {
-				$package = $this->packageExporer->getPackage($owner.'/'.$packageName);
-				$pos = array_search($packageName, $starredPackagesList);
-				if ($pos !== false) {
-					$this->starredPackages[$pos] = $package;
-				} else {
-					$this->packages[] = $package;
-				}
-			}
 		}
-		
-		ksort($this->starredPackages);
-		
-		$this->versionsMenuItem->setDisplayCondition(new FalseCondition());
-		$this->packagesMenuItem->setLabel('Packages');
+        $this->versionsMenuItem->setDisplayCondition(new FalseCondition());
+        $this->packagesMenuItem->setLabel('Packages');
+
+        $this->sections = $this->sectionBuilder->buildSections($packageExplorer);
+        $this->pageDisplayer->setElementsToDisplay($this->sections);
+        $this->pageDisplayer->setContext('description');
+
 		// Note: this is bad:
 		\Mouf::getRootController()->addPackagesMenu();
 		
@@ -132,39 +142,8 @@ class HomePageController extends Controller {
 		$this->template->setTitle($title);
 		$this->navBar->title = $title;
 		$this->navBar->titleLink = "";
-		
-		$this->content->addFile(__DIR__."/../../views/homepage.php", $this);
+		$this->content->addHtmlElement($this->pageDisplayer);
 		$this->template->toHtml();
 	}
-	
-	
-	protected function displayPackage(Package $package) {
-		$packageName = $package->getName();
-		$packageVersion = $package->getPackageVersion($package->getLatest());
-		$composerJson = $packageVersion->getComposerJson();
-		if (isset($composerJson['extra']['mouf']['logo'])) {
-			$imgUrl = ROOT_URL.$this->userName.'/'.$packageName."/".$composerJson['extra']['mouf']['logo'];
-		} else {
-			$imgUrl = ROOT_URL.'src/views/images/package.png';
-		}
-		?>
-		<div class="media">
-	    	<a class="pull-left" href="#">
-	    		<img class="media-object" src="<?php echo $imgUrl ?>">
-	    	</a>
-	    	<div class="media-body">
-	    		<h4 class="media-heading">
-	    			<?php echo "<a href='".ROOT_URL.$this->userName.'/'.$packageName."/' style='margin-right:5px; margin-bottom:5px'>".$packageName." <small>".$packageVersion->getVersionDisplayName()."</small></a>"; ?>		
-	    		</h4>
-	    		<?php
-	    		
-	    		if (isset($composerJson['description'])) {
-	    			echo htmlentities($composerJson['description'], ENT_QUOTES, 'UTF-8'); 
-				} ?>
-	     
-	    
-	    	</div>
-	    </div>
-	<?php 
-	}
+
 }
