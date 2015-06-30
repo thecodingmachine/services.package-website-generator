@@ -73,6 +73,18 @@ class Package implements HtmlElementInterface{
 		if (empty($versions)) {
 			return null;
 		}
+
+		// Let's take only stable releases only (version with no -dev, -beta....)
+		$stableVersions = array_filter($versions, function($item) {
+			return strpos($item, '-') === false;
+		});
+
+		// If there are stable versions, let's use those instead of unstable ones.
+		if ($stableVersions) {
+			$versions = array_values($stableVersions);
+		}
+
+
 		if (count($versions) == 1) {
 			return $versions[0];
 		}
