@@ -3,7 +3,7 @@
         {% if this.latestPackageVersion.composerJson.extra.mouf.logo %}
             <img class="media-object" src={{ constant('ROOT_URL') }}{{ this.owner }}/{{ this.name }}/{{ this.latestPackageVersion.composerJson.extra.mouf.logo }}>
         {% else %}
-            <img class="media-object" src={{ constant('ROOT_URL') }}'src/views/images/package.png'>
+            <img class="media-object" src="{{ constant('ROOT_URL') }}src/views/images/package.png">
         {% endif %}
     </a>
     <div class="media-body">

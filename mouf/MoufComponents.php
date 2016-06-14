@@ -376,6 +376,23 @@ $moufManager->addComponentInstances(array (
       ),
     ),
   ),
+  'console' => 
+  array (
+    'class' => 'Mouf\\Console\\ConsoleApplication',
+    'external' => false,
+    'weak' => false,
+    'setterBinds' => 
+    array (
+      'setHelperSet' => 'helperSet',
+      'setCommands' => 
+      array (
+        0 => 'fetchPackagesCommand',
+      ),
+    ),
+    'setterProperties' => 
+    array (
+    ),
+  ),
   'customRenderer' => 
   array (
     'class' => 'Mouf\\Html\\Renderer\\FileBasedRenderer',
@@ -550,6 +567,24 @@ $moufManager->addComponentInstances(array (
       ),
     ),
   ),
+  'fetchPackagesCommand' => 
+  array (
+    'class' => 'Mouf\\Commands\\FetchPackagesCommand',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'packagesInstaller',
+        'parametertype' => 'object',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
   'fileCacheService' => 
   array (
     'class' => 'Mouf\\Utils\\Cache\\FileCache',
@@ -626,6 +661,12 @@ $moufManager->addComponentInstances(array (
         ),
       ),
     ),
+  ),
+  'helperSet' => 
+  array (
+    'class' => 'Mouf\\Console\\HelperSet',
+    'external' => false,
+    'weak' => false,
   ),
   'homeMenuItem' => 
   array (
@@ -883,6 +924,24 @@ $moufManager->addComponentInstances(array (
     'fieldBinds' => 
     array (
       'messageProvider' => 'userMessageService',
+    ),
+  ),
+  'moufTwigExtension' => 
+  array (
+    'class' => 'Mouf\\Html\\Renderer\\Twig\\MoufTwigExtension',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'return $container;',
+        'parametertype' => 'primitive',
+        'type' => 'php',
+        'metadata' => 
+        array (
+        ),
+      ),
     ),
   ),
   'navBar' => 
@@ -1288,11 +1347,90 @@ $moufManager->addComponentInstances(array (
       'setLanguageDetection' => 'splashBrowserLanguageDetection',
     ),
   ),
+  'twigCacheFileSystem' => 
+  array (
+    'class' => 'Twig_Cache_Filesystem',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => '// If we are running on a Unix environment, let\'s prepend the cache with the user id of the PHP process.
+// This way, we can avoid rights conflicts.
+if (function_exists(\'posix_geteuid\')) {
+    $posixGetuid = posix_geteuid();
+} else {
+    $posixGetuid = \'\';
+}
+return rtrim(sys_get_temp_dir(), \'/\\\\\').\'/mouftwigtemplatemain_\'.$posixGetuid.str_replace(":", "", ROOT_PATH);',
+        'parametertype' => 'primitive',
+        'type' => 'php',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+  ),
+  'twigDebugExtension' => 
+  array (
+    'class' => 'Twig_Extension_Debug',
+    'external' => false,
+    'weak' => false,
+  ),
   'twigEnvironment' => 
   array (
     'class' => 'Mouf\\Html\\Renderer\\Twig\\MoufTwigEnvironment',
     'external' => false,
     'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'twigLoaderFileSystem',
+        'parametertype' => 'object',
+        'type' => 'string',
+        'metadata' => 
+        array (
+        ),
+      ),
+      1 => 
+      array (
+        'value' => 'return array(\'debug\' => DEBUG, \'auto_reload\' => true);',
+        'parametertype' => 'primitive',
+        'type' => 'php',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
+    'setterBinds' => 
+    array (
+      'setExtensions' => 
+      array (
+        0 => 'moufTwigExtension',
+        1 => 'twigDebugExtension',
+      ),
+      'setCache' => 'twigCacheFileSystem',
+    ),
+  ),
+  'twigLoaderFileSystem' => 
+  array (
+    'class' => 'Twig_Loader_Filesystem',
+    'external' => false,
+    'weak' => false,
+    'constructor' => 
+    array (
+      0 => 
+      array (
+        'value' => 'return ROOT_PATH;',
+        'parametertype' => 'primitive',
+        'type' => 'php',
+        'metadata' => 
+        array (
+        ),
+      ),
+    ),
   ),
   'uRLValidatorFtpHttps' => 
   array (
@@ -1441,6 +1579,41 @@ unset($moufManager);
 class Mouf {
 	public function getClosures() {
 		return [
+			'moufTwigExtension' => [
+				'constructor' => [
+					0 => function(ContainerInterface $container) {
+						return $container;
+					},
+				],
+			],
+			'twigCacheFileSystem' => [
+				'constructor' => [
+					0 => function(ContainerInterface $container) {
+						// If we are running on a Unix environment, let's prepend the cache with the user id of the PHP process.
+// This way, we can avoid rights conflicts.
+if (function_exists('posix_geteuid')) {
+    $posixGetuid = posix_geteuid();
+} else {
+    $posixGetuid = '';
+}
+return rtrim(sys_get_temp_dir(), '/\\').'/mouftwigtemplatemain_'.$posixGetuid.str_replace(":", "", ROOT_PATH);
+					},
+				],
+			],
+			'twigEnvironment' => [
+				'constructor' => [
+					1 => function(ContainerInterface $container) {
+						return array('debug' => DEBUG, 'auto_reload' => true);
+					},
+				],
+			],
+			'twigLoaderFileSystem' => [
+				'constructor' => [
+					0 => function(ContainerInterface $container) {
+						return ROOT_PATH;
+					},
+				],
+			],
 		];
 	}
 	/**
@@ -1504,6 +1677,13 @@ class Mouf {
 	 */
 	 public static function getBootstrapTemplate() {
 	 	return MoufManager::getMoufManager()->get('bootstrapTemplate');
+	 }
+
+	/**
+	 * @return Mouf\Console\ConsoleApplication
+	 */
+	 public static function getConsole() {
+	 	return MoufManager::getMoufManager()->get('console');
 	 }
 
 	/**
@@ -1584,6 +1764,13 @@ class Mouf {
 	 }
 
 	/**
+	 * @return Mouf\Commands\FetchPackagesCommand
+	 */
+	 public static function getFetchPackagesCommand() {
+	 	return MoufManager::getMoufManager()->get('fetchPackagesCommand');
+	 }
+
+	/**
 	 * @return Mouf\Utils\Cache\FileCache
 	 */
 	 public static function getFileCacheService() {
@@ -1602,6 +1789,13 @@ class Mouf {
 	 */
 	 public static function getGoogleAnalyticsWebLibrary() {
 	 	return MoufManager::getMoufManager()->get('googleAnalyticsWebLibrary');
+	 }
+
+	/**
+	 * @return Mouf\Console\HelperSet
+	 */
+	 public static function getHelperSet() {
+	 	return MoufManager::getMoufManager()->get('helperSet');
 	 }
 
 	/**
@@ -1665,6 +1859,13 @@ class Mouf {
 	 */
 	 public static function getMessageWidget() {
 	 	return MoufManager::getMoufManager()->get('messageWidget');
+	 }
+
+	/**
+	 * @return Mouf\Html\Renderer\Twig\MoufTwigExtension
+	 */
+	 public static function getMoufTwigExtension() {
+	 	return MoufManager::getMoufManager()->get('moufTwigExtension');
 	 }
 
 	/**
@@ -1822,10 +2023,31 @@ class Mouf {
 	 }
 
 	/**
+	 * @return Twig_Cache_Filesystem
+	 */
+	 public static function getTwigCacheFileSystem() {
+	 	return MoufManager::getMoufManager()->get('twigCacheFileSystem');
+	 }
+
+	/**
+	 * @return Twig_Extension_Debug
+	 */
+	 public static function getTwigDebugExtension() {
+	 	return MoufManager::getMoufManager()->get('twigDebugExtension');
+	 }
+
+	/**
 	 * @return Mouf\Html\Renderer\Twig\MoufTwigEnvironment
 	 */
 	 public static function getTwigEnvironment() {
 	 	return MoufManager::getMoufManager()->get('twigEnvironment');
+	 }
+
+	/**
+	 * @return Twig_Loader_Filesystem
+	 */
+	 public static function getTwigLoaderFileSystem() {
+	 	return MoufManager::getMoufManager()->get('twigLoaderFileSystem');
 	 }
 
 	/**
@@ -1871,4 +2093,3 @@ class Mouf {
 	 }
 
 }
-?>

@@ -31,8 +31,8 @@ class SectionBuilder {
                 $packageVersion = $package->getPackageVersion($latestPackageVersion);
                 $composerJson = $packageVersion->getComposerJson();
                 if(isset($composerJson['extra']['mouf']['section'])){
-                    if(isset($composerJson['extra']['mouf']['section']['sectionname'])){
-                        $sectionName = $composerJson['extra']['mouf']['section']['sectionname'];
+                    if(isset($composerJson['extra']['mouf']['section']['name'])){
+                        $sectionName = $composerJson['extra']['mouf']['section']['name'];
                         if(isset($sections[$sectionName])){
                             $sections[$sectionName]->addPackage($package);
                         }else{
@@ -40,16 +40,16 @@ class SectionBuilder {
                             $sections[$sectionName] = $section;
                             $sections[$sectionName]->addPackage($package);
                         }
-                        if(isset($composerJson['extra']['mouf']['section']['sectionweight'])){
-                            $sectionWeight = $composerJson['extra']['mouf']['section']['sectionweight'];
+                        if(isset($composerJson['extra']['mouf']['section']['weight'])){
+                            $sectionWeight = $composerJson['extra']['mouf']['section']['weight'];
                             $sections[$sectionName]->setWeight($sectionWeight);
 
                         }else{
                             $sections[$sectionName]->setWeight($currentMaxWeight);
                             $currentMaxWeight--;
                         }
-                        if(isset($composerJson['extra']['mouf']['section']['sectiondescription'])){
-                            $sectionDescription = $composerJson['extra']['mouf']['section']['sectiondescription'];
+                        if(isset($composerJson['extra']['mouf']['section']['description'])){
+                            $sectionDescription = $composerJson['extra']['mouf']['section']['description'];
                             $sections[$sectionName]->setDescription($sectionDescription);
                         }
 

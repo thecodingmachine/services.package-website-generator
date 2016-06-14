@@ -5,6 +5,7 @@ use Composer\Command\CreateProjectCommand;
 
 use Composer\Factory;
 
+use Composer\IO\IOInterface;
 use Mouf\Composer\MoufErrorLogComposerIO;
 
 use Mouf\Composer\OnPackageFoundInterface;
@@ -15,6 +16,9 @@ use Composer\Repository\RepositoryInterface;
 use Packagist\Api\Result\Package\Source;
 use Guzzle\Http\Exception\ClientErrorResponseException;
 use Mouf\Widgets\Package;
+use Symfony\Component\Console\Input\ArrayInput;
+use Symfony\Component\Console\Input\InputDefinition;
+use Symfony\Component\Console\Input\InputOption;
 
 /**
  * A service that downloads/updates packages from Packagist.
@@ -24,9 +28,7 @@ use Mouf\Widgets\Package;
 class PackagesInstaller {
 	
 	private $packagesBaseDirectory;
-	private $composer;
-	private $io;
-	
+
 	/**
 	 * 
 	 * @param string $packagesBaseDirectory The base directory, with no trailing slash.
@@ -34,29 +36,8 @@ class PackagesInstaller {
 	public function __construct($packagesBaseDirectory) {
 		$this->packagesBaseDirectory = $packagesBaseDirectory;
 		$this->packagistClient = new \Packagist\Api\Client();
-		$this->initComposer();
 	}
-	
-	private function initComposer() {
-		$loader = new \Composer\Autoload\ClassLoader();
-		
-		$map = require 'phar://'.__DIR__.'/../../../composer.phar/vendor/composer/autoload_namespaces.php';
-		foreach ($map as $namespace => $path) {
-			$loader->add($namespace, $path);
-		}
-		
-		$classMap = require 'phar://'.__DIR__.'/../../../composer.phar/vendor/composer/autoload_classmap.php';
-		if ($classMap) {
-			$loader->addClassMap($classMap);
-		}
-		
-		$loader->register();
-		
-		chdir(__DIR__."/../../..");
-		$this->io = new MoufErrorLogComposerIO();
-		$this->composer = Factory::create($this->io);
-	}
-	
+
 	/**
 	 * Returns the list of minimal packages whose owner is "$owner"
 	 *  
@@ -70,41 +51,15 @@ class PackagesInstaller {
 			$results[] = $result->getName();
 		}
 		return $results;
-		
-		/*$repos = $this->composer->getRepositoryManager()->getRepositories();
-		
-
-		var_dump($repos[0]->search('mouf/', RepositoryInterface::SEARCH_FULLTEXT));exit;
-		
-		$foundPackagesNames = $repos[0]->search($owner.'/', RepositoryInterface::SEARCH_NAME);
-		foreach ($foundPackagesNames as $package) {
-			$name = $package['name'];
-			
-			if (strpos($minimalPackage['name'], $owner.'/') === 0) {
-				$result[] = $minimalPackage;
-			}
-		}
-		
-		//var_dump($repos[0]->getMinimalPackages());
-		var_dump($repos[0]->search('mouf/', RepositoryInterface::SEARCH_NAME));
-		
-		$minimalPackages = $repos[0]->getMinimalPackages();
-		$result = array();
-		foreach ($minimalPackages as $minimalPackage) {
-			if (strpos($minimalPackage['name'], $owner.'/') === 0) {
-				$result[] = $minimalPackage;
-			}
-		}
-		return $result;*/
 	}
 	
-	public function run($owner, $verbose) {
+	public function run($owner, IOInterface $io) {
 		
-		$packagesNames = $this->findPackagesListByOwner($owner, $verbose);
+		$packagesNames = $this->findPackagesListByOwner($owner, $io->isVerbose());
 		
 		
-		if ($verbose) {
-			error_log("Found ".count($packagesNames)." packages.");
+		if ($io->isVerbose()) {
+			$io->write("Found ".count($packagesNames)." packages.");
 		}
 		
 		foreach ($packagesNames as $packageName) {
@@ -113,8 +68,8 @@ class PackagesInstaller {
 			} catch (ClientErrorResponseException $e) {
 				if ($e->getCode() == 404) {
 					// Let's ignore, it might only be a problem of virtual package that is returned but does not exist.
-					if ($verbose) {
-						error_log("Could not find '".$packageName."'. It might be a virtual package.");
+					if ($io->isVerbose()) {
+						$io->write("Could not find '".$packageName."'. It might be a virtual package.");
 						continue;
 					} else {
 						throw $e;
@@ -123,10 +78,10 @@ class PackagesInstaller {
 			}
 			foreach ($versions as $key=>$version) {
 				/* @var $version \Packagist\Api\Result\Package\Version */
-				if ($verbose) {
-					error_log("Installing or updating ".$packageName." - ".$version->getVersionNormalized());
+				if ($io->isVerbose()) {
+					$io->write("Installing or updating ".$packageName." - ".$version->getVersionNormalized());
 				}
-				$this->installOrUpdate($packageName, $version->getVersionNormalized(), $version->getSource());
+				$this->installOrUpdate($packageName, $version->getVersionNormalized(), $version->getSource(), $io);
 			}
 			//$this->installOrUpdate($minimalPackage['name'], $minimalPackage['version']);
 		}
@@ -138,7 +93,7 @@ class PackagesInstaller {
 	 * @param string $name
 	 * @param string $version
 	 */
-	public function installOrUpdate($name, $version, Source $source) {
+	public function installOrUpdate($name, $version, Source $source, IOInterface $io) {
 		$prettyVersion = str_replace(".9999999", "", $version);
 		$packageDir = $this->packagesBaseDirectory.'/'.$name.'/'.$prettyVersion;
 		if (file_exists($packageDir)) {
@@ -157,17 +112,36 @@ class PackagesInstaller {
 			try {
 				$config = Factory::createConfig();
 				$createProjectCommand = new CreateProjectCommand();
-				$createProjectCommand->installProject($this->io, $config, $name, $packageDir, $version, 
-						'dev', false, false, false,
-						null, false, false, true);
+				$options = [
+					'--prefer-source' => false,
+					'--prefer-dist' => false,
+					'--keep-vcs' => true,
+				];
+				$inputDefinition = new InputDefinition(array(
+					new InputOption('prefer-source', 's', InputOption::VALUE_REQUIRED),
+					new InputOption('prefer-dist', 'd', InputOption::VALUE_REQUIRED),
+					new InputOption('keep-vcs', 'k', InputOption::VALUE_REQUIRED),
+				));
+				$createProjectCommand->installProject($io, $config, new ArrayInput($options, $inputDefinition), $name, $packageDir, $version,
+					'dev', false, false, false,
+					null, false, false, true, true, true);
+			} catch (\InvalidArgumentException $e) {
+				// Typically thrown by virtual package.
+				if ($io->isVerbose()) {
+					$io->writeError("Probable error due to an installation attempt of a virtual package\n");
+					$io->writeError($e->getMessage()."\n");
+					$io->writeError($e->getTraceAsString()."\n");
+				}
 			} catch (\Exception $e) {
-				echo "EXCEPTION RAISED! ".$e->getMessage()."\n";
-				echo $e->getTraceAsString()."\n";
-				error_log("EXCEPTION RAISED! ".$e->getMessage()."\n");
-				error_log($e->getTraceAsString()."\n");
+				$io->writeError("EXCEPTION RAISED! ".get_class($e)." ".$e->getMessage()."\n");
+				$io->writeError($e->getTraceAsString()."\n");
+				//error_log("EXCEPTION RAISED! ".$e->getMessage()."\n");
+				//error_log($e->getTraceAsString()."\n");
 			}
 		}
-		file_put_contents($packageDir.'/.sourceUrl', $source->getUrl());
+		if (file_exists($packageDir)) {
+			file_put_contents($packageDir.'/.sourceUrl', $source->getUrl());
+		}
 		/*echo "SOURCE URL: ".$source->getUrl()."\n";
 		echo "SOURCE TYPE: ".$source->getType()."\n";
 		echo "SOURCE REFERENCE: ".$source->getReference()."\n";
