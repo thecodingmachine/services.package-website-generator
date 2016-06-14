@@ -118,7 +118,7 @@ class PackagesInstaller
                 ));
                 $createProjectCommand->installProject($io, $config, new ArrayInput($options, $inputDefinition), $name, $packageDir, $version,
                     'dev', false, false, false,
-                    null, false, false, true, true, true);
+                    null, false, false, true, true, true, true);
             } catch (\InvalidArgumentException $e) {
                 // Typically thrown by virtual package.
                 if ($io->isVerbose()) {
