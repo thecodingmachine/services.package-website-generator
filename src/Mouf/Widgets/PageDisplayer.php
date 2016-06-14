@@ -1,16 +1,17 @@
-<?php 
+<?php
+
 namespace Mouf\Widgets;
 
 use Mouf\Html\HtmlElement\HtmlElementInterface;
 use Mouf\Html\Renderer\Renderable;
 
 /**
- * Represents a whole package (with all branches and tags it contains)
+ * Represents a whole package (with all branches and tags it contains).
  * 
  * @author David Negrier
  */
-class PageDisplayer implements HtmlElementInterface{
-
+class PageDisplayer implements HtmlElementInterface
+{
     use Renderable{
         Renderable::setContext as setRenderableContext;
     }
@@ -21,7 +22,7 @@ class PageDisplayer implements HtmlElementInterface{
     private $elementsToDisplay;
 
     /**
-     * @param Array $elementsToDisplay
+     * @param array $elementsToDisplay
      */
     public function setElementsToDisplay($elementsToDisplay)
     {
@@ -29,26 +30,23 @@ class PageDisplayer implements HtmlElementInterface{
     }
 
     /**
-     * @return Array
+     * @return array
      */
     public function getElementsToDisplay()
     {
         return $this->elementsToDisplay;
     }
 
-    public function setContext($context){
+    public function setContext($context)
+    {
         $pageName = $context;
         $this->setRenderableContext($context);
-        foreach($this->elementsToDisplay as $element){
+        foreach ($this->elementsToDisplay as $element) {
             $context = $pageName;
-            if($element->getName()){
+            if ($element->getName()) {
                 $context .= '__'.$element->getName();
             }
             $element->setContext($context);
         }
     }
-	
-
 }
-
-?>

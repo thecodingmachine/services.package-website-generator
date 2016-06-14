@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Mouf\Commands;
 
 use Composer\IO\ConsoleIO;
@@ -25,7 +24,6 @@ class FetchPackagesCommand extends Command
         parent::__construct();
     }
 
-
     protected function configure()
     {
         $this
@@ -39,6 +37,6 @@ class FetchPackagesCommand extends Command
         $io = new ConsoleIO($input, $output, $this->getHelperSet());
         $this->packagesInstaller->run(PACKAGIST_USERNAME, $io);
 
-        $output->writeln("Packagist packages download done.");
+        $output->writeln('Packagist packages download done.');
     }
 }

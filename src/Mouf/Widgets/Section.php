@@ -1,21 +1,22 @@
-<?php 
+<?php
+
 namespace Mouf\Widgets;
 
 use Mouf\Html\HtmlElement\HtmlElementInterface;
 use Mouf\Html\Renderer\Renderable;
 
 /**
- * Represents a section (which contains packages)
+ * Represents a section (which contains packages).
  * 
  * @author Xavier HUBERTY
  */
-class Section implements HtmlElementInterface{
-
+class Section implements HtmlElementInterface
+{
     use Renderable{
         Renderable::setContext as setRenderableContext;
     }
 
-	private $packages;
+    private $packages;
 
     private $name;
 
@@ -28,12 +29,13 @@ class Section implements HtmlElementInterface{
      * @param $description
      * @param $weight
      */
-    public function __construct($name, $description = null, $weight = 100) {
-		$this->name = $name;
+    public function __construct($name, $description = null, $weight = 100)
+    {
+        $this->name = $name;
         $this->description = $description;
         $this->weight = $weight;
         $this->packages = array();
-	}
+    }
 
     /**
      * @param mixed $description
@@ -91,16 +93,16 @@ class Section implements HtmlElementInterface{
         return $this->packages;
     }
 
-    public function addPackage(Package $package){
+    public function addPackage(Package $package)
+    {
         $this->packages[] = $package;
     }
 
-    public function setContext($context){
+    public function setContext($context)
+    {
         $this->setRenderableContext($context);
-        foreach($this->packages as $package){
+        foreach ($this->packages as $package) {
             $package->setContext($context);
         }
     }
 }
-
-?>
