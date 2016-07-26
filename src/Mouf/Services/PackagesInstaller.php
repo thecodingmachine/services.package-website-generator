@@ -41,7 +41,10 @@ class PackagesInstaller
     {
         $results = array();
         foreach ($this->packagistClient->search($owner.'/') as $result) {
-            $results[] = $result->getName();
+            // Let's check the string is at the very beginning (because fuzzy search can screw things)
+            if (strpos($result->getName(), $owner.'/') === 0) {
+                $results[] = $result->getName();
+            }
         }
 
         return $results;
